@@ -1,0 +1,18 @@
+backend:
+  name: git-gateway
+  branch: main # Il ramo di GitHub dove salverà i dati
+
+media_folder: "public/images/uploads" # Dove salverà fisicamente le foto che carichi
+public_folder: "/images/uploads"      # Il percorso che il sito userà per trovare le foto
+
+collections:
+  - name: "camere"
+    label: "Camere & Suite"
+    folder: "src/content/camere"      # La cartella (che creeremo) dove salverà i dati di ogni camera
+    create: true                      # Permette di aggiungere nuove camere
+    slug: "{{slug}}"
+    fields:                           # I campi che vedrai nel pannello
+      - {label: "Nome Camera", name: "title", widget: "string"}
+      - {label: "Prezzo a partire da (€)", name: "prezzo", widget: "number", value_type: "int"}
+      - {label: "Immagine Principale", name: "image", widget: "image"}
+      - {label: "Descrizione", name: "body", widget: "markdown"}

@@ -1,0 +1,40 @@
+---
+// Qui dentro (tra i tre trattini) si scrive il codice lato server di Astro, per ora lo lasciamo vuoto o mettiamo layout.
+---
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savoy Beach Hotel | Bibione</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans antialiased">
+
+    <div class="min-h-screen flex flex-col items-center justify-center text-center p-4">
+        <h1 class="text-5xl md:text-7xl font-serif mb-6 uppercase tracking-wider text-[#d4af37]">
+            Savoy Beach Hotel
+        </h1>
+        <p class="text-xl font-light tracking-widest max-w-2xl">
+            Lusso, Relax e Terme a Bibione.
+        </p>
+        
+        <a href="/admin/" class="mt-12 px-6 py-3 border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-gray-900 transition duration-300">
+            Vai al Pannello di Controllo
+        </a>
+    </div>
+
+    <script is:inline>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+</body>
+</html>
