@@ -7,129 +7,86 @@ import '../styles/global.css';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Savoy Beach Hotel & Thermal Spa | Bibione</title>
+    <title>SAVOY | Esperienza Sensoriale</title>
     
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" is:inline></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
-<body class="bg-[#faf9f6] text-[#2c3e50] font-sans antialiased overflow-x-hidden">
+<body class="bg-[#050505] text-[#e0e0e0] antialiased selection:bg-white selection:text-black overflow-x-hidden">
 
-    <header class="absolute w-full z-50 py-8">
-        <div class="max-w-screen-2xl mx-auto px-8 flex justify-between items-center">
-            <a href="/" class="text-3xl font-bold tracking-[0.2em] text-white" style="font-family: 'Playfair Display', serif;">
-                SAVOY<span class="text-[#d4af37]">.</span>
-            </a>
-            <nav class="hidden md:flex space-x-12 text-[11px] text-white uppercase tracking-[0.3em]" style="font-family: 'Montserrat', sans-serif;">
-                <a href="/camere" class="hover:text-[#d4af37] transition duration-500 relative group">
-                    Camere
-                    <span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#d4af37] transition-all duration-500 group-hover:w-full"></span>
-                </a>
-                <a href="/spa" class="hover:text-[#d4af37] transition duration-500 relative group">
-                    Spa
-                    <span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#d4af37] transition-all duration-500 group-hover:w-full"></span>
-                </a>
-                <a href="/ristorante" class="hover:text-[#d4af37] transition duration-500 relative group">
-                    Ristorante
-                    <span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#d4af37] transition-all duration-500 group-hover:w-full"></span>
-                </a>
-            </nav>
-            <a href="#booking" class="bg-[#d4af37] text-white px-8 py-3 text-xs uppercase tracking-[0.2em] hover:bg-white hover:text-black transition duration-500" style="font-family: 'Montserrat', sans-serif;">
-                Prenota
-            </a>
+    <nav class="fixed w-full z-50 top-0 px-8 py-6 flex justify-between items-center mix-blend-difference">
+        <a href="/" class="text-white text-xl md:text-2xl tracking-[0.4em] font-light uppercase" style="font-family: 'Space Grotesk', sans-serif;">
+            Savoy
+        </a>
+        <div class="hidden md:flex gap-12 text-white text-[10px] tracking-[0.3em] uppercase" style="font-family: 'Space Grotesk', sans-serif;">
+            <a href="/camere" class="hover:italic transition-all duration-300">Residenze</a>
+            <a href="/spa" class="hover:italic transition-all duration-300">Thermae</a>
+            <a href="/ristorante" class="hover:italic transition-all duration-300">Gusto</a>
         </div>
-    </header>
+        <a href="#booking" class="text-white text-[10px] tracking-[0.3em] uppercase border-b border-white pb-1 hover:pb-2 transition-all" style="font-family: 'Space Grotesk', sans-serif;">
+            Booking
+        </a>
+    </nav>
 
-    <section class="relative h-[95vh] flex items-end pb-24 justify-center">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Savoy" class="w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/40"></div>
-        </div>
-
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-32">
-            <h1 class="text-5xl md:text-8xl text-white font-light leading-none mb-6" style="font-family: 'Playfair Display', serif;">
-                Oltre il <span class="italic text-[#d4af37]">Lusso</span>.
-            </h1>
-            <p class="text-white/80 text-xs md:text-sm font-light tracking-[0.3em] uppercase" style="font-family: 'Montserrat', sans-serif;">
-                Bibione Thermae & Resort
-            </p>
-        </div>
-    </section>
-
-    <section class="py-32 max-w-screen-xl mx-auto px-6">
+    <section class="relative h-screen flex flex-col justify-center items-center overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Savoy Dark" class="absolute inset-0 w-full h-full object-cover opacity-30 scale-105" />
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#050505]"></div>
         
-        <div class="flex flex-col md:flex-row items-center gap-12 mb-32">
-            <div class="md:w-7/12 relative group overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Suite" class="w-full h-[80vh] object-cover transition duration-1000 group-hover:scale-105">
-            </div>
-            <div class="md:w-5/12 md:-ml-24 relative z-10 bg-[#faf9f6] p-12 md:p-16 shadow-2xl">
-                <p class="text-[#d4af37] text-xs uppercase tracking-[0.3em] mb-4 font-semibold" style="font-family: 'Montserrat', sans-serif;">01. L'Ospitalità</p>
-                <h2 class="text-4xl md:text-5xl mb-6 text-[#1a1a1a]" style="font-family: 'Playfair Display', serif;">Suite & Camere</h2>
-                <p class="text-gray-500 font-light leading-loose mb-10">Ogni dettaglio è pensato per elevare il tuo riposo. Scegli tra ampie vetrate vista mare o rifugi intimi dal design contemporaneo.</p>
-                <a href="/camere" class="inline-flex items-center text-xs uppercase tracking-[0.2em] font-medium group" style="font-family: 'Montserrat', sans-serif;">Scopri le tipologie <span class="ml-4 w-12 h-[1px] bg-black group-hover:w-24 transition-all duration-500"></span></a>
-            </div>
-        </div>
-
-        <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-32">
-            <div class="md:w-7/12 relative group overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Spa" class="w-full h-[80vh] object-cover transition duration-1000 group-hover:scale-105">
-            </div>
-            <div class="md:w-5/12 md:-mr-24 relative z-10 bg-[#0f172a] text-white p-12 md:p-16 shadow-2xl">
-                <p class="text-[#d4af37] text-xs uppercase tracking-[0.3em] mb-4 font-semibold" style="font-family: 'Montserrat', sans-serif;">02. Il Benessere</p>
-                <h2 class="text-4xl md:text-5xl mb-6" style="font-family: 'Playfair Display', serif;">Thermal Spa</h2>
-                <p class="text-gray-400 font-light leading-loose mb-10">Un tunnel sotterraneo riscaldato ti collega direttamente a Bibione Thermae. Raggiungi le piscine termali comodamente in accappatoio dalla tua camera.</p>
-                <a href="/spa" class="inline-flex items-center text-xs uppercase tracking-[0.2em] font-medium group text-white hover:text-[#d4af37] transition duration-300" style="font-family: 'Montserrat', sans-serif;">Esplora i trattamenti <span class="ml-4 w-12 h-[1px] bg-white group-hover:bg-[#d4af37] group-hover:w-24 transition-all duration-500"></span></a>
-            </div>
-        </div>
-
-        <div class="flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-7/12 relative group overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Ristorante" class="w-full h-[80vh] object-cover transition duration-1000 group-hover:scale-105">
-            </div>
-            <div class="md:w-5/12 md:-ml-24 relative z-10 bg-[#faf9f6] p-12 md:p-16 shadow-2xl">
-                <p class="text-[#d4af37] text-xs uppercase tracking-[0.3em] mb-4 font-semibold" style="font-family: 'Montserrat', sans-serif;">03. Il Gusto</p>
-                <h2 class="text-4xl md:text-5xl mb-6 text-[#1a1a1a]" style="font-family: 'Playfair Display', serif;">Duca d'Aosta</h2>
-                <p class="text-gray-500 font-light leading-loose mb-10">Un'esperienza culinaria d'eccellenza. Il nostro ristorante gourmet offre sapori autentici accompagnati dalle migliori etichette della nostra cantina privata.</p>
-                <a href="/ristorante" class="inline-flex items-center text-xs uppercase tracking-[0.2em] font-medium group" style="font-family: 'Montserrat', sans-serif;">Scopri il menù <span class="ml-4 w-12 h-[1px] bg-black group-hover:w-24 transition-all duration-500"></span></a>
-            </div>
-        </div>
-
+        <h1 class="relative z-10 text-[15vw] leading-[0.8] text-center text-white font-light" style="font-family: 'Cormorant Garamond', serif;">
+            <i>Oltre</i> <br> IL TEMPO
+        </h1>
+        <p class="relative z-10 mt-12 text-[10px] tracking-[0.5em] uppercase text-gray-400" style="font-family: 'Space Grotesk', sans-serif;">
+            Bibione, Venezia
+        </p>
     </section>
 
-    <footer class="bg-[#0f172a] text-white pt-24 pb-12 border-t border-gray-800">
-        <div class="max-w-screen-xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-16 mb-16">
-            
-            <div>
-                <a href="/" class="text-3xl font-bold tracking-[0.2em] text-white mb-8 block" style="font-family: 'Playfair Display', serif;">
-                    SAVOY<span class="text-[#d4af37]">.</span>
-                </a>
-                <p class="text-gray-400 font-light leading-loose mb-6 text-sm">
-                    Un'oasi a 5 stelle aperta tutto l'anno. Il tuo rifugio di lusso fronte mare a Bibione, direttamente collegato al centro termale.
+    <section class="relative py-32 px-6 max-w-screen-2xl mx-auto flex flex-col md:flex-row gap-20">
+        
+        <div class="md:w-1/2">
+            <div class="sticky top-32 h-[70vh] overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Dettaglio Architettura" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000">
+            </div>
+        </div>
+
+        <div class="md:w-1/2 flex flex-col justify-center pt-20 md:pt-0">
+            <h2 class="text-6xl md:text-8xl text-white font-light leading-none mb-12" style="font-family: 'Cormorant Garamond', serif;">
+                La Nuova <br> <i>Dimensione</i>.
+            </h2>
+            <div class="space-y-12 text-sm md:text-base font-light text-gray-400 leading-relaxed max-w-md" style="font-family: 'Space Grotesk', sans-serif;">
+                <p>
+                    Dimentica tutto ciò che sai sull'ospitalità alberghiera. Abbiamo svuotato gli spazi, tolto il superfluo e lasciato solo l'essenziale: luce, materia, silenzio.
                 </p>
-            </div>
-
-            <div>
-                <h4 class="text-[#d4af37] text-xs uppercase tracking-[0.3em] font-semibold mb-6" style="font-family: 'Montserrat', sans-serif;">Contatti</h4>
-                <ul class="text-gray-400 font-light text-sm space-y-4">
-                    <li>📍 Corso Europa, 51 - 30028 Bibione (VE)</li>
-                    <li>📞 +39 0431 430144</li>
-                    <li>✉️ hotel@etgroup.info</li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-[#d4af37] text-xs uppercase tracking-[0.3em] font-semibold mb-6" style="font-family: 'Montserrat', sans-serif;">Esplora</h4>
-                <ul class="text-gray-400 font-light text-sm space-y-4">
-                    <li><a href="/camere" class="hover:text-white transition">Camere & Suite</a></li>
-                    <li><a href="/spa" class="hover:text-white transition">Thermal Spa</a></li>
-                    <li><a href="/ristorante" class="hover:text-white transition">Ristorante Duca d'Aosta</a></li>
-                    <li><a href="/admin/" class="hover:text-white transition">Pannello Direzione (CMS)</a></li>
-                </ul>
+                <p>
+                    Un monolite di design sospeso tra la sabbia di Bibione e le acque termali. Un luogo progettato non per dormire, ma per fuggire dal mondo reale.
+                </p>
+                <div class="pt-8 border-t border-gray-800">
+                    <a href="/camere" class="text-white text-xs tracking-[0.3em] uppercase flex items-center gap-4 hover:gap-8 transition-all">
+                        Esplora le Stanze <span class="w-12 h-[1px] bg-white block"></span>
+                    </a>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="max-w-screen-xl mx-auto px-6 text-center text-gray-600 text-xs border-t border-gray-800 pt-8" style="font-family: 'Montserrat', sans-serif;">
-            &copy; 2026 Savoy Beach Hotel & Thermal Spa. Tutti i diritti riservati.
+    <section class="relative h-[80vh] w-full flex items-center my-32">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Ristorante" class="w-full h-full object-cover opacity-20">
         </div>
+        <div class="relative z-10 w-full text-center px-4">
+            <h2 class="text-[10vw] text-white font-light leading-none" style="font-family: 'Cormorant Garamond', serif;">
+                <i>Gusto</i> BRUTALE.
+            </h2>
+            <a href="/ristorante" class="mt-8 inline-block text-white text-[10px] tracking-[0.3em] uppercase border border-white/30 px-8 py-4 hover:bg-white hover:text-black transition-all" style="font-family: 'Space Grotesk', sans-serif;">
+                Scopri il Menù
+            </a>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/10 text-center">
+        <p class="text-[#555] text-[10px] tracking-[0.3em] uppercase" style="font-family: 'Space Grotesk', sans-serif;">
+            © 2026 Savoy Beach Hotel. Architettura & Design.
+        </p>
     </footer>
 
 </body>

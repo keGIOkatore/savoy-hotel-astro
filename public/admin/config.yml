@@ -1,18 +1,41 @@
 backend:
   name: git-gateway
-  branch: main # Il ramo di GitHub dove salverà i dati
+  branch: main
 
-media_folder: "public/images/uploads" # Dove salverà fisicamente le foto che carichi
-public_folder: "/images/uploads"      # Il percorso che il sito userà per trovare le foto
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
 
 collections:
   - name: "camere"
     label: "Camere & Suite"
-    folder: "src/content/camere"      # La cartella (che creeremo) dove salverà i dati di ogni camera
-    create: true                      # Permette di aggiungere nuove camere
+    folder: "src/content/camere"
+    create: true
     slug: "{{slug}}"
-    fields:                           # I campi che vedrai nel pannello
+    fields:
       - {label: "Nome Camera", name: "title", widget: "string"}
       - {label: "Prezzo a partire da (€)", name: "prezzo", widget: "number", value_type: "int"}
       - {label: "Immagine Principale", name: "image", widget: "image"}
       - {label: "Descrizione", name: "body", widget: "markdown"}
+
+  - name: "spa"
+    label: "Trattamenti Spa"
+    folder: "src/content/spa"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Nome Trattamento", name: "title", widget: "string"}
+      - {label: "Durata (minuti)", name: "durata", widget: "number", value_type: "int"}
+      - {label: "Immagine (Opzionale)", name: "image", widget: "image", required: false}
+      - {label: "Descrizione", name: "body", widget: "markdown"}
+
+  - name: "ristorante"
+    label: "Menù Ristorante"
+    folder: "src/content/ristorante"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Nome Piatto", name: "title", widget: "string"}
+      - {label: "Categoria", name: "categoria", widget: "select", options: ["Antipasto", "Primo", "Secondo", "Dessert", "Vino"]}
+      - {label: "Prezzo (€)", name: "prezzo", widget: "number", value_type: "int"}
+      - {label: "Immagine (Opzionale)", name: "image", widget: "image", required: false}
+      - {label: "Descrizione / Ingredienti", name: "body", widget: "markdown"}
