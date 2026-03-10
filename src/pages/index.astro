@@ -7,120 +7,92 @@ import '../styles/global.css';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Savoy Beach Hotel & Thermal Spa | Bibione</title>
+    <title>Savoy Beach Hotel | Esperienza Esclusiva</title>
     
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" is:inline></script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 </head>
-<body class="bg-[#f3f0ea] text-gray-800 font-sans antialiased" style="font-family: 'Lato', sans-serif;">
+<body class="bg-[#faf9f6] text-[#2c3e50] font-sans antialiased overflow-x-hidden">
 
-    <header class="fixed w-full z-50 bg-[#0f172a]/95 backdrop-blur-md text-white py-4 shadow-lg">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="/" class="text-2xl font-bold tracking-widest uppercase" style="font-family: 'Playfair Display', serif;">
-                Savoy<span class="text-[#d4af37]">.</span>
+    <header class="absolute w-full z-50 py-8">
+        <div class="max-w-screen-2xl mx-auto px-8 flex justify-between items-center">
+            <a href="/" class="text-3xl font-bold tracking-[0.2em] text-white" style="font-family: 'Playfair Display', serif;">
+                SAVOY<span class="text-[#d4af37]">.</span>
             </a>
-            <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-light">
-                <a href="#camere" class="hover:text-[#d4af37] transition duration-300">Camere & Suite</a>
-                <a href="#spa" class="hover:text-[#d4af37] transition duration-300">Thermal Spa</a>
-                <a href="#" class="hover:text-[#d4af37] transition duration-300">Ristorante</a>
+            <nav class="hidden md:flex space-x-12 text-[11px] text-white uppercase tracking-[0.3em]" style="font-family: 'Montserrat', sans-serif;">
+                <a href="/camere" class="hover:text-[#d4af37] transition duration-500 relative group">
+                    Camere
+                    <span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#d4af37] transition-all duration-500 group-hover:w-full"></span>
+                </a>
+                <a href="/spa" class="hover:text-[#d4af37] transition duration-500 relative group">
+                    Spa
+                    <span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#d4af37] transition-all duration-500 group-hover:w-full"></span>
+                </a>
+                <a href="/ristorante" class="hover:text-[#d4af37] transition duration-500 relative group">
+                    Ristorante
+                    <span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#d4af37] transition-all duration-500 group-hover:w-full"></span>
+                </a>
             </nav>
-            <a href="#" class="bg-[#d4af37] text-[#0f172a] px-6 py-2 uppercase tracking-wider text-sm font-bold hover:bg-white transition duration-300">
-                Prenota
+            <a href="#" class="border border-white/50 text-white px-8 py-3 text-xs uppercase tracking-[0.2em] hover:bg-white hover:text-black transition duration-500" style="font-family: 'Montserrat', sans-serif;">
+                Booking
             </a>
         </div>
     </header>
 
-    <section class="relative h-screen flex items-center justify-center">
+    <section class="relative h-[95vh] flex items-end pb-24 justify-center">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Piscina Savoy" class="w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-[#0f172a]/50"></div> </div>
+            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Savoy" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/40"></div>
+        </div>
 
-        <div class="relative z-10 text-center px-4 mt-20">
-            <p class="text-[#d4af37] uppercase tracking-[0.3em] text-sm md:text-base mb-4 font-semibold">
-                Bibione, Italia
-            </p>
-            <h1 class="text-5xl md:text-7xl text-white mb-6 leading-tight drop-shadow-lg" style="font-family: 'Playfair Display', serif;">
-                Lusso ed Eleganza <br> <span class="italic font-light">Fronte Mare</span>
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-32">
+            <h1 class="text-5xl md:text-8xl text-white font-light leading-none mb-6" style="font-family: 'Playfair Display', serif;">
+                Oltre il <span class="italic text-[#d4af37]">Lusso</span>.
             </h1>
-            <p class="text-white/90 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto">
-                Un'oasi a 5 stelle aperta tutto l'anno. Rilassati nella nostra Thermal Spa e lasciati coccolare dalla vera ospitalità italiana.
+            <p class="text-white/80 text-xs md:text-sm font-light tracking-[0.3em] uppercase" style="font-family: 'Montserrat', sans-serif;">
+                Bibione Thermae & Resort
             </p>
-            <a href="#camere" class="border border-white text-white px-8 py-4 uppercase tracking-wider text-sm font-semibold hover:bg-white hover:text-[#0f172a] transition duration-300">
-                Scopri l'Hotel
-            </a>
         </div>
     </section>
 
-    <section id="camere" class="py-24 max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl text-[#0f172a] mb-4" style="font-family: 'Playfair Display', serif;">Camere & Suite</h2>
-            <div class="w-24 h-1 bg-[#d4af37] mx-auto"></div>
-            <p class="mt-6 text-gray-600 max-w-2xl mx-auto font-light">Scegli il tuo rifugio perfetto. Spazi ampi, design raffinato e vista mozzafiato per un soggiorno indimenticabile a Bibione.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            
-            <div class="group cursor-pointer">
-                <div class="overflow-hidden relative h-80 mb-6">
-                    <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camera Deluxe" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out">
-                </div>
-                <h3 class="text-2xl text-[#0f172a] mb-2" style="font-family: 'Playfair Display', serif;">Camera Deluxe</h3>
-                <p class="text-gray-500 font-light mb-4">Eleganza classica con balcone privato e vista mozzafiato sul Mare Adriatico.</p>
-                <a href="#" class="text-[#d4af37] uppercase tracking-widest text-sm font-bold border-b border-[#d4af37] pb-1 hover:text-[#0f172a] hover:border-[#0f172a] transition">Scopri di più</a>
+    <section class="py-32 max-w-screen-xl mx-auto px-6">
+        
+        <div class="flex flex-col md:flex-row items-center gap-12 mb-32">
+            <div class="md:w-7/12 relative group overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Suite" class="w-full h-[80vh] object-cover transition duration-1000 group-hover:scale-105">
             </div>
-
-            <div class="group cursor-pointer">
-                <div class="overflow-hidden relative h-80 mb-6">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Junior Suite" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out">
-                </div>
-                <h3 class="text-2xl text-[#0f172a] mb-2" style="font-family: 'Playfair Display', serif;">Junior Suite</h3>
-                <p class="text-gray-500 font-light mb-4">Ampia zona living e dettagli di design per chi cerca il massimo del comfort.</p>
-                <a href="#" class="text-[#d4af37] uppercase tracking-widest text-sm font-bold border-b border-[#d4af37] pb-1 hover:text-[#0f172a] hover:border-[#0f172a] transition">Scopri di più</a>
-            </div>
-
-            <div class="group cursor-pointer">
-                <div class="overflow-hidden relative h-80 mb-6">
-                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Savoy Suite" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out">
-                </div>
-                <h3 class="text-2xl text-[#0f172a] mb-2" style="font-family: 'Playfair Display', serif;">Savoy Suite</h3>
-                <p class="text-gray-500 font-light mb-4">L'apice del lusso. Vasca idromassaggio privata e terrazza panoramica esclusiva.</p>
-                <a href="#" class="text-[#d4af37] uppercase tracking-widest text-sm font-bold border-b border-[#d4af37] pb-1 hover:text-[#0f172a] hover:border-[#0f172a] transition">Scopri di più</a>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="spa" class="bg-[#0f172a] text-white py-24">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
-            <div class="md:w-1/2">
-                <p class="text-[#d4af37] uppercase tracking-[0.3em] text-sm mb-4 font-semibold">Benessere Esclusivo</p>
-                <h2 class="text-4xl md:text-5xl mb-6 leading-tight" style="font-family: 'Playfair Display', serif;">Collegato direttamente a Bibione Thermae</h2>
-                <p class="text-gray-300 font-light text-lg mb-8 leading-relaxed">
-                    Dimentica lo stress. Il nostro hotel è collegato tramite un tunnel sotterraneo riscaldato al rinomato centro termale. Raggiungi le piscine e la Spa comodamente in accappatoio dalla tua camera.
+            <div class="md:w-5/12 md:-ml-24 relative z-10 bg-[#faf9f6] p-12 md:p-16 shadow-2xl">
+                <p class="text-[#d4af37] text-xs uppercase tracking-[0.3em] mb-4 font-semibold" style="font-family: 'Montserrat', sans-serif;">01. L'Ospitalità</p>
+                <h2 class="text-4xl md:text-5xl mb-6 text-[#1a1a1a]" style="font-family: 'Playfair Display', serif;">Suite & Camere</h2>
+                <p class="text-gray-500 font-light leading-loose mb-10">
+                    Ogni dettaglio è pensato per elevare il tuo riposo. Scegli tra ampie vetrate vista mare o rifugi intimi dal design contemporaneo. La tua oasi personale ti aspetta.
                 </p>
-                <a href="#" class="bg-[#d4af37] text-[#0f172a] px-8 py-3 uppercase tracking-wider text-sm font-bold hover:bg-white transition duration-300">
-                    Scopri la Spa
+                <a href="/camere" class="inline-flex items-center text-xs uppercase tracking-[0.2em] font-medium group" style="font-family: 'Montserrat', sans-serif;">
+                    Scopri le tipologie
+                    <span class="ml-4 w-12 h-[1px] bg-black group-hover:w-24 transition-all duration-500"></span>
                 </a>
             </div>
-            <div class="md:w-1/2 relative">
-                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Massaggio Spa" class="w-full h-auto shadow-2xl border-4 border-[#1e293b]" />
-                <div class="absolute -bottom-6 -left-6 bg-[#d4af37] p-6 shadow-xl hidden md:block">
-                    <p class="text-[#0f172a] font-bold text-2xl" style="font-family: 'Playfair Display', serif;">Aperto <br> Tutto l'Anno</p>
-                </div>
-            </div>
         </div>
-    </section>
 
-    <footer class="bg-gray-900 text-gray-400 py-12 text-center text-sm font-light">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-            <p>&copy; 2026 Savoy Beach Hotel & Thermal Spa. Tutti i diritti riservati.</p>
-            <div class="mt-4 md:mt-0 space-x-6">
-                <a href="/admin/" class="hover:text-white transition">Pannello di Controllo</a>
-                <a href="#" class="hover:text-white transition">Privacy Policy</a>
+        <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+            <div class="md:w-7/12 relative group overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Spa" class="w-full h-[80vh] object-cover transition duration-1000 group-hover:scale-105">
+            </div>
+            <div class="md:w-5/12 md:-mr-24 relative z-10 bg-[#0f172a] text-white p-12 md:p-16 shadow-2xl">
+                <p class="text-[#d4af37] text-xs uppercase tracking-[0.3em] mb-4 font-semibold" style="font-family: 'Montserrat', sans-serif;">02. Il Benessere</p>
+                <h2 class="text-4xl md:text-5xl mb-6" style="font-family: 'Playfair Display', serif;">Thermal Spa</h2>
+                <p class="text-gray-400 font-light leading-loose mb-10">
+                    Un tunnel riscaldato ti collega direttamente alle sorgenti termali. Immergiti nelle acque calde e rigenera mente e corpo in un percorso sensoriale unico.
+                </p>
+                <a href="/spa" class="inline-flex items-center text-xs uppercase tracking-[0.2em] font-medium group text-white hover:text-[#d4af37] transition duration-300" style="font-family: 'Montserrat', sans-serif;">
+                    Esplora i trattamenti
+                    <span class="ml-4 w-12 h-[1px] bg-white group-hover:bg-[#d4af37] group-hover:w-24 transition-all duration-500"></span>
+                </a>
             </div>
         </div>
-    </footer>
+
+    </section>
 
     <script is:inline>
         if (window.netlifyIdentity) {
