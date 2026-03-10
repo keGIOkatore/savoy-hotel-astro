@@ -1,0 +1,14 @@
+{
+  "it": {
+    "orari_ristorante": "Pranzo: 12:30 - 14:30 | Cena: 19:30 - 22:30",
+    "orari_spa": "Tutti i giorni dalle 09:00 alle 20:00"
+  },
+  "en": {
+    "orari_ristorante": "Lunch: 12:30 PM - 2:30 PM | Dinner: 7:30 PM - 10:30 PM",
+    "orari_spa": "Every day from 9:00 AM to 8:00 PM"
+  },
+  "de": {
+    "orari_ristorante": "Mittagessen: 12:30 - 14:30 | Abendessen: 19:30 - 22:30",
+    "orari_spa": "Täglich von 09:00 bis 20:00 Uhr"
+  }
+}

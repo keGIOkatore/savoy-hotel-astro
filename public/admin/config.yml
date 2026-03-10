@@ -5,37 +5,57 @@ backend:
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
+i18n:
+  structure: multiple_folders
+  locales: [it, en, de]
+  default_locale: it
+
 collections:
+  # --- NUOVA SEZIONE IMPOSTAZIONI ---
+  - name: "impostazioni"
+    label: "⚙️ Impostazioni Sito"
+    files:
+      - label: "Orari di Apertura"
+        name: "orari"
+        file: "src/data/orari.json"
+        fields:
+          - {label: "Orari Ristorante", name: "orari_ristorante", widget: "string"}
+          - {label: "Orari Spa", name: "orari_spa", widget: "string"}
+  # -----------------------------------
+
   - name: "camere"
     label: "Camere & Suite"
     folder: "src/content/camere"
     create: true
+    i18n: true
     slug: "{{slug}}"
     fields:
-      - {label: "Nome Camera", name: "title", widget: "string"}
-      - {label: "Prezzo a partire da (€)", name: "prezzo", widget: "number", value_type: "int"}
-      - {label: "Immagine Principale", name: "image", widget: "image"}
-      - {label: "Descrizione", name: "body", widget: "markdown"}
+      - {label: "Nome Camera", name: "title", widget: "string", i18n: true}
+      - {label: "Prezzo a partire da (€)", name: "prezzo", widget: "number", value_type: "int", i18n: duplicate}
+      - {label: "Immagine Principale", name: "image", widget: "image", i18n: duplicate}
+      - {label: "Descrizione", name: "body", widget: "markdown", i18n: true}
 
   - name: "spa"
     label: "Trattamenti Spa"
     folder: "src/content/spa"
     create: true
+    i18n: true
     slug: "{{slug}}"
     fields:
-      - {label: "Nome Trattamento", name: "title", widget: "string"}
-      - {label: "Durata (minuti)", name: "durata", widget: "number", value_type: "int"}
-      - {label: "Immagine (Opzionale)", name: "image", widget: "image", required: false}
-      - {label: "Descrizione", name: "body", widget: "markdown"}
+      - {label: "Nome Trattamento", name: "title", widget: "string", i18n: true}
+      - {label: "Durata (minuti)", name: "durata", widget: "number", value_type: "int", i18n: duplicate}
+      - {label: "Immagine", name: "image", widget: "image", required: false, i18n: duplicate}
+      - {label: "Descrizione", name: "body", widget: "markdown", i18n: true}
 
   - name: "ristorante"
     label: "Menù Ristorante"
     folder: "src/content/ristorante"
     create: true
+    i18n: true
     slug: "{{slug}}"
     fields:
-      - {label: "Nome Piatto", name: "title", widget: "string"}
-      - {label: "Categoria", name: "categoria", widget: "select", options: ["Antipasto", "Primo", "Secondo", "Dessert", "Vino"]}
-      - {label: "Prezzo (€)", name: "prezzo", widget: "number", value_type: "int"}
-      - {label: "Immagine (Opzionale)", name: "image", widget: "image", required: false}
-      - {label: "Descrizione / Ingredienti", name: "body", widget: "markdown"}
+      - {label: "Nome Piatto", name: "title", widget: "string", i18n: true}
+      - {label: "Categoria", name: "categoria", widget: "select", options: ["Antipasto", "Primo", "Secondo", "Dessert", "Vino"], i18n: duplicate}
+      - {label: "Prezzo (€)", name: "prezzo", widget: "number", value_type: "int", i18n: duplicate}
+      - {label: "Immagine", name: "image", widget: "image", required: false, i18n: duplicate}
+      - {label: "Descrizione", name: "body", widget: "markdown", i18n: true}

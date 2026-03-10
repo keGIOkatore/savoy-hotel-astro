@@ -1,28 +1,29 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
-import '../styles/global.css';
-import orariData from '../data/orari.json';
+import '../../styles/global.css';
+import orariData from '../../data/orari.json';
 
 let trattamenti: any[] = [];
-try { trattamenti = await Astro.glob('../content/spa/it/*.md'); } catch (error) {}
+try { trattamenti = await Astro.glob('../../content/spa/en/*.md'); } catch (error) {}
 ---
+
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thermae e Benessere | SAVOY Beach Hotel</title>
+    <title>Thermae & Wellness | SAVOY Beach Hotel</title>
     
     <ViewTransitions />
 
-    <meta name="description" content="Rilassati nel nostro esclusivo centro benessere e accedi direttamente alle acque curative di Bibione Thermae." />
+    <meta name="description" content="Relax in our exclusive wellness center with direct access to the healing waters of Bibione Thermae." />
     <link rel="alternate" hreflang="it" href="https://tuosito.com/spa" />
     <link rel="alternate" hreflang="en" href="https://tuosito.com/en/spa" />
     <link rel="alternate" hreflang="de" href="https://tuosito.com/de/spa" />
-    <meta property="og:title" content="Thermae e Benessere | SAVOY Beach Hotel" />
-    <meta property="og:description" content="Rilassati nel nostro esclusivo centro benessere a Bibione." />
+    <meta property="og:title" content="Thermae & Wellness | SAVOY Beach Hotel" />
+    <meta property="og:description" content="Relax in our exclusive wellness center in Bibione." />
     <meta property="og:image" content="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" />
-
+    
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body class="bg-[#050505] text-[#e0e0e0] antialiased selection:bg-white selection:text-black overflow-x-hidden">
@@ -30,26 +31,26 @@ try { trattamenti = await Astro.glob('../content/spa/it/*.md'); } catch (error) 
     <header class="absolute w-full z-50 top-0 py-8 px-6 md:px-12 flex justify-between items-center bg-gradient-to-b from-black/90 via-black/40 to-transparent">
         
         <nav class="hidden md:flex flex-1 justify-start gap-10 text-white text-xs tracking-[0.25em] uppercase font-medium" style="font-family: 'Space Grotesk', sans-serif;">
-            <a href="/camere" class="hover:text-[#d4af37] transition-colors duration-500">Residenze</a>
-            <a href="/spa" class="hover:text-[#d4af37] transition-colors duration-500">Thermae</a>
-            <a href="/ristorante" class="hover:text-[#d4af37] transition-colors duration-500">Gusto</a>
+            <a href="/en/camere" class="hover:text-[#d4af37] transition-colors duration-500">Residences</a>
+            <a href="/en/spa" class="hover:text-[#d4af37] transition-colors duration-500">Thermae</a>
+            <a href="/en/ristorante" class="hover:text-[#d4af37] transition-colors duration-500">Taste</a>
         </nav>
 
         <div class="flex-1 text-center">
-            <a href="/" class="inline-block text-5xl tracking-[0.3em] uppercase drop-shadow-2xl" style="font-family: 'Cormorant Garamond', serif;">
+            <a href="/en/" class="inline-block text-5xl tracking-[0.3em] uppercase drop-shadow-2xl" style="font-family: 'Cormorant Garamond', serif;">
                 <span class="text-white font-light">Sav</span><span class="text-[#d4af37] font-semibold italic">oy</span>
             </a>
         </div>
         
         <div class="hidden md:flex flex-1 justify-end items-center gap-10">
             <div class="flex gap-4 text-white/50 text-xs tracking-[0.2em] uppercase font-medium" style="font-family: 'Space Grotesk', sans-serif;">
-                <span class="text-white font-bold border-b-2 border-[#d4af37] pb-1">IT</span>
-                <a href="/en/spa" class="hover:text-white transition-colors pb-1">EN</a>
+                <a href="/spa" class="hover:text-white transition-colors pb-1">IT</a>
+                <span class="text-white font-bold border-b-2 border-[#d4af37] pb-1">EN</span>
                 <a href="/de/spa" class="hover:text-white transition-colors pb-1">DE</a>
             </div>
             
             <a href="https://www.booking.com/Share-rV0ICW" target="_blank" class="bg-gradient-to-r from-[#d4af37] to-[#c5a028] text-black px-10 py-4 text-xs tracking-[0.3em] uppercase font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.8)] hover:scale-105 transition-all duration-300" style="font-family: 'Space Grotesk', sans-serif;">
-                Prenota
+                Book
             </a>
         </div>
     </header>
@@ -61,14 +62,14 @@ try { trattamenti = await Astro.glob('../content/spa/it/*.md'); } catch (error) 
         <div class="relative z-10 mt-24">
             <p class="text-[#d4af37] text-xs tracking-[0.3em] uppercase mb-4" style="font-family: 'Space Grotesk', sans-serif;">Bibione Thermae</p>
             <h1 class="text-6xl md:text-8xl text-white font-light leading-none mb-10" style="font-family: 'Cormorant Garamond', serif;">
-                <i>Puro</i> Relax.
+                <i>Pure</i> Relax.
             </h1>
 
             <div class="mt-4 flex flex-col items-center">
                 <div class="h-px w-16 bg-[#d4af37]/50 mb-4"></div>
-                <span class="text-[#d4af37] text-[10px] tracking-[0.4em] uppercase mb-2" style="font-family: 'Space Grotesk', sans-serif;">Orari di Apertura</span>
+                <span class="text-[#d4af37] text-[10px] tracking-[0.4em] uppercase mb-2" style="font-family: 'Space Grotesk', sans-serif;">Opening Hours</span>
                 <p class="text-white text-sm md:text-base tracking-[0.15em] font-light uppercase" style="font-family: 'Space Grotesk', sans-serif;">
-                    {orariData.it.orari_spa}
+                    {orariData.en.orari_spa}
                 </p>
                 <div class="h-px w-16 bg-[#d4af37]/50 mt-4"></div>
             </div>
@@ -78,7 +79,7 @@ try { trattamenti = await Astro.glob('../content/spa/it/*.md'); } catch (error) 
     <section class="py-32 px-6 max-w-screen-md mx-auto">
         {trattamenti.length === 0 ? (
             <div class="text-center text-gray-500 font-light tracking-widest uppercase text-xs" style="font-family: 'Space Grotesk', sans-serif;">
-                I trattamenti saranno disponibili a breve.
+                Treatments will be available soon.
             </div>
         ) : (
             <div class="space-y-16">
@@ -90,7 +91,7 @@ try { trattamenti = await Astro.glob('../content/spa/it/*.md'); } catch (error) 
                                 {trattamento.frontmatter.title}
                             </h3>
                             <p class="text-gray-500 text-[10px] tracking-[0.3em] uppercase mb-6" style="font-family: 'Space Grotesk', sans-serif;">
-                                Durata: {trattamento.frontmatter.durata} minuti
+                                Duration: {trattamento.frontmatter.durata} minutes
                             </p>
                             
                             {trattamento.frontmatter.image && (
