@@ -84,21 +84,6 @@ import '../styles/global.css';
         </div>
     </section>
 
-    <section class="relative h-[80vh] w-full flex items-center mt-20">
-        <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Ristorante" class="w-full h-full object-cover opacity-30">
-        </div>
-        <div class="relative z-10 w-full text-center px-4">
-            <p class="text-[#d4af37] text-[10px] tracking-[0.3em] uppercase mb-4" style="font-family: 'Space Grotesk', sans-serif;">03. Il Gusto</p>
-            <h2 class="text-7xl md:text-[8vw] text-white font-light leading-none mb-8" style="font-family: 'Cormorant Garamond', serif;">
-                Duca <i>d'Aosta</i>
-            </h2>
-            <a href="/ristorante" class="mt-4 inline-block text-white text-[10px] tracking-[0.3em] uppercase border border-white/30 px-8 py-4 hover:bg-white hover:text-black transition-all" style="font-family: 'Space Grotesk', sans-serif;">
-                Scopri il Menù
-            </a>
-        </div>
-    </section>
-
     <section class="py-32 px-6 max-w-screen-xl mx-auto">
         <div class="text-center mb-24">
             <p class="text-[#d4af37] text-[10px] tracking-[0.3em] uppercase mb-4" style="font-family: 'Space Grotesk', sans-serif;">I Nostri Servizi</p>
@@ -108,56 +93,110 @@ import '../styles/global.css';
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-y-16 gap-x-8 text-center" style="font-family: 'Space Grotesk', sans-serif;">
+            
             <div class="group">
-                <span class="text-3xl block mb-6 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all">🏖️</span>
+                <svg class="w-10 h-10 mx-auto mb-6 text-gray-400 group-hover:text-[#d4af37] transition-colors duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <circle cx="12" cy="12" r="5" stroke-width="1"/><path stroke-width="1" d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
                 <h3 class="text-white text-[11px] tracking-widest uppercase mb-2">Spiaggia Privata</h3>
                 <p class="text-gray-500 text-[10px] uppercase tracking-wider">Settore VIP Riservato</p>
             </div>
+
             <div class="group">
-                <span class="text-3xl block mb-6 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all">🧖‍♀️</span>
+                <svg class="w-10 h-10 mx-auto mb-6 text-gray-400 group-hover:text-[#d4af37] transition-colors duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-width="1" stroke-linecap="round" stroke-linejoin="round" d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/>
+                </svg>
                 <h3 class="text-white text-[11px] tracking-widest uppercase mb-2">Tunnel Termale</h3>
                 <p class="text-gray-500 text-[10px] uppercase tracking-wider">Accesso Diretto Spa</p>
             </div>
+
             <div class="group">
-                <span class="text-3xl block mb-6 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all">🚗</span>
+                <svg class="w-10 h-10 mx-auto mb-6 text-gray-400 group-hover:text-[#d4af37] transition-colors duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <rect x="3" y="8" width="18" height="4" rx="1" stroke-width="1"/><path stroke-width="1" d="M4 8l2-4h12l2 4M4 12v6a1 1 0 001 1h14a1 1 0 001-1v-6M7 16h.01M17 16h.01"/>
+                </svg>
                 <h3 class="text-white text-[11px] tracking-widest uppercase mb-2">Garage Coperto</h3>
                 <p class="text-gray-500 text-[10px] uppercase tracking-wider">Colonnine Elettriche</p>
             </div>
+
             <div class="group">
-                <span class="text-3xl block mb-6 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all">🚲</span>
+                <svg class="w-10 h-10 mx-auto mb-6 text-gray-400 group-hover:text-[#d4af37] transition-colors duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <circle cx="5.5" cy="17.5" r="3.5" stroke-width="1"/><circle cx="18.5" cy="17.5" r="3.5" stroke-width="1"/><path stroke-width="1" d="M15 6a1 1 0 100-2 1 1 0 000 2zm-3 5.5l1.5-3 2.5 1M12 11.5L9 11l-3.5 6.5M15 17.5l-3-6-4 1.5"/>
+                </svg>
                 <h3 class="text-white text-[11px] tracking-widest uppercase mb-2">Noleggio Bici</h3>
                 <p class="text-gray-500 text-[10px] uppercase tracking-wider">Esplora Bibione</p>
             </div>
+
             <div class="group">
-                <span class="text-3xl block mb-6 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all">🐕</span>
-                <h3 class="text-white text-[11px] tracking-widest uppercase mb-2">Pet Friendly</h3>
-                <p class="text-gray-500 text-[10px] uppercase tracking-wider">Servizi per Animali</p>
-            </div>
-            <div class="group">
-                <span class="text-3xl block mb-6 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all">🏊‍♂️</span>
-                <h3 class="text-white text-[11px] tracking-widest uppercase mb-2">Piscina Esterne</h3>
+                <svg class="w-10 h-10 mx-auto mb-6 text-gray-400 group-hover:text-[#d4af37] transition-colors duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-width="1" d="M2 12s3-2 5 0 5 2 5 0 5-2 5 0M2 18s3-2 5 0 5 2 5 0 5-2 5 0"/>
+                </svg>
+                <h3 class="text-white text-[11px] tracking-widest uppercase mb-2">Piscine Esterne</h3>
                 <p class="text-gray-500 text-[10px] uppercase tracking-wider">Solarium & Lounge</p>
             </div>
+
             <div class="group">
-                <span class="text-3xl block mb-6 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all">🥂</span>
+                <svg class="w-10 h-10 mx-auto mb-6 text-gray-400 group-hover:text-[#d4af37] transition-colors duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-width="1" d="M8 3h8M12 3v10M8 13h8a4 4 0 11-8 0zM12 17v4M10 21h4"/>
+                </svg>
                 <h3 class="text-white text-[11px] tracking-widest uppercase mb-2">Lounge Bar</h3>
                 <p class="text-gray-500 text-[10px] uppercase tracking-wider">Cocktail & Cantina</p>
             </div>
+
             <div class="group">
-                <span class="text-3xl block mb-6 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all">📶</span>
+                <svg class="w-10 h-10 mx-auto mb-6 text-gray-400 group-hover:text-[#d4af37] transition-colors duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-width="1" d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/>
+                </svg>
                 <h3 class="text-white text-[11px] tracking-widest uppercase mb-2">Wi-Fi Veloce</h3>
                 <p class="text-gray-500 text-[10px] uppercase tracking-wider">Connessione Ovunque</p>
+            </div>
+
+            <div class="group">
+                <svg class="w-10 h-10 mx-auto mb-6 text-gray-400 group-hover:text-[#d4af37] transition-colors duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-width="1" d="M12 5.5c-1.5 0-2.5 1-2.5 2.5 0 1.5 1.5 3.5 2.5 4.5 1-1 2.5-3 2.5-4.5 0-1.5-1-2.5-2.5-2.5zm-5 4c-1 0-2 .5-2 1.5 0 1.5 2 3.5 3 4 .5-1.5 1-2.5 1-3.5 0-1-1-2-2-2zm10 0c-1 0-2 1-2 2 0 1 .5 2 1 3.5 1-.5 3-2.5 3-4 0-1-1-1.5-2-1.5z"/>
+                </svg>
+                <h3 class="text-white text-[11px] tracking-widest uppercase mb-2">Pet Friendly</h3>
+                <p class="text-gray-500 text-[10px] uppercase tracking-wider">Per i tuoi amici a 4 zampe</p>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 bg-[#050505] border-t border-white/10 text-center flex justify-between px-8">
-        <p class="text-[#555] text-[10px] tracking-[0.3em] uppercase" style="font-family: 'Space Grotesk', sans-serif;">
-            © 2026 Savoy Beach Hotel.
-        </p>
-        <a href="/admin/" class="text-[#555] text-[10px] tracking-[0.3em] uppercase hover:text-white transition-colors" style="font-family: 'Space Grotesk', sans-serif;">
-            Admin
-        </a>
+    <footer class="bg-[#030303] pt-24 pb-12 border-t border-white/10">
+        <div class="max-w-screen-xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-16 mb-16 text-center md:text-left">
+            
+            <div>
+                <h3 class="text-3xl text-white font-light tracking-widest uppercase mb-6" style="font-family: 'Cormorant Garamond', serif;">
+                    Savoy<span class="text-[#d4af37]">.</span>
+                </h3>
+                <p class="text-gray-400 text-[10px] tracking-[0.2em] uppercase leading-loose" style="font-family: 'Space Grotesk', sans-serif;">
+                    Un'oasi di lusso e benessere.<br>Aperto tutto l'anno a Bibione.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="text-[#d4af37] text-[10px] tracking-[0.3em] uppercase mb-6" style="font-family: 'Space Grotesk', sans-serif;">Contatti</h4>
+                <ul class="text-gray-400 text-[11px] tracking-widest font-light space-y-4" style="font-family: 'Space Grotesk', sans-serif;">
+                    <li>Corso Europa, 51<br>30028 Bibione (VE) - Italia</li>
+                    <li>T. +39 0431 430144</li>
+                    <li>E. hotel@etgroup.info</li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-[#d4af37] text-[10px] tracking-[0.3em] uppercase mb-6" style="font-family: 'Space Grotesk', sans-serif;">Esplora</h4>
+                <ul class="text-gray-400 text-[11px] tracking-widest font-light space-y-4 uppercase" style="font-family: 'Space Grotesk', sans-serif;">
+                    <li><a href="/camere" class="hover:text-white transition-colors">Residenze</a></li>
+                    <li><a href="/spa" class="hover:text-white transition-colors">Thermae</a></li>
+                    <li><a href="/ristorante" class="hover:text-white transition-colors">Gusto</a></li>
+                    <li><a href="/admin/" class="hover:text-white transition-colors">Admin Pannello</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="max-w-screen-xl mx-auto px-6 border-t border-white/10 pt-8 text-center">
+            <p class="text-[#555] text-[10px] tracking-[0.3em] uppercase" style="font-family: 'Space Grotesk', sans-serif;">
+                © 2026 Savoy Beach Hotel & Thermal Spa. Tutti i diritti riservati.
+            </p>
+        </div>
     </footer>
 
 </body>
