@@ -7,10 +7,9 @@ import '../styles/global.css';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Savoy Beach Hotel | Esperienza Esclusiva</title>
+    <title>Savoy Beach Hotel & Thermal Spa | Bibione</title>
     
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" is:inline></script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body class="bg-[#faf9f6] text-[#2c3e50] font-sans antialiased overflow-x-hidden">
@@ -34,8 +33,8 @@ import '../styles/global.css';
                     <span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#d4af37] transition-all duration-500 group-hover:w-full"></span>
                 </a>
             </nav>
-            <a href="#" class="border border-white/50 text-white px-8 py-3 text-xs uppercase tracking-[0.2em] hover:bg-white hover:text-black transition duration-500" style="font-family: 'Montserrat', sans-serif;">
-                Booking
+            <a href="#booking" class="bg-[#d4af37] text-white px-8 py-3 text-xs uppercase tracking-[0.2em] hover:bg-white hover:text-black transition duration-500" style="font-family: 'Montserrat', sans-serif;">
+                Prenota
             </a>
         </div>
     </header>
@@ -65,45 +64,73 @@ import '../styles/global.css';
             <div class="md:w-5/12 md:-ml-24 relative z-10 bg-[#faf9f6] p-12 md:p-16 shadow-2xl">
                 <p class="text-[#d4af37] text-xs uppercase tracking-[0.3em] mb-4 font-semibold" style="font-family: 'Montserrat', sans-serif;">01. L'Ospitalità</p>
                 <h2 class="text-4xl md:text-5xl mb-6 text-[#1a1a1a]" style="font-family: 'Playfair Display', serif;">Suite & Camere</h2>
-                <p class="text-gray-500 font-light leading-loose mb-10">
-                    Ogni dettaglio è pensato per elevare il tuo riposo. Scegli tra ampie vetrate vista mare o rifugi intimi dal design contemporaneo. La tua oasi personale ti aspetta.
-                </p>
-                <a href="/camere" class="inline-flex items-center text-xs uppercase tracking-[0.2em] font-medium group" style="font-family: 'Montserrat', sans-serif;">
-                    Scopri le tipologie
-                    <span class="ml-4 w-12 h-[1px] bg-black group-hover:w-24 transition-all duration-500"></span>
-                </a>
+                <p class="text-gray-500 font-light leading-loose mb-10">Ogni dettaglio è pensato per elevare il tuo riposo. Scegli tra ampie vetrate vista mare o rifugi intimi dal design contemporaneo.</p>
+                <a href="/camere" class="inline-flex items-center text-xs uppercase tracking-[0.2em] font-medium group" style="font-family: 'Montserrat', sans-serif;">Scopri le tipologie <span class="ml-4 w-12 h-[1px] bg-black group-hover:w-24 transition-all duration-500"></span></a>
             </div>
         </div>
 
-        <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+        <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-32">
             <div class="md:w-7/12 relative group overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Spa" class="w-full h-[80vh] object-cover transition duration-1000 group-hover:scale-105">
             </div>
             <div class="md:w-5/12 md:-mr-24 relative z-10 bg-[#0f172a] text-white p-12 md:p-16 shadow-2xl">
                 <p class="text-[#d4af37] text-xs uppercase tracking-[0.3em] mb-4 font-semibold" style="font-family: 'Montserrat', sans-serif;">02. Il Benessere</p>
                 <h2 class="text-4xl md:text-5xl mb-6" style="font-family: 'Playfair Display', serif;">Thermal Spa</h2>
-                <p class="text-gray-400 font-light leading-loose mb-10">
-                    Un tunnel riscaldato ti collega direttamente alle sorgenti termali. Immergiti nelle acque calde e rigenera mente e corpo in un percorso sensoriale unico.
-                </p>
-                <a href="/spa" class="inline-flex items-center text-xs uppercase tracking-[0.2em] font-medium group text-white hover:text-[#d4af37] transition duration-300" style="font-family: 'Montserrat', sans-serif;">
-                    Esplora i trattamenti
-                    <span class="ml-4 w-12 h-[1px] bg-white group-hover:bg-[#d4af37] group-hover:w-24 transition-all duration-500"></span>
-                </a>
+                <p class="text-gray-400 font-light leading-loose mb-10">Un tunnel sotterraneo riscaldato ti collega direttamente a Bibione Thermae. Raggiungi le piscine termali comodamente in accappatoio dalla tua camera.</p>
+                <a href="/spa" class="inline-flex items-center text-xs uppercase tracking-[0.2em] font-medium group text-white hover:text-[#d4af37] transition duration-300" style="font-family: 'Montserrat', sans-serif;">Esplora i trattamenti <span class="ml-4 w-12 h-[1px] bg-white group-hover:bg-[#d4af37] group-hover:w-24 transition-all duration-500"></span></a>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-7/12 relative group overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Ristorante" class="w-full h-[80vh] object-cover transition duration-1000 group-hover:scale-105">
+            </div>
+            <div class="md:w-5/12 md:-ml-24 relative z-10 bg-[#faf9f6] p-12 md:p-16 shadow-2xl">
+                <p class="text-[#d4af37] text-xs uppercase tracking-[0.3em] mb-4 font-semibold" style="font-family: 'Montserrat', sans-serif;">03. Il Gusto</p>
+                <h2 class="text-4xl md:text-5xl mb-6 text-[#1a1a1a]" style="font-family: 'Playfair Display', serif;">Duca d'Aosta</h2>
+                <p class="text-gray-500 font-light leading-loose mb-10">Un'esperienza culinaria d'eccellenza. Il nostro ristorante gourmet offre sapori autentici accompagnati dalle migliori etichette della nostra cantina privata.</p>
+                <a href="/ristorante" class="inline-flex items-center text-xs uppercase tracking-[0.2em] font-medium group" style="font-family: 'Montserrat', sans-serif;">Scopri il menù <span class="ml-4 w-12 h-[1px] bg-black group-hover:w-24 transition-all duration-500"></span></a>
             </div>
         </div>
 
     </section>
 
-    <script is:inline>
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-        }
-    </script>
+    <footer class="bg-[#0f172a] text-white pt-24 pb-12 border-t border-gray-800">
+        <div class="max-w-screen-xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-16 mb-16">
+            
+            <div>
+                <a href="/" class="text-3xl font-bold tracking-[0.2em] text-white mb-8 block" style="font-family: 'Playfair Display', serif;">
+                    SAVOY<span class="text-[#d4af37]">.</span>
+                </a>
+                <p class="text-gray-400 font-light leading-loose mb-6 text-sm">
+                    Un'oasi a 5 stelle aperta tutto l'anno. Il tuo rifugio di lusso fronte mare a Bibione, direttamente collegato al centro termale.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-[#d4af37] text-xs uppercase tracking-[0.3em] font-semibold mb-6" style="font-family: 'Montserrat', sans-serif;">Contatti</h4>
+                <ul class="text-gray-400 font-light text-sm space-y-4">
+                    <li>📍 Corso Europa, 51 - 30028 Bibione (VE)</li>
+                    <li>📞 +39 0431 430144</li>
+                    <li>✉️ hotel@etgroup.info</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-[#d4af37] text-xs uppercase tracking-[0.3em] font-semibold mb-6" style="font-family: 'Montserrat', sans-serif;">Esplora</h4>
+                <ul class="text-gray-400 font-light text-sm space-y-4">
+                    <li><a href="/camere" class="hover:text-white transition">Camere & Suite</a></li>
+                    <li><a href="/spa" class="hover:text-white transition">Thermal Spa</a></li>
+                    <li><a href="/ristorante" class="hover:text-white transition">Ristorante Duca d'Aosta</a></li>
+                    <li><a href="/admin/" class="hover:text-white transition">Pannello Direzione (CMS)</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-screen-xl mx-auto px-6 text-center text-gray-600 text-xs border-t border-gray-800 pt-8" style="font-family: 'Montserrat', sans-serif;">
+            &copy; 2026 Savoy Beach Hotel & Thermal Spa. Tutti i diritti riservati.
+        </div>
+    </footer>
+
 </body>
 </html>

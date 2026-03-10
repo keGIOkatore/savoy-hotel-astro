@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermal Spa | Savoy Beach Hotel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#faf9f6] text-[#2c3e50] font-sans antialiased overflow-x-hidden">
+
+    <header class="absolute w-full z-50 py-8">
+        <div class="max-w-screen-2xl mx-auto px-8 flex justify-between items-center">
+            <a href="/" class="text-3xl font-bold tracking-[0.2em] text-white drop-shadow-lg" style="font-family: 'Playfair Display', serif;">SAVOY<span class="text-[#d4af37]">.</span></a>
+            <nav class="hidden md:flex space-x-12 text-[11px] text-white uppercase tracking-[0.3em] drop-shadow-md" style="font-family: 'Montserrat', sans-serif;">
+                <a href="/camere" class="hover:text-[#d4af37] transition duration-500">Camere</a>
+                <a href="/spa" class="text-[#d4af37] border-b border-[#d4af37] pb-1">Spa</a>
+                <a href="/ristorante" class="hover:text-[#d4af37] transition duration-500">Ristorante</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="relative h-[60vh] flex items-center justify-center">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Spa Savoy" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+        <div class="relative z-10 text-center px-4 mt-20">
+            <p class="text-[#d4af37] text-xs uppercase tracking-[0.3em] font-semibold mb-4" style="font-family: 'Montserrat', sans-serif;">Puro Relax</p>
+            <h1 class="text-5xl md:text-7xl text-white mb-6 drop-shadow-lg" style="font-family: 'Playfair Display', serif;">Bibione Thermae</h1>
+        </div>
+    </section>
+
+    <section class="py-32 max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-4xl text-[#1a1a1a] mb-8" style="font-family: 'Playfair Display', serif;">Un collegamento esclusivo.</h2>
+        <div class="w-16 h-[2px] bg-[#d4af37] mx-auto mb-8"></div>
+        <p class="text-gray-500 font-light leading-loose text-lg mb-12">
+            Il Savoy Beach Hotel è l'unico hotel 5 stelle ad essere <strong>collegato direttamente al centro termale di Bibione</strong> tramite un comodo tunnel sotterraneo riscaldato. Dimentica lo stress dei trasporti: potrai lasciare la tua camera indossando solo il morbido accappatoio e le ciabattine fornite in dotazione, per ritrovarti in pochi passi immerso nelle acque benefiche delle terme.
+        </p>
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Piscina Termale" class="w-full h-[50vh] object-cover shadow-2xl mb-12">
+    </section>
+
+</body>
+</html>
