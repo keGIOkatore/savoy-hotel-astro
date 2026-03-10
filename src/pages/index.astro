@@ -7,58 +7,53 @@ import '../styles/global.css';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAVOY | Esperienza Sensoriale</title>
+    <title>SAVOY Beach Hotel & Thermal Spa</title>
     
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" is:inline></script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body class="bg-[#050505] text-[#e0e0e0] antialiased selection:bg-white selection:text-black overflow-x-hidden">
 
-    <nav class="fixed w-full z-50 top-0 px-8 py-6 flex justify-between items-center mix-blend-difference">
-        <a href="/" class="text-white text-xl md:text-2xl tracking-[0.4em] font-light uppercase" style="font-family: 'Space Grotesk', sans-serif;">
-            Savoy
-        </a>
+    <nav class="absolute w-full z-50 top-0 px-8 py-8 flex justify-between items-center">
         <div class="hidden md:flex gap-12 text-white text-[10px] tracking-[0.3em] uppercase" style="font-family: 'Space Grotesk', sans-serif;">
-            <a href="/camere" class="hover:italic transition-all duration-300">Residenze</a>
-            <a href="/spa" class="hover:italic transition-all duration-300">Thermae</a>
-            <a href="/ristorante" class="hover:italic transition-all duration-300">Gusto</a>
+            <a href="/camere" class="hover:text-[#d4af37] transition-all duration-300">Residenze</a>
+            <a href="/spa" class="hover:text-[#d4af37] transition-all duration-300">Thermae</a>
+            <a href="/ristorante" class="hover:text-[#d4af37] transition-all duration-300">Gusto</a>
         </div>
-        <a href="#booking" class="text-white text-[10px] tracking-[0.3em] uppercase border-b border-white pb-1 hover:pb-2 transition-all" style="font-family: 'Space Grotesk', sans-serif;">
+        <a href="#booking" class="text-white text-[10px] tracking-[0.3em] uppercase border border-white/50 px-6 py-2 hover:bg-white hover:text-black transition-all" style="font-family: 'Space Grotesk', sans-serif;">
             Booking
         </a>
     </nav>
 
-    <section class="relative h-screen flex flex-col justify-center items-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Savoy Dark" class="absolute inset-0 w-full h-full object-cover opacity-30 scale-105" />
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#050505]"></div>
+    <section class="relative h-screen flex flex-col justify-center items-center overflow-hidden text-center px-4">
+        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Savoy Dark" class="absolute inset-0 w-full h-full object-cover opacity-40 scale-105" />
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#050505]"></div>
         
-        <h1 class="relative z-10 text-[15vw] leading-[0.8] text-center text-white font-light" style="font-family: 'Cormorant Garamond', serif;">
-            <i>Oltre</i> <br> IL TEMPO
-        </h1>
-        <p class="relative z-10 mt-12 text-[10px] tracking-[0.5em] uppercase text-gray-400" style="font-family: 'Space Grotesk', sans-serif;">
-            Bibione, Venezia
-        </p>
+        <div class="relative z-10 mt-16">
+            <h1 class="text-7xl md:text-9xl text-white font-light tracking-widest uppercase mb-4 drop-shadow-2xl" style="font-family: 'Cormorant Garamond', serif;">
+                Savoy<span class="text-[#d4af37]">.</span>
+            </h1>
+            <p class="text-white/90 text-sm md:text-xl tracking-[0.4em] uppercase font-light" style="font-family: 'Space Grotesk', sans-serif;">
+                Beach Hotel & Thermal Spa
+            </p>
+            <div class="w-px h-24 bg-white/30 mx-auto mt-12"></div>
+        </div>
     </section>
 
     <section class="relative py-32 px-6 max-w-screen-2xl mx-auto flex flex-col md:flex-row gap-20">
-        
         <div class="md:w-1/2">
             <div class="sticky top-32 h-[70vh] overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Dettaglio Architettura" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000">
             </div>
         </div>
-
         <div class="md:w-1/2 flex flex-col justify-center pt-20 md:pt-0">
-            <h2 class="text-6xl md:text-8xl text-white font-light leading-none mb-12" style="font-family: 'Cormorant Garamond', serif;">
+            <p class="text-[#d4af37] text-[10px] tracking-[0.3em] uppercase mb-4" style="font-family: 'Space Grotesk', sans-serif;">01. L'Ospitalità</p>
+            <h2 class="text-5xl md:text-7xl text-white font-light leading-none mb-12" style="font-family: 'Cormorant Garamond', serif;">
                 La Nuova <br> <i>Dimensione</i>.
             </h2>
-            <div class="space-y-12 text-sm md:text-base font-light text-gray-400 leading-relaxed max-w-md" style="font-family: 'Space Grotesk', sans-serif;">
+            <div class="space-y-8 text-sm md:text-base font-light text-gray-400 leading-relaxed max-w-md" style="font-family: 'Space Grotesk', sans-serif;">
                 <p>
-                    Dimentica tutto ciò che sai sull'ospitalità alberghiera. Abbiamo svuotato gli spazi, tolto il superfluo e lasciato solo l'essenziale: luce, materia, silenzio.
-                </p>
-                <p>
-                    Un monolite di design sospeso tra la sabbia di Bibione e le acque termali. Un luogo progettato non per dormire, ma per fuggire dal mondo reale.
+                    Un rifugio di design sospeso tra la sabbia di Bibione e le acque termali. Camere ampie, luminose e pensate per offrirti il massimo del comfort e della privacy.
                 </p>
                 <div class="pt-8 border-t border-gray-800">
                     <a href="/camere" class="text-white text-xs tracking-[0.3em] uppercase flex items-center gap-4 hover:gap-8 transition-all">
@@ -69,24 +64,52 @@ import '../styles/global.css';
         </div>
     </section>
 
-    <section class="relative h-[80vh] w-full flex items-center my-32">
+    <section class="relative py-32 px-6 max-w-screen-2xl mx-auto flex flex-col md:flex-row-reverse items-center gap-20">
+        <div class="md:w-1/2">
+            <div class="relative overflow-hidden h-[60vh] md:h-[80vh]">
+                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Thermal Spa" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000">
+            </div>
+        </div>
+        <div class="md:w-1/2 flex flex-col justify-center">
+            <p class="text-[#d4af37] text-[10px] tracking-[0.3em] uppercase mb-4" style="font-family: 'Space Grotesk', sans-serif;">02. Il Benessere</p>
+            <h2 class="text-5xl md:text-7xl text-white font-light leading-none mb-12" style="font-family: 'Cormorant Garamond', serif;">
+                <i>Acque</i> <br> Curative.
+            </h2>
+            <div class="space-y-8 text-sm md:text-base font-light text-gray-400 leading-relaxed max-w-md" style="font-family: 'Space Grotesk', sans-serif;">
+                <p>
+                    Un corridoio segreto ti separa dal mondo. In accappatoio, dalla tua suite, raggiungi direttamente e in totale privacy le sorgenti di Bibione Thermae.
+                </p>
+                <div class="pt-8 border-t border-gray-800">
+                    <a href="/spa" class="text-white text-xs tracking-[0.3em] uppercase flex items-center gap-4 hover:gap-8 transition-all">
+                        Scopri i Trattamenti <span class="w-12 h-[1px] bg-white block"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative h-[80vh] w-full flex items-center mt-20 border-t border-gray-900">
         <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Ristorante" class="w-full h-full object-cover opacity-20">
+            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Ristorante" class="w-full h-full object-cover opacity-30">
         </div>
         <div class="relative z-10 w-full text-center px-4">
-            <h2 class="text-[10vw] text-white font-light leading-none" style="font-family: 'Cormorant Garamond', serif;">
-                <i>Gusto</i> BRUTALE.
+            <p class="text-[#d4af37] text-[10px] tracking-[0.3em] uppercase mb-4" style="font-family: 'Space Grotesk', sans-serif;">03. Il Gusto</p>
+            <h2 class="text-7xl md:text-[8vw] text-white font-light leading-none mb-8" style="font-family: 'Cormorant Garamond', serif;">
+                Duca <i>d'Aosta</i>
             </h2>
-            <a href="/ristorante" class="mt-8 inline-block text-white text-[10px] tracking-[0.3em] uppercase border border-white/30 px-8 py-4 hover:bg-white hover:text-black transition-all" style="font-family: 'Space Grotesk', sans-serif;">
+            <a href="/ristorante" class="mt-4 inline-block text-white text-[10px] tracking-[0.3em] uppercase border border-white/30 px-8 py-4 hover:bg-white hover:text-black transition-all" style="font-family: 'Space Grotesk', sans-serif;">
                 Scopri il Menù
             </a>
         </div>
     </section>
 
-    <footer class="py-12 border-t border-white/10 text-center">
+    <footer class="py-12 bg-black border-t border-white/10 text-center flex justify-between px-8">
         <p class="text-[#555] text-[10px] tracking-[0.3em] uppercase" style="font-family: 'Space Grotesk', sans-serif;">
-            © 2026 Savoy Beach Hotel. Architettura & Design.
+            © 2026 Savoy Beach Hotel.
         </p>
+        <a href="/admin/" class="text-[#555] text-[10px] tracking-[0.3em] uppercase hover:text-white transition-colors" style="font-family: 'Space Grotesk', sans-serif;">
+            Admin
+        </a>
     </footer>
 
 </body>
