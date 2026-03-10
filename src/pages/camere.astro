@@ -1,0 +1,82 @@
+---
+import '../styles/global.css';
+
+let camere: any[] = [];
+try {
+    camere = await Astro.glob('../content/camere/*.md');
+} catch (error) {
+}
+---
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Nostre Camere | Savoy Beach Hotel</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#faf9f6] text-[#2c3e50] font-sans antialiased overflow-x-hidden">
+
+    <header class="absolute w-full z-50 py-8">
+        <div class="max-w-screen-2xl mx-auto px-8 flex justify-between items-center">
+            <a href="/" class="text-3xl font-bold tracking-[0.2em] text-white drop-shadow-lg" style="font-family: 'Playfair Display', serif;">
+                SAVOY<span class="text-[#d4af37]">.</span>
+            </a>
+            <nav class="hidden md:flex space-x-12 text-[11px] text-white uppercase tracking-[0.3em] drop-shadow-md" style="font-family: 'Montserrat', sans-serif;">
+                <a href="/camere" class="text-[#d4af37] border-b border-[#d4af37] pb-1">Camere</a>
+                <a href="/spa" class="hover:text-[#d4af37] transition duration-500">Spa</a>
+                <a href="/" class="hover:text-[#d4af37] transition duration-500">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="relative h-[60vh] flex items-center justify-center">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Camere Savoy" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+        <div class="relative z-10 text-center px-4 mt-20">
+            <p class="text-[#d4af37] text-xs uppercase tracking-[0.3em] font-semibold mb-4" style="font-family: 'Montserrat', sans-serif;">Il Tuo Rifugio</p>
+            <h1 class="text-5xl md:text-7xl text-white mb-6 drop-shadow-lg" style="font-family: 'Playfair Display', serif;">Suite & Camere</h1>
+        </div>
+    </section>
+
+    <section class="py-32 max-w-screen-xl mx-auto px-6">
+        {camere.length === 0 ? (
+            <div class="text-center py-20 border border-gray-200 bg-white shadow-xl">
+                <h3 class="text-2xl text-gray-400 mb-4" style="font-family: 'Playfair Display', serif;">Stiamo allestendo le nostre eleganti Suite.</h3>
+                <p class="text-sm font-light text-gray-500 uppercase tracking-widest" style="font-family: 'Montserrat', sans-serif;">Torna a trovarci a breve.</p>
+            </div>
+        ) : (
+            <div class="space-y-40">
+                {camere.map((camera, index) => (
+                    <div class={index % 2 === 0 ? "flex flex-col md:flex-row items-center gap-12" : "flex flex-col md:flex-row-reverse items-center gap-12"}>
+                        
+                        <div class="md:w-7/12 relative group overflow-hidden shadow-2xl">
+                            <img src={camera.frontmatter.image} alt={camera.frontmatter.title} class="w-full h-[60vh] md:h-[80vh] object-cover transition duration-1000 group-hover:scale-105" />
+                        </div>
+                        
+                        <div class={index % 2 === 0 ? "md:w-5/12 md:-ml-24 relative z-10 bg-[#faf9f6] p-12 md:p-16 shadow-xl border-l-4 border-[#d4af37]" : "md:w-5/12 md:-mr-24 relative z-10 bg-[#faf9f6] p-12 md:p-16 shadow-xl border-l-4 border-[#d4af37]"}>
+                            <h2 class="text-4xl md:text-5xl mb-4 text-[#1a1a1a]" style="font-family: 'Playfair Display', serif;">
+                                {camera.frontmatter.title}
+                            </h2>
+                            <p class="text-[#d4af37] text-xs uppercase tracking-[0.2em] font-bold mb-8" style="font-family: 'Montserrat', sans-serif;">
+                                A partire da €{camera.frontmatter.prezzo} a notte
+                            </p>
+                            
+                            <a href="#" class="inline-flex items-center text-xs uppercase tracking-[0.2em] font-medium group text-[#1a1a1a]" style="font-family: 'Montserrat', sans-serif;">
+                                Prenota questa tipologia
+                                <span class="ml-4 w-12 h-[1px] bg-black group-hover:w-24 group-hover:bg-[#d4af37] transition-all duration-500"></span>
+                            </a>
+                        </div>
+                        
+                    </div>
+                ))}
+            </div>
+        )}
+    </section>
+
+</body>
+</html>
