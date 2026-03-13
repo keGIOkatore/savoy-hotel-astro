@@ -1,0 +1,74 @@
+---
+// src/components/OrarioBadge.astro
+interface Props {
+  type: 'ristorante' | 'spa';
+  lang: 'it' | 'en' | 'de';
+}
+
+const { type, lang } = Astro.props;
+
+// Dizionario per le traduzioni del badge
+const translations = {
+  it: { open: 'Aperto Ora', closed: 'Chiuso' },
+  en: { open: 'Open Now', closed: 'Closed' },
+  de: { open: 'Jetzt Geöffnet', closed: 'Geschlossen' }
+};
+
+const textOpen = translations[lang].open;
+const textClosed = translations[lang].closed;
+---
+
+<orario-badge data-type={type} data-open={textOpen} data-closed={textClosed} class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[9px] tracking-[0.2em] uppercase font-bold mt-3 shadow-lg">
+  <span class="status-dot w-2 h-2 rounded-full bg-gray-600 animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.2)]"></span>
+  <span class="status-text text-gray-400">...</span>
+</orario-badge>
+
+<script>
+  class OrarioBadge extends HTMLElement {
+    connectedCallback() {
+      // Diciamo a TypeScript che questi sono sicuramente testi (stringhe)
+      const type = this.dataset.type;
+      const textOpen = this.dataset.open || '';
+      const textClosed = this.dataset.closed || '';
+      
+      // Aggiungiamo "as HTMLElement | null" per far felice VS Code
+      const dot = this.querySelector('.status-dot') as HTMLElement | null;
+      const text = this.querySelector('.status-text') as HTMLElement | null;
+      
+      const checkStatus = () => {
+        const now = new Date();
+        const hour = now.getHours() + (now.getMinutes() / 60);
+        let isOpen = false;
+        
+        if (type === 'ristorante') {
+          // Ristorante aperto: 12:30 - 14:30  OPPURE  19:30 - 22:30
+          isOpen = (hour >= 12.5 && hour < 14.5) || (hour >= 19.5 && hour < 22.5);
+        } else if (type === 'spa') {
+          // Spa aperta: 09:00 - 20:00
+          isOpen = (hour >= 9.0 && hour < 20.0);
+        }
+        
+        if (isOpen) {
+          if(dot) dot.className = "status-dot w-2 h-2 rounded-full bg-[#25D366] shadow-[0_0_8px_rgba(37,211,102,0.6)]";
+          if(text) {
+              text.textContent = textOpen;
+              text.className = "status-text text-white";
+          }
+        } else {
+          if(dot) dot.className = "status-dot w-2 h-2 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]";
+          if(text) {
+              text.textContent = textClosed;
+              text.className = "status-text text-red-400";
+          }
+        }
+      };
+      
+      checkStatus();
+      setInterval(checkStatus, 60000);
+    }
+  }
+  
+  if (!customElements.get('orario-badge')) {
+    customElements.define('orario-badge', OrarioBadge);
+  }
+</script>

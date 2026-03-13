@@ -2,6 +2,9 @@
 import { ViewTransitions } from 'astro:transitions';
 import '../../styles/global.css';
 import orariData from '../../data/orari.json';
+import BottomNav from '../../components/BottomNav.astro';
+import Concierge from '../../components/Concierge.astro';
+import OrarioBadge from '../../components/OrarioBadge.astro';
 
 let trattamenti: any[] = [];
 try { trattamenti = await Astro.glob('../../content/spa/en/*.md'); } catch (error) {}
@@ -25,15 +28,20 @@ try { trattamenti = await Astro.glob('../../content/spa/en/*.md'); } catch (erro
     <meta property="og:image" content="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" />
     
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#050505" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
-<body class="bg-[#050505] text-[#e0e0e0] antialiased selection:bg-white selection:text-black overflow-x-hidden">
+<body class="bg-[#050505] text-[#e0e0e0] antialiased selection:bg-white selection:text-black overflow-x-hidden overscroll-none touch-pan-y">
 
     <header class="absolute w-full z-50 top-0 py-8 px-6 md:px-12 flex justify-between items-center bg-gradient-to-b from-black/90 via-black/40 to-transparent">
         
         <nav class="hidden md:flex flex-1 justify-start gap-10 text-white text-xs tracking-[0.25em] uppercase font-medium" style="font-family: 'Space Grotesk', sans-serif;">
             <a href="/en/camere" class="hover:text-[#d4af37] transition-colors duration-500">Residences</a>
-            <a href="/en/spa" class="hover:text-[#d4af37] transition-colors duration-500">Thermae</a>
-            <a href="/en/ristorante" class="hover:text-[#d4af37] transition-colors duration-500">Taste</a>
+            <a href="/en/spa" class="text-[#d4af37] border-b border-[#d4af37] pb-1">Thermae</a>
+            <a href="/en/ristorante" class="hover:text-[#d4af37] transition-colors duration-500">Dining</a>
         </nav>
 
         <div class="flex-1 text-center">
@@ -42,21 +50,28 @@ try { trattamenti = await Astro.glob('../../content/spa/en/*.md'); } catch (erro
             </a>
         </div>
         
-        <div class="hidden md:flex flex-1 justify-end items-center gap-10">
-            <div class="flex gap-4 text-white/50 text-xs tracking-[0.2em] uppercase font-medium" style="font-family: 'Space Grotesk', sans-serif;">
-                <a href="/spa" class="hover:text-white transition-colors pb-1">IT</a>
-                <span class="text-white font-bold border-b-2 border-[#d4af37] pb-1">EN</span>
-                <a href="/de/spa" class="hover:text-white transition-colors pb-1">DE</a>
+        <div class="absolute right-6 top-10 md:relative md:right-0 md:top-0 md:flex-1 flex justify-end items-center gap-8 z-20">
+            <div class="relative group cursor-pointer">
+                <div class="flex items-center gap-2 text-white font-medium text-xs tracking-[0.2em] uppercase pb-1 border-b border-[#d4af37]" style="font-family: 'Space Grotesk', sans-serif;">
+                    <span>EN</span>
+                    <svg class="w-3 h-3 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                </div>
+                
+                <div class="absolute right-0 mt-2 w-36 bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl">
+                    <a href="/spa" class="block px-4 py-3 text-[10px] tracking-[0.2em] uppercase text-white/70 hover:text-white hover:bg-white/10 transition-colors border-b border-white/5">Italiano</a>
+                    <a href="/en/spa" class="block px-4 py-3 text-[10px] tracking-[0.2em] uppercase text-[#d4af37] bg-white/5 border-b border-white/5 font-bold">English</a>
+                    <a href="/de/spa" class="block px-4 py-3 text-[10px] tracking-[0.2em] uppercase text-white/70 hover:text-white hover:bg-white/10 transition-colors border-b border-white/5">Deutsch</a>
+                </div>
             </div>
             
-            <a href="https://www.booking.com/Share-rV0ICW" target="_blank" class="bg-gradient-to-r from-[#d4af37] to-[#c5a028] text-black px-10 py-4 text-xs tracking-[0.3em] uppercase font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.8)] hover:scale-105 transition-all duration-300" style="font-family: 'Space Grotesk', sans-serif;">
+            <a href="https://www.booking.com/Share-rV0ICW" target="_blank" class="hidden md:block bg-gradient-to-r from-[#d4af37] to-[#c5a028] text-black px-10 py-4 text-xs tracking-[0.3em] uppercase font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.8)] hover:scale-105 transition-all duration-300" style="font-family: 'Space Grotesk', sans-serif;">
                 Book
             </a>
         </div>
     </header>
 
     <section class="relative h-[60vh] flex flex-col justify-center items-center overflow-hidden text-center px-4 border-b border-white/10">
-        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Spa Savoy" class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale" />
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Spa Savoy" class="absolute inset-0 w-full h-full object-cover opacity-30" />
         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#050505]"></div>
         
         <div class="relative z-10 mt-24">
@@ -71,6 +86,7 @@ try { trattamenti = await Astro.glob('../../content/spa/en/*.md'); } catch (erro
                 <p class="text-white text-sm md:text-base tracking-[0.15em] font-light uppercase" style="font-family: 'Space Grotesk', sans-serif;">
                     {orariData.en.orari_spa}
                 </p>
+                <OrarioBadge type="spa" lang="en"/>
                 <div class="h-px w-16 bg-[#d4af37]/50 mt-4"></div>
             </div>
         </div>
@@ -86,8 +102,8 @@ try { trattamenti = await Astro.glob('../../content/spa/en/*.md'); } catch (erro
                 {trattamenti.map((trattamento) => {
                     const Content = trattamento.Content;
                     return (
-                        <div class="border-b border-white/10 pb-12 group hover:border-[#d4af37]/50 transition-colors">
-                            <h3 class="text-3xl text-white font-light mb-2 group-hover:text-[#d4af37] transition-colors" style="font-family: 'Cormorant Garamond', serif;">
+                        <div class="border-b border-white/10 pb-12 group transition-colors">
+                            <h3 class="text-3xl text-white font-light mb-2 md:group-hover:text-[#d4af37] transition-colors" style="font-family: 'Cormorant Garamond', serif;">
                                 {trattamento.frontmatter.title}
                             </h3>
                             <p class="text-gray-500 text-[10px] tracking-[0.3em] uppercase mb-6" style="font-family: 'Space Grotesk', sans-serif;">
@@ -95,12 +111,22 @@ try { trattamenti = await Astro.glob('../../content/spa/en/*.md'); } catch (erro
                             </p>
                             
                             {trattamento.frontmatter.image && (
-                                <img src={trattamento.frontmatter.image} alt={trattamento.frontmatter.title} class="w-full h-64 object-cover opacity-60 mb-8 grayscale group-hover:grayscale-0 transition-all duration-700" />
+                                <img src={trattamento.frontmatter.image} alt={trattamento.frontmatter.title} class="w-full h-64 object-cover opacity-70 mb-8 transition-all duration-700" />
                             )}
                             
                             <div class="text-gray-400 font-light text-sm leading-relaxed" style="font-family: 'Space Grotesk', sans-serif;">
                                 <Content />
                             </div>
+                            
+                            <div class="mt-8">
+                                <a href={`https://wa.me/390431430144?text=Dear%20Concierge,%20I%20would%20like%20to%20reserve%20the%20experience:%20${trattamento.frontmatter.title}`} target="_blank" class="group/btn inline-flex items-center gap-6 px-8 py-4 border border-white/20 active:border-[#d4af37] md:hover:border-[#d4af37] active:bg-white/5 transition-all duration-300 cursor-pointer">
+                                    <span class="text-white/80 group-active/btn:text-[#d4af37] md:group-hover/btn:text-[#d4af37] text-[10px] tracking-[0.3em] uppercase font-light transition-colors duration-300" style="font-family: 'Space Grotesk', sans-serif;">
+                                        Reserve Experience
+                                    </span>
+                                    <svg class="w-4 h-4 text-white/40 group-active/btn:text-[#d4af37] md:group-hover/btn:text-[#d4af37] transform group-active/btn:translate-x-2 md:group-hover/btn:translate-x-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                                </a>
+                            </div>
+                            
                         </div>
                     );
                 })}
@@ -113,5 +139,31 @@ try { trattamenti = await Astro.glob('../../content/spa/en/*.md'); } catch (erro
             © 2026 Savoy Beach Hotel.
         </p>
     </footer>
+<Concierge/>
+<BottomNav/>
+
+    <script>
+        const initScrollReveal = () => {
+            const elements = document.querySelectorAll<HTMLElement>('h1, h2, h3, p, img:not(.absolute), .group');
+            elements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1)';
+            });
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target as HTMLElement;
+                        target.style.opacity = '1';
+                        target.style.transform = 'translateY(0)';
+                        observer.unobserve(target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            elements.forEach(el => observer.observe(el));
+        };
+        initScrollReveal();
+        document.addEventListener('astro:page-load', initScrollReveal);
+    </script>
 </body>
 </html>

@@ -1,6 +1,8 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
 import '../../styles/global.css';
+import BottomNav from '../../components/BottomNav.astro';
+import Concierge from '../../components/Concierge.astro';
 ---
 
 <!DOCTYPE html>
@@ -22,15 +24,20 @@ import '../../styles/global.css';
     
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" is:inline></script>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#050505" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
-<body class="bg-[#050505] text-[#e0e0e0] antialiased selection:bg-white selection:text-black overflow-x-hidden">
+<body class="bg-[#050505] text-[#e0e0e0] antialiased selection:bg-white selection:text-black overflow-x-hidden overscroll-none touch-pan-y">
 
     <header class="absolute w-full z-50 top-0 py-8 px-6 md:px-12 flex justify-between items-center bg-gradient-to-b from-black/90 via-black/40 to-transparent">
         
         <nav class="hidden md:flex flex-1 justify-start gap-10 text-white text-xs tracking-[0.25em] uppercase font-medium" style="font-family: 'Space Grotesk', sans-serif;">
             <a href="/en/camere" class="hover:text-[#d4af37] transition-colors duration-500">Residences</a>
             <a href="/en/spa" class="hover:text-[#d4af37] transition-colors duration-500">Thermae</a>
-            <a href="/en/ristorante" class="hover:text-[#d4af37] transition-colors duration-500">Taste</a>
+            <a href="/en/ristorante" class="hover:text-[#d4af37] transition-colors duration-500">Dining</a>
         </nav>
 
         <div class="flex-1 text-center">
@@ -39,14 +46,21 @@ import '../../styles/global.css';
             </a>
         </div>
         
-        <div class="hidden md:flex flex-1 justify-end items-center gap-10">
-            <div class="flex gap-4 text-white/50 text-xs tracking-[0.2em] uppercase font-medium" style="font-family: 'Space Grotesk', sans-serif;">
-                <a href="/" class="hover:text-white transition-colors pb-1">IT</a>
-                <span class="text-white font-bold border-b-2 border-[#d4af37] pb-1">EN</span>
-                <a href="/de/" class="hover:text-white transition-colors pb-1">DE</a>
+        <div class="absolute right-6 top-10 md:relative md:right-0 md:top-0 md:flex-1 flex justify-end items-center gap-8 z-20">
+            <div class="relative group cursor-pointer">
+                <div class="flex items-center gap-2 text-white font-medium text-xs tracking-[0.2em] uppercase pb-1 border-b border-[#d4af37]" style="font-family: 'Space Grotesk', sans-serif;">
+                    <span>EN</span>
+                    <svg class="w-3 h-3 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                </div>
+                
+                <div class="absolute right-0 mt-2 w-36 bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden shadow-2xl">
+                    <a href="/" class="block px-4 py-3 text-[10px] tracking-[0.2em] uppercase text-white/70 hover:text-white hover:bg-white/10 transition-colors border-b border-white/5">Italiano</a>
+                    <a href="/en/" class="block px-4 py-3 text-[10px] tracking-[0.2em] uppercase text-[#d4af37] bg-white/5 border-b border-white/5 font-bold">English</a>
+                    <a href="/de/" class="block px-4 py-3 text-[10px] tracking-[0.2em] uppercase text-white/70 hover:text-white hover:bg-white/10 transition-colors border-b border-white/5">Deutsch</a>
+                </div>
             </div>
             
-            <a href="https://www.booking.com/Share-rV0ICW" target="_blank" class="bg-gradient-to-r from-[#d4af37] to-[#c5a028] text-black px-10 py-4 text-xs tracking-[0.3em] uppercase font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.8)] hover:scale-105 transition-all duration-300" style="font-family: 'Space Grotesk', sans-serif;">
+            <a href="https://www.booking.com/Share-rV0ICW" target="_blank" class="hidden md:block bg-gradient-to-r from-[#d4af37] to-[#c5a028] text-black px-10 py-4 text-xs tracking-[0.3em] uppercase font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.8)] hover:scale-105 transition-all duration-300" style="font-family: 'Space Grotesk', sans-serif;">
                 Book
             </a>
         </div>
@@ -70,7 +84,7 @@ import '../../styles/global.css';
     <section class="relative py-32 px-6 max-w-screen-2xl mx-auto flex flex-col md:flex-row gap-20">
         <div class="md:w-1/2">
             <div class="sticky top-32 h-[70vh] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Rooms" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000">
+                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Rooms" class="w-full h-full object-cover opacity-90 transition duration-1000">
             </div>
         </div>
         <div class="md:w-1/2 flex flex-col justify-center pt-20 md:pt-0">
@@ -81,7 +95,7 @@ import '../../styles/global.css';
             <div class="space-y-8 text-sm md:text-base font-light text-gray-400 leading-relaxed max-w-md" style="font-family: 'Space Grotesk', sans-serif;">
                 <p>A design haven suspended between the sand of Bibione and the thermal waters. Spacious, luminous rooms designed to offer you the utmost comfort and privacy.</p>
                 <div class="pt-8 border-t border-gray-800">
-                    <a href="/en/camere" class="text-white text-xs tracking-[0.3em] uppercase flex items-center gap-4 hover:gap-8 transition-all">
+                    <a href="/en/camere" class="text-white text-xs tracking-[0.3em] uppercase flex items-center gap-4 active:gap-8 md:hover:gap-8 transition-all">
                         Explore Rooms <span class="w-12 h-[1px] bg-white block"></span>
                     </a>
                 </div>
@@ -92,7 +106,7 @@ import '../../styles/global.css';
     <section class="relative py-32 px-6 max-w-screen-2xl mx-auto flex flex-col md:flex-row-reverse items-center gap-20">
         <div class="md:w-1/2">
             <div class="relative overflow-hidden h-[60vh] md:h-[80vh]">
-                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Thermal Spa" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000">
+                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Thermal Spa" class="w-full h-full object-cover opacity-90 transition duration-1000">
             </div>
         </div>
         <div class="md:w-1/2 flex flex-col justify-center">
@@ -103,7 +117,7 @@ import '../../styles/global.css';
             <div class="space-y-8 text-sm md:text-base font-light text-gray-400 leading-relaxed max-w-md" style="font-family: 'Space Grotesk', sans-serif;">
                 <p>A secret corridor separates you from the world. In your bathrobe, from your suite, directly reach the thermal springs of Bibione Thermae in total privacy.</p>
                 <div class="pt-8 border-t border-gray-800">
-                    <a href="/en/spa" class="text-white text-xs tracking-[0.3em] uppercase flex items-center gap-4 hover:gap-8 transition-all">
+                    <a href="/en/spa" class="text-white text-xs tracking-[0.3em] uppercase flex items-center gap-4 active:gap-8 md:hover:gap-8 transition-all">
                         Discover Treatments <span class="w-12 h-[1px] bg-white block"></span>
                     </a>
                 </div>
@@ -114,19 +128,19 @@ import '../../styles/global.css';
     <section class="relative py-32 px-6 max-w-screen-2xl mx-auto flex flex-col md:flex-row gap-20 border-b border-white/10">
         <div class="md:w-1/2">
             <div class="relative overflow-hidden h-[60vh] md:h-[80vh]">
-                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Restaurant" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000">
+                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Restaurant" class="w-full h-full object-cover opacity-90 transition duration-1000">
             </div>
         </div>
         <div class="md:w-1/2 flex flex-col justify-center">
-            <p class="text-[#d4af37] text-[10px] tracking-[0.3em] uppercase mb-4" style="font-family: 'Space Grotesk', sans-serif;">03. Taste</p>
+            <p class="text-[#d4af37] text-[10px] tracking-[0.3em] uppercase mb-4" style="font-family: 'Space Grotesk', sans-serif;">03. Dining</p>
             <h2 class="text-5xl md:text-7xl text-white font-light leading-none mb-12" style="font-family: 'Cormorant Garamond', serif;">
-                Duca <br> <i>d'Aosta</i>.
+                <i>Sensory</i> <br> Journey.
             </h2>
             <div class="space-y-8 text-sm md:text-base font-light text-gray-400 leading-relaxed max-w-md" style="font-family: 'Space Grotesk', sans-serif;">
-                <p>An experience of culinary excellence. Our gourmet restaurant offers authentic flavors of the Adriatic accompanied by the finest labels from our private cellar.</p>
+                <p>From the fine dining of Duca d'Aosta to the intimacy of our In-Suite Dining. A mosaic of flavors, atmospheres, and excellence designed to fulfill your every desire.</p>
                 <div class="pt-8 border-t border-gray-800">
-                    <a href="/en/ristorante" class="text-white text-xs tracking-[0.3em] uppercase flex items-center gap-4 hover:gap-8 transition-all">
-                        Explore the Menu <span class="w-12 h-[1px] bg-white block"></span>
+                    <a href="/en/ristorante" class="text-white text-xs tracking-[0.3em] uppercase flex items-center gap-4 active:gap-8 md:hover:gap-8 transition-all">
+                        Explore Experiences <span class="w-12 h-[1px] bg-white block"></span>
                     </a>
                 </div>
             </div>
@@ -196,7 +210,7 @@ import '../../styles/global.css';
                 <ul class="text-gray-400 text-[11px] tracking-widest font-light space-y-4 uppercase" style="font-family: 'Space Grotesk', sans-serif;">
                     <li><a href="/en/camere" class="hover:text-white transition-colors">Residences</a></li>
                     <li><a href="/en/spa" class="hover:text-white transition-colors">Thermae</a></li>
-                    <li><a href="/en/ristorante" class="hover:text-white transition-colors">Taste</a></li>
+                    <li><a href="/en/ristorante" class="hover:text-white transition-colors">Dining</a></li>
                 </ul>
             </div>
         </div>
@@ -207,6 +221,31 @@ import '../../styles/global.css';
             </p>
         </div>
     </footer>
+<Concierge/>
+<BottomNav/>
 
+    <script>
+        const initScrollReveal = () => {
+            const elements = document.querySelectorAll<HTMLElement>('h1, h2, h3, p, img:not(.absolute), .group');
+            elements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1)';
+            });
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target as HTMLElement;
+                        target.style.opacity = '1';
+                        target.style.transform = 'translateY(0)';
+                        observer.unobserve(target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            elements.forEach(el => observer.observe(el));
+        };
+        initScrollReveal();
+        document.addEventListener('astro:page-load', initScrollReveal);
+    </script>
 </body>
 </html>

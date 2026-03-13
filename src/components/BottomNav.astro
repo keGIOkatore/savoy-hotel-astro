@@ -1,0 +1,109 @@
+---
+// src/components/BottomNav.astro
+const currentPath = Astro.url.pathname;
+
+// 1. Diciamo a VS Code quali sono le uniche lingue esistenti (Questo spegne l'errore!)
+type Lang = 'it' | 'en' | 'de';
+
+// 2. Dichiariamo che la variabile "lang" è di tipo "Lang"
+let lang: Lang = 'it';
+
+if (currentPath.startsWith('/en')) lang = 'en';
+if (currentPath.startsWith('/de')) lang = 'de';
+
+const labels = {
+    it: { home: 'Home', suite: 'Suite', spa: 'Thermae', gusto: 'Gusto' },
+    en: { home: 'Home', suite: 'Suites', spa: 'Thermae', gusto: 'Dining' },
+    de: { home: 'Start', suite: 'Suiten', spa: 'Thermae', gusto: 'Genuss' }
+};
+
+// Se la lingua non è italiano, aggiungiamo il prefisso
+const prefix = lang === 'it' ? '' : `/${lang}`;
+
+// Capiamo in che pagina siamo
+const isHome = currentPath === prefix + '/' || currentPath === prefix || currentPath === '';
+const isSuite = currentPath.includes('/camere');
+const isSpa = currentPath.includes('/spa');
+const isGusto = currentPath.includes('/ristorante');
+---
+
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-[#050505]/95 backdrop-blur-md border-t border-white/10 pb-safe pb-2">
+    <div class="flex justify-around items-center h-16 px-2">
+        
+        <a href={prefix || '/'} class:list={[
+            "flex flex-col items-center gap-1 w-full h-full justify-center transition-colors",
+            { "text-[#d4af37]": isHome, "text-gray-500 hover:text-gray-300": !isHome }
+        ]}>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+            <span class="text-[9px] tracking-widest uppercase" style="font-family: 'Space Grotesk', sans-serif;">{labels[lang].home}</span>
+        </a>
+
+        <a href={prefix + '/camere'} class:list={[
+            "flex flex-col items-center gap-1 w-full h-full justify-center transition-colors",
+            { "text-[#d4af37]": isSuite, "text-gray-500 hover:text-gray-300": !isSuite }
+        ]}>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+            <span class="text-[9px] tracking-widest uppercase" style="font-family: 'Space Grotesk', sans-serif;">{labels[lang].suite}</span>
+        </a>
+
+        <a href={prefix + '/spa'} class:list={[
+            "flex flex-col items-center gap-1 w-full h-full justify-center transition-colors",
+            { "text-[#d4af37]": isSpa, "text-gray-500 hover:text-gray-300": !isSpa }
+        ]}>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <span class="text-[9px] tracking-widest uppercase" style="font-family: 'Space Grotesk', sans-serif;">{labels[lang].spa}</span>
+        </a>
+
+        <a href={prefix + '/ristorante'} class:list={[
+            "flex flex-col items-center gap-1 w-full h-full justify-center transition-colors",
+            { "text-[#d4af37]": isGusto, "text-gray-500 hover:text-gray-300": !isGusto }
+        ]}>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" />
+            </svg>
+            <span class="text-[9px] tracking-widest uppercase" style="font-family: 'Space Grotesk', sans-serif;">{labels[lang].gusto}</span>
+        </a>
+
+    </div>
+</nav>
+
+<script>
+    const initHaptics = () => {
+        // Selezioniamo tutti gli elementi interattivi (link e bottoni)
+        const interactables = document.querySelectorAll('a, button');
+        
+        interactables.forEach(el => {
+            // Rimuoviamo eventuali listener vecchi (clonando l'elemento) per evitare doppie vibrazioni
+            el.replaceWith(el.cloneNode(true));
+        });
+
+        // Riapplichiamo il listener pulito a tutti i nuovi elementi
+        const freshInteractables = document.querySelectorAll('a, button');
+        
+        freshInteractables.forEach(el => {
+            // touchstart garantisce una risposta istantanea al tocco del dito
+            el.addEventListener('touchstart', () => {
+                if (navigator.vibrate) {
+                    // Controlliamo se è il bottone dorato del Concierge (tramite la sua classe colore)
+                    if (el.className.includes('from-[#d4af37]')) {
+                        // Doppio battito elegante per il Concierge
+                        navigator.vibrate([15, 60, 20]); 
+                    } else {
+                        // Singolo tocco leggero (10ms) per la BottomNav e gli altri tasti
+                        navigator.vibrate(10); 
+                    }
+                }
+            }, { passive: true });
+        });
+    };
+
+    // Inizializza al caricamento e ad ogni cambio pagina
+    initHaptics();
+    document.addEventListener('astro:page-load', initHaptics);
+</script>
