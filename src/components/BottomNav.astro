@@ -109,4 +109,51 @@ const isGusto = currentPath.includes('/ristorante');
     };
     initHaptics();
     document.addEventListener('astro:page-load', initHaptics);
+
+    // 3. GESTIONE INTELLIGENTE INSTALLAZIONE APP
+    let deferredPrompt: any; // <-- Abbiamo aggiunto : any qui
+    const installBtn = document.getElementById('install-app-btn');
+    
+    // Controllo di Sicurezza 1: Siamo già dentro l'App installata?
+    // @ts-ignore <-- Aggiunto per zittire gli errori su navigator
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+    
+    // Se non siamo dentro l'app e il browser è pronto per installare...
+    if (!isStandalone) {
+        window.addEventListener('beforeinstallprompt', (e: any) => { // <-- Abbiamo aggiunto : any anche qui
+            // Blocchiamo il banner automatico noioso di Google
+            e.preventDefault();
+            // Salviamo l'evento magico per usarlo sul nostro bottone
+            deferredPrompt = e;
+            
+            // Facciamo comparire il nostro bottone dorato
+            if (installBtn) {
+                installBtn.classList.remove('hidden');
+                
+                // Quando l'utente clicca il nostro bottone...
+                installBtn.addEventListener('click', async () => {
+                    if (deferredPrompt) {
+                        // ...FORZIAMO L'APERTURA DEL POP-UP DI GOOGLE!
+                        deferredPrompt.prompt();
+                        
+                        // Aspettiamo la scelta dell'utente
+                        const { outcome } = await deferredPrompt.userChoice;
+                        if (outcome === 'accepted') {
+                            console.log("Ospite ha installato l'App!");
+                        }
+                        // Nascondiamo il bottone
+                        installBtn.classList.add('hidden');
+                        deferredPrompt = null;
+                    }
+                });
+            }
+        });
+    }
+
+    // Controllo di Sicurezza 2: Fai sparire il bottone appena l'installazione termina
+    window.addEventListener('appinstalled', () => {
+        if (installBtn) installBtn.classList.add('hidden');
+        deferredPrompt = null;
+        console.log('Installazione completata, bottone nascosto.');
+    });
 </script>

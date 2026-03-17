@@ -10,6 +10,7 @@ export default defineConfig({
   integrations: [
     AstroPWA({
       registerType: 'autoUpdate',
+      injectRegister: 'inline',
       devOptions: {
         enabled: true
       },
@@ -20,6 +21,8 @@ export default defineConfig({
         theme_color: '#050505',
         background_color: '#050505',
         display: 'standalone',
+        start_url: '/',
+        id: '/',
         icons: [
           {
             src: '/logo_prova_savoy_192x192.png',
