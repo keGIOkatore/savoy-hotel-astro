@@ -1,5 +1,8 @@
 ---
 // src/components/OrarioBadge.astro
+import orariRaw from '../data/orari.json';
+const orariData: any = orariRaw;
+
 interface Props {
   type: 'ristorante' | 'spa';
   lang: 'it' | 'en' | 'de';
@@ -7,7 +10,6 @@ interface Props {
 
 const { type, lang } = Astro.props;
 
-// Dizionario per le traduzioni del badge
 const translations = {
   it: { open: 'Aperto Ora', closed: 'Chiuso' },
   en: { open: 'Open Now', closed: 'Closed' },
@@ -16,9 +18,19 @@ const translations = {
 
 const textOpen = translations[lang].open;
 const textClosed = translations[lang].closed;
+
+// Peschiamo i numeri dal file orari.json (con valori di sicurezza se mancano)
+const times = {
+  risto_pranzo_ap: orariData.risto_pranzo_ap || 12.5,
+  risto_pranzo_ch: orariData.risto_pranzo_ch || 14.5,
+  risto_cena_ap: orariData.risto_cena_ap || 19.5,
+  risto_cena_ch: orariData.risto_cena_ch || 22.5,
+  spa_ap: orariData.spa_ap || 9.0,
+  spa_ch: orariData.spa_ch || 20.0,
+};
 ---
 
-<orario-badge data-type={type} data-open={textOpen} data-closed={textClosed} class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[9px] tracking-[0.2em] uppercase font-bold mt-3 shadow-lg">
+<orario-badge data-type={type} data-open={textOpen} data-closed={textClosed} data-times={JSON.stringify(times)} class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[9px] tracking-[0.2em] uppercase font-bold mt-3 shadow-lg">
   <span class="status-dot w-2 h-2 rounded-full bg-gray-600 animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.2)]"></span>
   <span class="status-text text-gray-400">...</span>
 </orario-badge>
@@ -26,12 +38,13 @@ const textClosed = translations[lang].closed;
 <script>
   class OrarioBadge extends HTMLElement {
     connectedCallback() {
-      // Diciamo a TypeScript che questi sono sicuramente testi (stringhe)
       const type = this.dataset.type;
       const textOpen = this.dataset.open || '';
       const textClosed = this.dataset.closed || '';
       
-      // Aggiungiamo "as HTMLElement | null" per far felice VS Code
+      // Recuperiamo i numeri magici che hai impostato nel CMS
+      const times = JSON.parse(this.dataset.times || '{}');
+
       const dot = this.querySelector('.status-dot') as HTMLElement | null;
       const text = this.querySelector('.status-text') as HTMLElement | null;
       
@@ -41,11 +54,10 @@ const textClosed = translations[lang].closed;
         let isOpen = false;
         
         if (type === 'ristorante') {
-          // Ristorante aperto: 12:30 - 14:30  OPPURE  19:30 - 22:30
-          isOpen = (hour >= 12.5 && hour < 14.5) || (hour >= 19.5 && hour < 22.5);
+          isOpen = (hour >= times.risto_pranzo_ap && hour < times.risto_pranzo_ch) || 
+                   (hour >= times.risto_cena_ap && hour < times.risto_cena_ch);
         } else if (type === 'spa') {
-          // Spa aperta: 09:00 - 20:00
-          isOpen = (hour >= 9.0 && hour < 20.0);
+          isOpen = (hour >= times.spa_ap && hour < times.spa_ch);
         }
         
         if (isOpen) {

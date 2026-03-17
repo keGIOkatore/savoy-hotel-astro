@@ -64,8 +64,8 @@ const isGusto = currentPath.includes('/ristorante');
             "flex flex-col items-center gap-1 w-full h-full justify-center transition-colors",
             { "text-[#d4af37]": isGusto, "text-gray-500 hover:text-gray-300": !isGusto }
         ]}>
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" />
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 14a7 7 0 0114 0H5zM2 16h20M12 7V4m-2 0h4" />
             </svg>
             <span class="text-[9px] tracking-widest uppercase" style="font-family: 'Space Grotesk', sans-serif;">{labels[lang].gusto}</span>
         </a>
@@ -74,36 +74,39 @@ const isGusto = currentPath.includes('/ristorante');
 </nav>
 
 <script>
+    // 1. BLOCCO ASSOLUTO MENU A TENDINA (Effetto App Nativa)
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // 2. GESTIONE VIBRAZIONI
     const initHaptics = () => {
-        // Selezioniamo tutti gli elementi interattivi (link e bottoni)
-        const interactables = document.querySelectorAll('a, button');
+        const interactables = document.querySelectorAll<HTMLElement>('a, button');
         
         interactables.forEach(el => {
-            // Rimuoviamo eventuali listener vecchi (clonando l'elemento) per evitare doppie vibrazioni
-            el.replaceWith(el.cloneNode(true));
-        });
-
-        // Riapplichiamo il listener pulito a tutti i nuovi elementi
-        const freshInteractables = document.querySelectorAll('a, button');
-        
-        freshInteractables.forEach(el => {
-            // touchstart garantisce una risposta istantanea al tocco del dito
-            el.addEventListener('touchstart', () => {
-                if (navigator.vibrate) {
-                    // Controlliamo se è il bottone dorato del Concierge (tramite la sua classe colore)
-                    if (el.className.includes('from-[#d4af37]')) {
-                        // Doppio battito elegante per il Concierge
-                        navigator.vibrate([15, 60, 20]); 
-                    } else {
-                        // Singolo tocco leggero (10ms) per la BottomNav e gli altri tasti
-                        navigator.vibrate(10); 
+            if (!el.hasAttribute('data-haptic')) {
+                el.setAttribute('data-haptic', 'true');
+                
+                // Rimuoviamo il ritardo cromatico del tocco su Android
+                el.style.setProperty('-webkit-tap-highlight-color', 'transparent');
+                
+                el.addEventListener('touchstart', () => {
+                    if (navigator.vibrate) {
+                        const testoSulBottone = el.textContent ? el.textContent.toUpperCase() : '';
+                        
+                        if (el.id === 'concierge-btn') {
+                            // CONCIERGE: Battito cardiaco elegante
+                            navigator.vibrate([15, 60, 20]); 
+                        } else if (testoSulBottone.includes('PRENOTA') || testoSulBottone.includes('RISERVA') || testoSulBottone.includes('ESPERIENZA')) {
+                            // BOTTONI GRANDI (Call to Action): Conferma solida
+                            navigator.vibrate(25);
+                        } else {
+                            // NAVIGAZIONE NORMALE: Click meccanico leggerissimo
+                            navigator.vibrate(10); 
+                        }
                     }
-                }
-            }, { passive: true });
+                }, { passive: true });
+            }
         });
     };
-
-    // Inizializza al caricamento e ad ogni cambio pagina
     initHaptics();
     document.addEventListener('astro:page-load', initHaptics);
 </script>

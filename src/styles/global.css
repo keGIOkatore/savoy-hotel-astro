@@ -1,1 +1,7 @@
 @import "tailwindcss";
+/* BLINDA L'APP SU MOBILE: Niente menu di download o selezioni testo */
+img, a, button {
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+}

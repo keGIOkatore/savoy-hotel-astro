@@ -11,7 +11,6 @@ i18n:
   default_locale: it
 
 collections:
-  # --- NUOVA SEZIONE IMPOSTAZIONI ---
   - name: "impostazioni"
     label: "⚙️ Impostazioni Sito"
     files:
@@ -19,9 +18,17 @@ collections:
         name: "orari"
         file: "src/data/orari.json"
         fields:
-          - {label: "Orari Ristorante", name: "orari_ristorante", widget: "string"}
-          - {label: "Orari Spa", name: "orari_spa", widget: "string"}
-  # -----------------------------------
+          # Testi descrittivi per la pagina
+          - {label: "Testo Descrittivo Ristorante", name: "orari_ristorante", widget: "string"}
+          - {label: "Testo Descrittivo Spa", name: "orari_spa", widget: "string"}
+          
+          # Logica Numerica per il Pallino Verde (Usa il punto: es 12.5 = 12:30)
+          - {label: "Ristorante - Apertura Pranzo", name: "risto_pranzo_ap", widget: "number", value_type: "float", default: 12.5}
+          - {label: "Ristorante - Chiusura Pranzo", name: "risto_pranzo_ch", widget: "number", value_type: "float", default: 14.5}
+          - {label: "Ristorante - Apertura Cena", name: "risto_cena_ap", widget: "number", value_type: "float", default: 19.5}
+          - {label: "Ristorante - Chiusura Cena", name: "risto_cena_ch", widget: "number", value_type: "float", default: 22.5}
+          - {label: "Spa - Apertura", name: "spa_ap", widget: "number", value_type: "float", default: 9.0}
+          - {label: "Spa - Chiusura", name: "spa_ch", widget: "number", value_type: "float", default: 20.0}
 
   - name: "camere"
     label: "Camere & Suite"

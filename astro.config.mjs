@@ -5,7 +5,7 @@ import AstroPWA from '@vite-pwa/astro';
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
   },
   integrations: [
     AstroPWA({
@@ -22,12 +22,12 @@ export default defineConfig({
         display: 'standalone',
         icons: [
           {
-            src: '/logo_prova_savoy_192x192.png', // Modificato con il tuo file
+            src: '/logo_prova_savoy_192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/logo_prova_savoy_512x512.png', // Assicurati che sia PNG!
+            src: '/logo_prova_savoy_512x512.png',
             sizes: '512x512',
             type: 'image/png'
           }
