@@ -1,0 +1,64 @@
+{
+  "categorie": [
+    {
+      "nome": "L'Antipasto del Mare",
+      "piatti": [
+        {
+          "nome": "Astice alla nostra Catalana",
+          "descrizione": "Germogli di soia fermentati, insalata di mango",
+          "prezzo": 30
+        },
+        {
+          "nome": "Branzino al Cotto / Crudo",
+          "descrizione": "Buerre blanche al leche de tigre e la sua ceviche",
+          "prezzo": 20
+        }
+      ]
+    },
+    {
+      "nome": "L'Antipasto della Terra",
+      "piatti": [
+        {
+          "nome": "Wagyu Caramellato",
+          "descrizione": "Fermentato di radici, mosaico di frutta tropicale",
+          "prezzo": 30
+        },
+        {
+          "nome": "L'Affumicato d'Osvaldo",
+          "descrizione": "Dadolata di papaya e melone invernale, mentuccia, habanero e pan brioche speziato",
+          "prezzo": 20
+        }
+      ]
+    },
+    {
+      "nome": "I Primi Piatti",
+      "piatti": [
+        {
+          "nome": "Pappardella al Ginepro",
+          "descrizione": "Cosciotto d'oca al miele d'acacia, ricotta affumicata al faggio",
+          "prezzo": 23
+        },
+        {
+          "nome": "Cremoso Carnaroli",
+          "descrizione": "Riseria delle Abadesse allo zafferano in stimmi, lepre in salmì, polvere di cacao Ecuador",
+          "prezzo": 25
+        }
+      ]
+    },
+    {
+      "nome": "I Secondi Piatti",
+      "piatti": [
+        {
+          "nome": "Scampone",
+          "descrizione": "Zucca, burrata e giardiniera della casa",
+          "prezzo": 30
+        },
+        {
+          "nome": "Filet Mignon",
+          "descrizione": "Al burro di malga \"nocciola\" con sigaro di porcini e salsa al pepe verde fermentato",
+          "prezzo": 35
+        }
+      ]
+    }
+  ]
+}

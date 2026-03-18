@@ -2,6 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
+logo_url: "https://tuosito.com/logo_prova_savoy_512x512.png"
+
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
@@ -14,36 +16,55 @@ collections:
   - name: "impostazioni"
     label: "⚙️ Impostazioni Sito"
     files:
-      - label: "Orari di Apertura"
+      - label: "⏱️ Gestione Orari"
         name: "orari"
         file: "src/data/orari.json"
         fields:
-          # Testi descrittivi per la pagina
-          - {label: "Testo Descrittivo Ristorante", name: "orari_ristorante", widget: "string"}
-          - {label: "Testo Descrittivo Spa", name: "orari_spa", widget: "string"}
+          - {label: "📝 Testo Descrittivo Ristorante", name: "orari_ristorante", widget: "string"}
+          - {label: "📝 Testo Descrittivo Spa", name: "orari_spa", widget: "string"}
           
-          # Logica Numerica per il Pallino Verde (Usa il punto: es 12.5 = 12:30)
-          - {label: "Ristorante - Apertura Pranzo", name: "risto_pranzo_ap", widget: "number", value_type: "float", default: 12.5}
-          - {label: "Ristorante - Chiusura Pranzo", name: "risto_pranzo_ch", widget: "number", value_type: "float", default: 14.5}
-          - {label: "Ristorante - Apertura Cena", name: "risto_cena_ap", widget: "number", value_type: "float", default: 19.5}
-          - {label: "Ristorante - Chiusura Cena", name: "risto_cena_ch", widget: "number", value_type: "float", default: 22.5}
-          - {label: "Spa - Apertura", name: "spa_ap", widget: "number", value_type: "float", default: 9.0}
-          - {label: "Spa - Chiusura", name: "spa_ch", widget: "number", value_type: "float", default: 20.0}
+          # WIDGET OROLOGIO
+          - {label: "🍽️ Apertura Pranzo", name: "risto_pranzo_ap", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm", default: "12:30"}
+          - {label: "🍽️ Chiusura Pranzo", name: "risto_pranzo_ch", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm", default: "14:30"}
+          - {label: "🍷 Apertura Cena", name: "risto_cena_ap", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm", default: "19:30"}
+          - {label: "🍷 Chiusura Cena", name: "risto_cena_ch", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm", default: "22:30"}
+          
+          - {label: "💧 Apertura Spa", name: "spa_ap", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm", default: "09:00"}
+          - {label: "💧 Chiusura Spa", name: "spa_ch", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm", default: "20:00"}
 
-  - name: "camere"
-    label: "Camere & Suite"
-    folder: "src/content/camere"
+      # IL MENU DEL RISTORANTE (Genera il file menu_duca.json)
+      - label: "📜 Menu Duca D'Aosta"
+        name: "menu_duca"
+        file: "src/data/menu_duca.json"
+        fields:
+          - label: "Categorie del Menu (Es. Antipasti, Primi)"
+            name: "categorie"
+            widget: "list"
+            fields:
+              - {label: "Nome Categoria", name: "nome", widget: "string"}
+              - label: "Piatti"
+                name: "piatti"
+                widget: "list"
+                fields:
+                  - {label: "Nome Piatto", name: "nome", widget: "string"}
+                  - {label: "Ingredienti", name: "descrizione", widget: "text"}
+                  - {label: "Prezzo (€)", name: "prezzo", widget: "number", value_type: "int"}
+
+  - name: "servizi"
+    label: "🌟 Servizi Hotel"
+    folder: "src/content/servizi"
     create: true
     i18n: true
     slug: "{{slug}}"
     fields:
-      - {label: "Nome Camera", name: "title", widget: "string", i18n: true}
-      - {label: "Prezzo a partire da (€)", name: "prezzo", widget: "number", value_type: "int", i18n: duplicate}
-      - {label: "Immagine Principale", name: "image", widget: "image", i18n: duplicate}
+      - {label: "Nome Servizio", name: "title", widget: "string", i18n: true}
+      - {label: "Tag/Categoria (es. Benessere, Gourmet)", name: "categoria", widget: "string", i18n: duplicate}
+      - {label: "Immagine", name: "image", widget: "image", i18n: duplicate}
       - {label: "Descrizione", name: "body", widget: "markdown", i18n: true}
+      - {label: "Link Pagina Dedicata (Opzionale - es. /ristorante o /spa)", name: "link_esterno", widget: "string", required: false, i18n: duplicate}
 
   - name: "spa"
-    label: "Trattamenti Spa"
+    label: "🧖‍♀️ Trattamenti Spa"
     folder: "src/content/spa"
     create: true
     i18n: true
@@ -55,14 +76,14 @@ collections:
       - {label: "Descrizione", name: "body", widget: "markdown", i18n: true}
 
   - name: "ristorante"
-    label: "Menù Ristorante"
+    label: "🍽️ Esperienze Culinarie"
     folder: "src/content/ristorante"
     create: true
     i18n: true
     slug: "{{slug}}"
     fields:
-      - {label: "Nome Piatto", name: "title", widget: "string", i18n: true}
-      - {label: "Categoria", name: "categoria", widget: "select", options: ["Antipasto", "Primo", "Secondo", "Dessert", "Vino"], i18n: duplicate}
-      - {label: "Prezzo (€)", name: "prezzo", widget: "number", value_type: "int", i18n: duplicate}
-      - {label: "Immagine", name: "image", widget: "image", required: false, i18n: duplicate}
+      - {label: "Nome Ambiente/Ristorante", name: "title", widget: "string", i18n: true}
+      - {label: "Tag/Categoria (es. Gourmet, Buffet)", name: "categoria", widget: "string", i18n: duplicate}
+      - {label: "Immagine", name: "image", widget: "image", i18n: duplicate}
       - {label: "Descrizione", name: "body", widget: "markdown", i18n: true}
+      - {label: "Link Pagina Dedicata (Opzionale - es. /menu per il Duca D'Aosta)", name: "link_esterno", widget: "string", required: false, i18n: duplicate}

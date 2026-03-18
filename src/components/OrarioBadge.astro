@@ -1,5 +1,7 @@
 ---
 // src/components/OrarioBadge.astro
+
+// @ts-ignore
 import orariRaw from '../data/orari.json';
 const orariData: any = orariRaw;
 
@@ -19,14 +21,14 @@ const translations = {
 const textOpen = translations[lang].open;
 const textClosed = translations[lang].closed;
 
-// Peschiamo i numeri dal file orari.json (con valori di sicurezza se mancano)
+// Peschiamo i testi dal CMS (ora sono comodissime stringhe orarie come "19:30")
 const times = {
-  risto_pranzo_ap: orariData.risto_pranzo_ap || 12.5,
-  risto_pranzo_ch: orariData.risto_pranzo_ch || 14.5,
-  risto_cena_ap: orariData.risto_cena_ap || 19.5,
-  risto_cena_ch: orariData.risto_cena_ch || 22.5,
-  spa_ap: orariData.spa_ap || 9.0,
-  spa_ch: orariData.spa_ch || 20.0,
+  risto_pranzo_ap: orariData.risto_pranzo_ap || "12:30",
+  risto_pranzo_ch: orariData.risto_pranzo_ch || "14:30",
+  risto_cena_ap: orariData.risto_cena_ap || "19:30",
+  risto_cena_ch: orariData.risto_cena_ch || "22:30",
+  spa_ap: orariData.spa_ap || "09:00",
+  spa_ch: orariData.spa_ch || "20:00",
 };
 ---
 
@@ -42,22 +44,39 @@ const times = {
       const textOpen = this.dataset.open || '';
       const textClosed = this.dataset.closed || '';
       
-      // Recuperiamo i numeri magici che hai impostato nel CMS
       const times = JSON.parse(this.dataset.times || '{}');
 
       const dot = this.querySelector('.status-dot') as HTMLElement | null;
       const text = this.querySelector('.status-text') as HTMLElement | null;
       
+      // IL MOTORE INTELLIGENTE: Traduce "19:30" in linguaggio macchina
+      const parseTime = (timeStr: string) => {
+          if (!timeStr) return 0;
+          const cleanStr = timeStr.toString().replace('.', ':');
+          const parts = cleanStr.split(':');
+          return parseInt(parts[0], 10) + (parseInt(parts[1] || '0', 10) / 60);
+      };
+
       const checkStatus = () => {
-        const now = new Date();
-        const hour = now.getHours() + (now.getMinutes() / 60);
-        let isOpen = false;
+        const nowString = new Date().toLocaleString("en-US", {timeZone: "Europe/Rome"});
+        const nowRome = new Date(nowString);
+        
+        const currentHour = nowRome.getHours() + (nowRome.getMinutes() / 60);
+        let isOpen = false;;
         
         if (type === 'ristorante') {
-          isOpen = (hour >= times.risto_pranzo_ap && hour < times.risto_pranzo_ch) || 
-                   (hour >= times.risto_cena_ap && hour < times.risto_cena_ch);
+          const p_ap = parseTime(times.risto_pranzo_ap);
+          const p_ch = parseTime(times.risto_pranzo_ch);
+          const c_ap = parseTime(times.risto_cena_ap);
+          const c_ch = parseTime(times.risto_cena_ch);
+          
+          isOpen = (currentHour >= p_ap && currentHour < p_ch) || 
+                   (currentHour >= c_ap && currentHour < c_ch);
         } else if (type === 'spa') {
-          isOpen = (hour >= times.spa_ap && hour < times.spa_ch);
+          const s_ap = parseTime(times.spa_ap);
+          const s_ch = parseTime(times.spa_ch);
+          
+          isOpen = (currentHour >= s_ap && currentHour < s_ch);
         }
         
         if (isOpen) {

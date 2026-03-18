@@ -1,0 +1,253 @@
+---
+// src/layouts/BaseLayout.astro
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/global.css';
+
+// @ts-ignore
+import BottomNav from '../components/BottomNav.astro';
+// @ts-ignore
+import Concierge from '../components/Concierge.astro';
+
+interface Props {
+    title: string;
+    description: string;
+    lang: 'it' | 'en' | 'de';
+    currentPath: string;
+}
+
+const { title, description, lang, currentPath } = Astro.props;
+const prefix = lang === 'it' ? '' : `/${lang}`;
+
+const t = {
+    it: {
+        servizi: "Servizi", thermae: "Thermae", gusto: "Gusto", installa: "Installa App", prenota: "Prenota",
+        footerDesc: "Un'oasi di lusso e benessere.<br>Aperto tutto l'anno a Bibione.", contatti: "Contatti", esplora: "Esplora", rights: "All rights reserved."
+    },
+    en: {
+        servizi: "Services", thermae: "Thermae", gusto: "Dining", installa: "Install App", prenota: "Book Now",
+        footerDesc: "An oasis of luxury and wellness.<br>Open all year round in Bibione.", contatti: "Contacts", esplora: "Explore", rights: "All rights reserved."
+    },
+    de: {
+        servizi: "Services", thermae: "Thermae", gusto: "Genuss", installa: "App Installieren", prenota: "Buchen",
+        footerDesc: "Eine Oase des Luxus und Wohlbefindens.<br>Ganzjährig geöffnet in Bibione.", contatti: "Kontakte", esplora: "Entdecken", rights: "Alle Rechte vorbehalten."
+    }
+};
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{title} | SAVOY Beach Hotel</title>
+    
+    <ViewTransitions />
+
+    <meta name="description" content={description} />
+    <link rel="alternate" hreflang="it" href={`https://tuosito.com${currentPath}`} />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/icona-192x192.png">
+    <meta name="theme-color" content="#050505" />
+</head>
+<body class="bg-[#050505] text-[#e0e0e0] antialiased selection:bg-[#d4af37] selection:text-black overflow-x-hidden touch-pan-y select-none" style="-webkit-touch-callout: none;">
+
+    <header class="absolute w-full z-50 top-0 py-6 px-4 md:px-8 lg:py-8 lg:px-12 flex justify-between items-center bg-gradient-to-b from-black/90 via-black/40 to-transparent">
+        
+        <div class="flex-1 flex justify-start items-center z-20">
+            <nav class="hidden lg:flex gap-8 xl:gap-10 text-white text-xs xl:text-sm tracking-[0.25em] uppercase font-medium" style="font-family: 'Space Grotesk', sans-serif;">
+                <a href={`${prefix}/servizi`} class={`hover:text-[#d4af37] transition-colors duration-500 ${currentPath.includes('servizi') ? 'text-[#d4af37] border-b border-[#d4af37] pb-1' : ''}`}>{t[lang].servizi}</a>
+                <a href={`${prefix}/spa`} class={`hover:text-[#d4af37] transition-colors duration-500 ${currentPath.includes('spa') ? 'text-[#d4af37] border-b border-[#d4af37] pb-1' : ''}`}>{t[lang].thermae}</a>
+                <a href={`${prefix}/ristorante`} class={`hover:text-[#d4af37] transition-colors duration-500 ${currentPath.includes('ristorante') ? 'text-[#d4af37] border-b border-[#d4af37] pb-1' : ''}`}>{t[lang].gusto}</a>
+            </nav>
+
+            <div class="lg:hidden relative language-selector cursor-pointer">
+                <div class="flex items-center gap-1 text-white font-bold text-[10px] text-xs md:text-sm tracking-[0.2em] uppercase pb-1 border-b border-[#d4af37]" style="font-family: 'Space Grotesk', sans-serif;">
+                    <span>{lang.toUpperCase()}</span>
+                    <svg class="w-3 h-3 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                </div>
+                <div class="lang-menu absolute left-0 mt-2 w-32 bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl opacity-0 invisible transition-all duration-300 transform translate-y-2 overflow-hidden shadow-2xl">
+                    <a href={currentPath.replace(/^\/(en|de)/, '') || '/'} class="block px-4 py-3 text-[10px] tracking-[0.2em] uppercase text-white/70 hover:text-white border-b border-white/5">Italiano</a>
+                    <a href={`/en${currentPath.replace(/^\/(en|de)/, '')}`} class="block px-4 py-3 text-[10px] tracking-[0.2em] uppercase text-white/70 hover:text-white border-b border-white/5">English</a>
+                    <a href={`/de${currentPath.replace(/^\/(en|de)/, '')}`} class="block px-4 py-3 text-[10px] tracking-[0.2em] uppercase text-white/70 hover:text-white border-b border-white/5">Deutsch</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute inset-x-0 top-6 md:top-8 flex justify-center pointer-events-none z-10 w-full">
+            <a href={`${prefix}/`} class="inline-block text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-[0.3em] uppercase drop-shadow-2xl pointer-events-auto text-center" style="font-family: 'Cormorant Garamond', serif;">
+                <span class="text-white font-light">Sav</span><span class="text-[#d4af37] font-semibold italic">oy</span>
+            </a>
+        </div>
+        
+        <div class="flex-1 flex justify-end items-center gap-4 md:gap-6 lg:gap-8 z-20">
+            <button id="install-app-btn" style="display: none;" class="bg-white/10 text-white px-3 py-2 md:px-5 md:py-3 text-[8px] md:text-[10px] tracking-[0.2em] uppercase rounded-full border border-white/20 hover:bg-[#d4af37] hover:text-black transition-all duration-500 cursor-pointer shadow-lg whitespace-nowrap">{t[lang].installa}</button>
+            
+            <div class="hidden lg:block relative language-selector cursor-pointer">
+                <div class="flex items-center gap-2 text-white font-bold text-xs md:text-sm tracking-[0.2em] uppercase pb-1 border-b border-[#d4af37]" style="font-family: 'Space Grotesk', sans-serif;">
+                    <span>{lang.toUpperCase()}</span>
+                    <svg class="w-3 h-3 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                </div>
+                <div class="lang-menu absolute right-0 mt-2 w-36 bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl opacity-0 invisible transition-all duration-300 transform translate-y-2 overflow-hidden shadow-2xl">
+                    <a href={currentPath.replace(/^\/(en|de)/, '') || '/'} class="block px-4 py-3 text-[10px] tracking-[0.2em] uppercase text-white/70 hover:text-white border-b border-white/5">Italiano</a>
+                    <a href={`/en${currentPath.replace(/^\/(en|de)/, '')}`} class="block px-4 py-3 text-[10px] tracking-[0.2em] uppercase text-white/70 hover:text-white border-b border-white/5">English</a>
+                    <a href={`/de${currentPath.replace(/^\/(en|de)/, '')}`} class="block px-4 py-3 text-[10px] tracking-[0.2em] uppercase text-white/70 hover:text-white border-b border-white/5">Deutsch</a>
+                </div>
+            </div>
+
+            <a href="https://www.booking.com/Share-rV0ICW" target="_blank" class="hidden lg:block bg-gradient-to-r from-[#d4af37] to-[#c5a028] text-black px-8 xl:px-10 py-4 text-[10px] xl:text-xs tracking-[0.3em] uppercase font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.8)] hover:scale-105 transition-all duration-300">
+                {t[lang].prenota}
+            </a>
+        </div>
+    </header>
+
+    <main class="min-h-screen">
+        <slot />
+    </main>
+
+    <footer class="bg-[#030303] pt-24 pb-32 md:pb-12 border-t border-white/10">
+        <div class="max-w-screen-xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-16 mb-16 text-center md:text-left">
+            <div>
+                <h3 class="text-3xl text-white font-light tracking-widest uppercase mb-6" style="font-family: 'Cormorant Garamond', serif;">Savoy</h3>
+                <p class="text-gray-400 text-[10px] tracking-[0.2em] uppercase leading-loose" style="font-family: 'Space Grotesk', sans-serif;" set:html={t[lang].footerDesc}></p>
+            </div>
+            <div>
+                <h4 class="text-[#d4af37] text-[10px] tracking-[0.3em] uppercase mb-6" style="font-family: 'Space Grotesk', sans-serif;">{t[lang].contatti}</h4>
+                <ul class="text-gray-400 text-[11px] tracking-widest font-light space-y-4" style="font-family: 'Space Grotesk', sans-serif;">
+                    <li>Corso Europa, 51<br>30028 Bibione (VE) - Italia</li>
+                    <li>T. +39 0431 430144</li>
+                    <li>E. hotel@etgroup.info</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-[#d4af37] text-[10px] tracking-[0.3em] uppercase mb-6" style="font-family: 'Space Grotesk', sans-serif;">{t[lang].esplora}</h4>
+                <ul class="text-gray-400 text-[11px] tracking-widest font-light space-y-4 uppercase" style="font-family: 'Space Grotesk', sans-serif;">
+                    <li><a href={`${prefix}/servizi`} class="hover:text-white transition-colors">{t[lang].servizi}</a></li>
+                    <li><a href={`${prefix}/spa`} class="hover:text-white transition-colors">{t[lang].thermae}</a></li>
+                    <li><a href={`${prefix}/ristorante`} class="hover:text-white transition-colors">{t[lang].gusto}</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-screen-xl mx-auto px-6 border-t border-white/10 pt-8 text-center">
+            <p class="text-[#555] text-[10px] tracking-[0.3em] uppercase" style="font-family: 'Space Grotesk', sans-serif;">
+                © 2026 Savoy Beach Hotel & Thermal Spa. {t[lang].rights}
+            </p>
+        </div>
+    </footer>
+
+    <Concierge/>
+    <BottomNav/>
+
+    <script>
+        const initScripts = () => {
+            // 1. Animazioni
+            const elements = document.querySelectorAll<HTMLElement>('main h1, main h2, main h3, main p, main img:not(.absolute), main .group');
+            elements.forEach(el => {
+                // Evitiamo che l'animazione riparta se è già finita
+                if(el.dataset.animated) return;
+                el.dataset.animated = 'true';
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(40px)'; 
+                el.style.transition = 'opacity 1.5s cubic-bezier(0.22, 1, 0.36, 1), transform 1.5s cubic-bezier(0.22, 1, 0.36, 1)';
+            });
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target as HTMLElement;
+                        target.style.opacity = '1';
+                        target.style.transform = 'translateY(0)';
+                        observer.unobserve(target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+
+            elements.forEach(el => observer.observe(el));
+            
+            // 2. FIX MENU LINGUE ANTIPROIETTILE
+            const langSelectors = document.querySelectorAll('.language-selector');
+            
+            const closeAllMenus = () => {
+                document.querySelectorAll('.lang-menu').forEach(menu => {
+                    menu.classList.add('opacity-0', 'invisible', 'translate-y-2');
+                    menu.classList.remove('opacity-100', 'visible', 'translate-y-0');
+                });
+            };
+
+            langSelectors.forEach(dropdown => {
+                // IL SEGRETO CONTRO IL BUG: Se ha già il listener, ignoralo!
+                if (dropdown.getAttribute('data-init') === 'true') return;
+                dropdown.setAttribute('data-init', 'true');
+
+                dropdown.addEventListener('mouseenter', () => {
+                    if (window.innerWidth >= 1024) {
+                        closeAllMenus();
+                        const menu = dropdown.querySelector('.lang-menu');
+                        if (menu) {
+                            menu.classList.remove('opacity-0', 'invisible', 'translate-y-2');
+                            menu.classList.add('opacity-100', 'visible', 'translate-y-0');
+                        }
+                    }
+                });
+
+                dropdown.addEventListener('mouseleave', () => {
+                    if (window.innerWidth >= 1024) closeAllMenus();
+                });
+
+                dropdown.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const menu = dropdown.querySelector('.lang-menu');
+                    if (menu) {
+                        const isHidden = menu.classList.contains('opacity-0');
+                        closeAllMenus(); 
+                        if (isHidden) { 
+                            menu.classList.remove('opacity-0', 'invisible', 'translate-y-2');
+                            menu.classList.add('opacity-100', 'visible', 'translate-y-0');
+                        }
+                    }
+                });
+            });
+
+            document.addEventListener('click', closeAllMenus);
+
+            // 3. MOTORE PWA (Semplificato)
+            const installBtn = document.getElementById('install-app-btn');
+            // @ts-ignore
+            const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
+
+            if (installBtn && !isStandalone) {
+                if (installBtn.getAttribute('data-init') === 'true') return;
+                installBtn.setAttribute('data-init', 'true');
+
+                if (isIOS) {
+                    installBtn.style.display = 'block';
+                    installBtn.addEventListener('click', () => {
+                        alert("Gentile Ospite, per installare l'App su iOS: \n\n1. Tocchi l'icona 'Condividi' nella barra in basso. \n2. Selezioni 'Aggiungi alla schermata Home'.");
+                    });
+                } else {
+                    window.addEventListener('beforeinstallprompt', (e) => {
+                        e.preventDefault();
+                        (window as any).deferredPrompt = e;
+                        installBtn.style.display = 'block'; 
+                    });
+
+                    installBtn.addEventListener('click', async () => {
+                        const promptEvent = (window as any).deferredPrompt;
+                        if (promptEvent) {
+                            promptEvent.prompt();
+                            const { outcome } = await promptEvent.userChoice;
+                            if (outcome === 'accepted') installBtn.style.display = 'none';
+                            (window as any).deferredPrompt = null;
+                        }
+                    });
+                }
+            }
+        };
+        
+        // Eseguiamo in modo sicuro
+        document.addEventListener('astro:page-load', initScripts);
+    </script>
+</body>
+</html>
