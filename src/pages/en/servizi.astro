@@ -1,0 +1,74 @@
+---
+// @ts-ignore
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+let servizi: any[] = [];
+try {
+    servizi = await Astro.glob('../../content/servizi/en/*.md');
+} catch (error) {}
+---
+
+<BaseLayout title="Experiences and Services" description="Discover the exclusive services of Savoy Beach Hotel: from the Sky Beach Terrace to the Duca D'Aosta restaurant." lang="en" currentPath="/servizi">
+    
+    <section class="relative h-[60vh] flex flex-col justify-center items-center overflow-hidden text-center px-4 border-b border-white/10">
+        <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Services" class="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none" />
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#050505]"></div>
+        
+        <div class="relative z-10 mt-24">
+            <p class="text-[#d4af37] text-xs tracking-[0.3em] uppercase mb-4" style="font-family: 'Space Grotesk', sans-serif;">A 5-Star World</p>
+            <h1 class="text-6xl md:text-8xl text-white font-light leading-none mb-6" style="font-family: 'Cormorant Garamond', serif;">
+                <i>The</i> Experiences.
+            </h1>
+        </div>
+    </section>
+
+    <section class="py-32 px-6 max-w-screen-2xl mx-auto">
+        {servizi.length === 0 ? (
+            <div class="text-center text-gray-500 font-light tracking-widest uppercase text-xs" style="font-family: 'Space Grotesk', sans-serif;">
+                Loading our exclusive services.
+            </div>
+        ) : (
+            <div class="space-y-40">
+                {servizi.map((servizio, index) => {
+                    const Content = servizio.Content;
+                    
+                    return (
+                        <div class:list={['group relative flex flex-col md:flex-row gap-16 md:gap-20', index % 2 !== 0 ? 'md:flex-row-reverse' : '']}>
+                            <div class="md:w-1/2">
+                                <div class="relative overflow-hidden h-[50vh] md:h-[70vh]">
+                                    <img loading="lazy" src={servizio.frontmatter.image} alt={servizio.frontmatter.title} class="w-full h-full object-cover opacity-90 transition duration-1000 pointer-events-none group-hover:scale-105 ease-out" />
+                                </div>
+                            </div>
+                            
+                            <div class="md:w-1/2 flex flex-col justify-center pt-8 md:pt-0">
+                                <p class="text-[#d4af37] text-[10px] md:text-xs tracking-[0.3em] uppercase mb-4 font-bold" style="font-family: 'Space Grotesk', sans-serif;">
+                                    {servizio.frontmatter.categoria}
+                                </p>
+                                
+                                <h2 class="text-5xl md:text-7xl lg:text-8xl text-white font-light leading-none mb-10 md:mb-12" style="font-family: 'Cormorant Garamond', serif;">
+                                    {servizio.frontmatter.title}
+                                </h2>
+                                
+                                <div class="space-y-6 md:space-y-8 text-sm md:text-lg lg:text-xl font-light text-gray-400 leading-relaxed max-w-lg prose prose-invert prose-p:m-0" style="font-family: 'Space Grotesk', sans-serif;">
+                                    <Content />
+                                </div>
+                                
+                                <div class="pt-8 md:pt-12 mt-8 md:mt-12 border-t border-gray-800">
+                                    {servizio.frontmatter.link_esterno ? (
+                                        <a href={`/en${servizio.frontmatter.link_esterno}`} class="text-white text-[10px] md:text-xs tracking-[0.3em] uppercase flex items-center gap-4 hover:gap-8 transition-all w-fit">
+                                            Explore Experience <span class="w-12 h-[1px] bg-white block"></span>
+                                        </a>
+                                    ) : (
+                                        <a href={`https://wa.me/390431430144?text=Dear%20Concierge,%20I%20would%20like%20information%20about:%20${servizio.frontmatter.title}`} target="_blank" class="text-white text-[10px] md:text-xs tracking-[0.3em] uppercase flex items-center gap-4 md:hover:gap-8 md:hover:text-[#d4af37] transition-all duration-300 w-fit group/link">
+                                            Ask the Concierge <span class="w-12 h-[1px] bg-white group-hover/link:bg-[#d4af37] block transition-colors duration-300"></span>
+                                        </a>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
+        )}
+    </section>
+</BaseLayout>

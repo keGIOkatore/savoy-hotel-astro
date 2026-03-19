@@ -20,15 +20,15 @@ const prefix = lang === 'it' ? '' : `/${lang}`;
 
 const t = {
     it: {
-        servizi: "Servizi", thermae: "Thermae", gusto: "Gusto", installa: "Installa App", prenota: "Prenota",
+        servizi: "Servizi", thermae: "Thermae", gusto: "Gusto", installa: "Installa App",
         footerDesc: "Un'oasi di lusso e benessere.<br>Aperto tutto l'anno a Bibione.", contatti: "Contatti", esplora: "Esplora", rights: "All rights reserved."
     },
     en: {
-        servizi: "Services", thermae: "Thermae", gusto: "Dining", installa: "Install App", prenota: "Book Now",
+        servizi: "Services", thermae: "Thermae", gusto: "Dining", installa: "Install App",
         footerDesc: "An oasis of luxury and wellness.<br>Open all year round in Bibione.", contatti: "Contacts", esplora: "Explore", rights: "All rights reserved."
     },
     de: {
-        servizi: "Services", thermae: "Thermae", gusto: "Genuss", installa: "App Installieren", prenota: "Buchen",
+        servizi: "Services", thermae: "Thermae", gusto: "Genuss", installa: "App Installieren",
         footerDesc: "Eine Oase des Luxus und Wohlbefindens.<br>Ganzjährig geöffnet in Bibione.", contatti: "Kontakte", esplora: "Entdecken", rights: "Alle Rechte vorbehalten."
     }
 };
@@ -95,10 +95,6 @@ const t = {
                     <a href={`/de${currentPath.replace(/^\/(en|de)/, '')}`} class="block px-4 py-3 text-[10px] tracking-[0.2em] uppercase text-white/70 hover:text-white border-b border-white/5">Deutsch</a>
                 </div>
             </div>
-
-            <a href="https://www.booking.com/Share-rV0ICW" target="_blank" class="hidden lg:block bg-gradient-to-r from-[#d4af37] to-[#c5a028] text-black px-8 xl:px-10 py-4 text-[10px] xl:text-xs tracking-[0.3em] uppercase font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.8)] hover:scale-105 transition-all duration-300">
-                {t[lang].prenota}
-            </a>
         </div>
     </header>
 
