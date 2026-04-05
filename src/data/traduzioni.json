@@ -1,0 +1,32 @@
+{
+  "it": {
+    "servizi": "Servizi",
+    "thermae": "Thermae",
+    "gusto": "Gusto",
+    "installa": "Installa App",
+    "footerDesc": "Un'oasi di lusso e benessere.<br>Aperto tutto l'anno a Bibione.",
+    "contatti": "Contatti",
+    "esplora": "Esplora",
+    "rights": "Tutti i diritti riservati."
+  },
+  "en": {
+    "servizi": "Services",
+    "thermae": "Thermae",
+    "gusto": "Dining",
+    "installa": "Install App",
+    "footerDesc": "An oasis of luxury and wellness.<br>Open all year round in Bibione.",
+    "contatti": "Contacts",
+    "esplora": "Explore",
+    "rights": "All rights reserved."
+  },
+  "de": {
+    "servizi": "Services",
+    "thermae": "Thermae",
+    "gusto": "Genuss",
+    "installa": "App Installieren",
+    "footerDesc": "Eine Oase des Luxus und Wohlbefindens.<br>Ganzjährig geöffnet in Bibione.",
+    "contatti": "Kontakte",
+    "esplora": "Entdecken",
+    "rights": "Alle Rechte vorbehalten."
+  }
+}

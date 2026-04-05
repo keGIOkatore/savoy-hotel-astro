@@ -2,7 +2,7 @@
 title: Esperienza Duca D'Aosta
 categoria: Fine Dining
 image: https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80
-link_esterno: "/menu"
+link_esterno: "https://www.ristoranteducadaosta.it/il-menu-e-la-cantina-di-franco/"
 ---
 Oltre la semplice cena, un vero e proprio percorso multisensoriale. 
 

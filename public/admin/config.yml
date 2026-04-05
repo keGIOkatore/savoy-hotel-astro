@@ -16,39 +16,248 @@ collections:
   - name: "impostazioni"
     label: "⚙️ Impostazioni Sito"
     files:
+      # 1. CONTATTI CENTRALIZZATI (L'operatore li cambia qui e si aggiornano in tutto il sito)
+      - label: "📞 Contatti Hotel"
+        name: "contatti"
+        file: "src/data/contatti.json"
+        fields:
+          - {label: "Numero WhatsApp (Solo numeri col prefisso, es. 390431430144)", name: "whatsapp", widget: "string"}
+          - {label: "Telefono Mostrato nel Footer (es. +39 0431 430144)", name: "telefono_display", widget: "string"}
+          - {label: "Indirizzo Email", name: "email", widget: "string"}
+      
+      # 2. ORARI AUTOMATICI (Solo rotelline, niente più testi da scrivere a mano)
       - label: "⏱️ Gestione Orari"
         name: "orari"
         file: "src/data/orari.json"
         fields:
-          - {label: "📝 Testo Descrittivo Ristorante", name: "orari_ristorante", widget: "string"}
-          - {label: "📝 Testo Descrittivo Spa", name: "orari_spa", widget: "string"}
+          - {label: "🍽️ Apertura Pranzo", name: "risto_pranzo_ap", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm"}
+          - {label: "🍽️ Chiusura Pranzo", name: "risto_pranzo_ch", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm"}
+          - {label: "🍷 Apertura Cena", name: "risto_cena_ap", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm"}
+          - {label: "🍷 Chiusura Cena", name: "risto_cena_ch", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm"}
+          - {label: "💧 Apertura Spa", name: "spa_ap", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm"}
+          - {label: "💧 Chiusura Spa", name: "spa_ch", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm"}
           
-          # WIDGET OROLOGIO
-          - {label: "🍽️ Apertura Pranzo", name: "risto_pranzo_ap", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm", default: "12:30"}
-          - {label: "🍽️ Chiusura Pranzo", name: "risto_pranzo_ch", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm", default: "14:30"}
-          - {label: "🍷 Apertura Cena", name: "risto_cena_ap", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm", default: "19:30"}
-          - {label: "🍷 Chiusura Cena", name: "risto_cena_ch", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm", default: "22:30"}
-          
-          - {label: "💧 Apertura Spa", name: "spa_ap", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm", default: "09:00"}
-          - {label: "💧 Chiusura Spa", name: "spa_ch", widget: "datetime", format: "HH:mm", date_format: false, time_format: "HH:mm", default: "20:00"}
+      - label: "🔤 Traduzioni Interfaccia"
+        name: "traduzioni"
+        file: "src/data/traduzioni.json"
+        fields:
+          - label: "Italiano"
+            name: "it"
+            widget: "object"
+            fields:
+              - {label: "Bottone App", name: "installa", widget: "string"}
+              - {label: "Menu: Servizi", name: "servizi", widget: "string"}
+              - {label: "Menu: Thermae", name: "thermae", widget: "string"}
+              - {label: "Menu: Ristorante", name: "gusto", widget: "string"}
+              - {label: "Titolo Contatti", name: "contatti", widget: "string"}
+              - {label: "Titolo Esplora", name: "esplora", widget: "string"}
+              - {label: "Testo Footer", name: "footerDesc", widget: "string"}
+              - {label: "Copyright", name: "rights", widget: "string"}
+          - label: "Inglese"
+            name: "en"
+            widget: "object"
+            fields:
+              - {label: "Bottone App", name: "installa", widget: "string"}
+              - {label: "Menu: Servizi", name: "servizi", widget: "string"}
+              - {label: "Menu: Thermae", name: "thermae", widget: "string"}
+              - {label: "Menu: Ristorante", name: "gusto", widget: "string"}
+              - {label: "Titolo Contatti", name: "contatti", widget: "string"}
+              - {label: "Titolo Esplora", name: "esplora", widget: "string"}
+              - {label: "Testo Footer", name: "footerDesc", widget: "string"}
+              - {label: "Copyright", name: "rights", widget: "string"}
+          - label: "Tedesco"
+            name: "de"
+            widget: "object"
+            fields:
+              - {label: "Bottone App", name: "installa", widget: "string"}
+              - {label: "Menu: Servizi", name: "servizi", widget: "string"}
+              - {label: "Menu: Thermae", name: "thermae", widget: "string"}
+              - {label: "Menu: Ristorante", name: "gusto", widget: "string"}
+              - {label: "Titolo Contatti", name: "contatti", widget: "string"}
+              - {label: "Titolo Esplora", name: "esplora", widget: "string"}
+              - {label: "Testo Footer", name: "footerDesc", widget: "string"}
+              - {label: "Copyright", name: "rights", widget: "string"}
 
-      # IL MENU DEL RISTORANTE (Genera il file menu_duca.json)
+      # HOME PAGE
+      - label: "🏠 Home Page"
+        name: "home_page"
+        file: "src/data/home.json"
+        fields:
+          - label: "--- IMMAGINI GLOBALI (Cambiano per tutte le lingue) ---"
+            name: "sep_img"
+            widget: "hidden"
+          - {label: "Immagine Principale (Hero)", name: "hero_image", widget: "image"}
+          - {label: "Immagine Sezione Servizi", name: "immagine_servizi", widget: "image"}
+          - {label: "Immagine Sezione Spa", name: "immagine_spa", widget: "image"}
+          - {label: "Immagine Sezione Ristorante", name: "immagine_ristorante", widget: "image"}
+
+          - label: "🇮🇹 TESTI IN ITALIANO"
+            name: "it"
+            widget: "object"
+            fields:
+              - {label: "Titolo Principale (Hero)", name: "hero_titolo", widget: "string"}
+              - {label: "Sottotitolo Principale", name: "hero_sottotitolo", widget: "string"}
+              - {label: "Occhiello Servizi (es. 01. L'Eccellenza)", name: "servizi_occhiello", widget: "string"}
+              - {label: "Titolo Servizi (usa <i> per corsivo, <br> per a capo)", name: "servizi_titolo", widget: "string"}
+              - {label: "Descrizione Servizi", name: "servizi_descrizione", widget: "text"}
+              - {label: "Testo Bottone Servizi", name: "servizi_bottone", widget: "string"}
+              - {label: "Occhiello Spa", name: "spa_occhiello", widget: "string"}
+              - {label: "Titolo Spa", name: "spa_titolo", widget: "string"}
+              - {label: "Descrizione Spa", name: "spa_descrizione", widget: "text"}
+              - {label: "Testo Bottone Spa", name: "spa_bottone", widget: "string"}
+              - {label: "Occhiello Ristorante", name: "ristorante_occhiello", widget: "string"}
+              - {label: "Titolo Ristorante", name: "ristorante_titolo", widget: "string"}
+              - {label: "Descrizione Ristorante", name: "ristorante_descrizione", widget: "text"}
+              - {label: "Testo Bottone Ristorante", name: "ristorante_bottone", widget: "string"}
+              - {label: "Occhiello Attenzioni", name: "attenzioni_occhiello", widget: "string"}
+              - {label: "Titolo Attenzioni", name: "attenzioni_titolo", widget: "string"}
+
+              # BOX Privilegi icone fondo pagina
+              - label: "--- GRIGLIA PRIVILEGI (Icone a fondo pagina) ---"
+                name: "sep_grid"
+                widget: "hidden"
+              - {label: "Box 1 - Titolo", name: "box1_titolo", widget: "string"}
+              - {label: "Box 1 - Sottotitolo", name: "box1_sub", widget: "string"}
+              - {label: "Box 1 - Link Destinazione", name: "box1_link", widget: "string"}
+              - {label: "Box 2 - Titolo", name: "box2_titolo", widget: "string"}
+              - {label: "Box 2 - Sottotitolo", name: "box2_sub", widget: "string"}
+              - {label: "Box 2 - Link Destinazione", name: "box2_link", widget: "string"}
+              - {label: "Box 3 - Titolo", name: "box3_titolo", widget: "string"}
+              - {label: "Box 3 - Sottotitolo", name: "box3_sub", widget: "string"}
+              - {label: "Box 3 - Link Destinazione", name: "box3_link", widget: "string"}
+              - {label: "Box 4 - Titolo", name: "box4_titolo", widget: "string"}
+              - {label: "Box 4 - Sottotitolo", name: "box4_sub", widget: "string"}
+              - {label: "Box 4 - Link Destinazione", name: "box4_link", widget: "string"}
+
+          - label: "🇬🇧 TESTI IN INGLESE"
+            name: "en"
+            widget: "object"
+            fields:
+              - {label: "Titolo Principale (Hero)", name: "hero_titolo", widget: "string"}
+              - {label: "Sottotitolo Principale", name: "hero_sottotitolo", widget: "string"}
+              - {label: "Occhiello Servizi (es. 01. L'Eccellenza)", name: "servizi_occhiello", widget: "string"}
+              - {label: "Titolo Servizi (usa <i> per corsivo, <br> per a capo)", name: "servizi_titolo", widget: "string"}
+              - {label: "Descrizione Servizi", name: "servizi_descrizione", widget: "text"}
+              - {label: "Testo Bottone Servizi", name: "servizi_bottone", widget: "string"}
+              - {label: "Occhiello Spa", name: "spa_occhiello", widget: "string"}
+              - {label: "Titolo Spa", name: "spa_titolo", widget: "string"}
+              - {label: "Descrizione Spa", name: "spa_descrizione", widget: "text"}
+              - {label: "Testo Bottone Spa", name: "spa_bottone", widget: "string"}
+              - {label: "Occhiello Ristorante", name: "ristorante_occhiello", widget: "string"}
+              - {label: "Titolo Ristorante", name: "ristorante_titolo", widget: "string"}
+              - {label: "Descrizione Ristorante", name: "ristorante_descrizione", widget: "text"}
+              - {label: "Testo Bottone Ristorante", name: "ristorante_bottone", widget: "string"}
+              - {label: "Occhiello Attenzioni", name: "attenzioni_occhiello", widget: "string"}
+              - {label: "Titolo Attenzioni", name: "attenzioni_titolo", widget: "string"}
+
+              # BOX Privilegi icone fondo pagina
+              - label: "--- GRIGLIA PRIVILEGI (Icone a fondo pagina) ---"
+                name: "sep_grid"
+                widget: "hidden"
+              - {label: "Box 1 - Titolo", name: "box1_titolo", widget: "string"}
+              - {label: "Box 1 - Sottotitolo", name: "box1_sub", widget: "string"}
+              - {label: "Box 1 - Link Destinazione", name: "box1_link", widget: "string"}
+              - {label: "Box 2 - Titolo", name: "box2_titolo", widget: "string"}
+              - {label: "Box 2 - Sottotitolo", name: "box2_sub", widget: "string"}
+              - {label: "Box 2 - Link Destinazione", name: "box2_link", widget: "string"}
+              - {label: "Box 3 - Titolo", name: "box3_titolo", widget: "string"}
+              - {label: "Box 3 - Sottotitolo", name: "box3_sub", widget: "string"}
+              - {label: "Box 3 - Link Destinazione", name: "box3_link", widget: "string"}
+              - {label: "Box 4 - Titolo", name: "box4_titolo", widget: "string"}
+              - {label: "Box 4 - Sottotitolo", name: "box4_sub", widget: "string"}
+              - {label: "Box 4 - Link Destinazione", name: "box4_link", widget: "string"}
+
+          - label: "🇩🇪 TESTI IN TEDESCO"
+            name: "de"
+            widget: "object"
+            fields:
+              - {label: "Titolo Principale (Hero)", name: "hero_titolo", widget: "string"}
+              - {label: "Sottotitolo Principale", name: "hero_sottotitolo", widget: "string"}
+              - {label: "Occhiello Servizi (es. 01. L'Eccellenza)", name: "servizi_occhiello", widget: "string"}
+              - {label: "Titolo Servizi (usa <i> per corsivo, <br> per a capo)", name: "servizi_titolo", widget: "string"}
+              - {label: "Descrizione Servizi", name: "servizi_descrizione", widget: "text"}
+              - {label: "Testo Bottone Servizi", name: "servizi_bottone", widget: "string"}
+              - {label: "Occhiello Spa", name: "spa_occhiello", widget: "string"}
+              - {label: "Titolo Spa", name: "spa_titolo", widget: "string"}
+              - {label: "Descrizione Spa", name: "spa_descrizione", widget: "text"}
+              - {label: "Testo Bottone Spa", name: "spa_bottone", widget: "string"}
+              - {label: "Occhiello Ristorante", name: "ristorante_occhiello", widget: "string"}
+              - {label: "Titolo Ristorante", name: "ristorante_titolo", widget: "string"}
+              - {label: "Descrizione Ristorante", name: "ristorante_descrizione", widget: "text"}
+              - {label: "Testo Bottone Ristorante", name: "ristorante_bottone", widget: "string"}
+              - {label: "Occhiello Attenzioni", name: "attenzioni_occhiello", widget: "string"}
+              - {label: "Titolo Attenzioni", name: "attenzioni_titolo", widget: "string"}
+
+              # BOX Privilegi icone fondo pagina
+              - label: "--- GRIGLIA PRIVILEGI (Icone a fondo pagina) ---"
+                name: "sep_grid"
+                widget: "hidden"
+              - {label: "Box 1 - Titolo", name: "box1_titolo", widget: "string"}
+              - {label: "Box 1 - Sottotitolo", name: "box1_sub", widget: "string"}
+              - {label: "Box 1 - Link Destinazione", name: "box1_link", widget: "string"}
+              - {label: "Box 2 - Titolo", name: "box2_titolo", widget: "string"}
+              - {label: "Box 2 - Sottotitolo", name: "box2_sub", widget: "string"}
+              - {label: "Box 2 - Link Destinazione", name: "box2_link", widget: "string"}
+              - {label: "Box 3 - Titolo", name: "box3_titolo", widget: "string"}
+              - {label: "Box 3 - Sottotitolo", name: "box3_sub", widget: "string"}
+              - {label: "Box 3 - Link Destinazione", name: "box3_link", widget: "string"}
+              - {label: "Box 4 - Titolo", name: "box4_titolo", widget: "string"}
+              - {label: "Box 4 - Sottotitolo", name: "box4_sub", widget: "string"}
+              - {label: "Box 4 - Link Destinazione", name: "box4_link", widget: "string"}
+
+      # 3. MENU MULTILINGUA
       - label: "📜 Menu Duca D'Aosta"
         name: "menu_duca"
         file: "src/data/menu_duca.json"
         fields:
-          - label: "Categorie del Menu (Es. Antipasti, Primi)"
-            name: "categorie"
-            widget: "list"
+          - label: "Menu Italiano"
+            name: "it"
+            widget: "object"
             fields:
-              - {label: "Nome Categoria", name: "nome", widget: "string"}
-              - label: "Piatti"
-                name: "piatti"
+              - label: "Categorie"
+                name: "categorie"
                 widget: "list"
                 fields:
-                  - {label: "Nome Piatto", name: "nome", widget: "string"}
-                  - {label: "Ingredienti", name: "descrizione", widget: "text"}
-                  - {label: "Prezzo (€)", name: "prezzo", widget: "number", value_type: "int"}
+                  - {label: "Nome Categoria", name: "nome", widget: "string"}
+                  - label: "Piatti"
+                    name: "piatti"
+                    widget: "list"
+                    fields:
+                      - {label: "Nome", name: "nome", widget: "string"}
+                      - {label: "Descrizione", name: "descrizione", widget: "text"}
+                      - {label: "Prezzo (€)", name: "prezzo", widget: "number", value_type: "int"}
+          - label: "Menu Inglese"
+            name: "en"
+            widget: "object"
+            fields:
+              - label: "Categorie"
+                name: "categorie"
+                widget: "list"
+                fields:
+                  - {label: "Nome Categoria", name: "nome", widget: "string"}
+                  - label: "Piatti"
+                    name: "piatti"
+                    widget: "list"
+                    fields:
+                      - {label: "Nome", name: "nome", widget: "string"}
+                      - {label: "Descrizione", name: "descrizione", widget: "text"}
+                      - {label: "Prezzo (€)", name: "prezzo", widget: "number", value_type: "int"}
+          - label: "Menu Tedesco"
+            name: "de"
+            widget: "object"
+            fields:
+              - label: "Categorie"
+                name: "categorie"
+                widget: "list"
+                fields:
+                  - {label: "Nome Categoria", name: "nome", widget: "string"}
+                  - label: "Piatti"
+                    name: "piatti"
+                    widget: "list"
+                    fields:
+                      - {label: "Nome", name: "nome", widget: "string"}
+                      - {label: "Descrizione", name: "descrizione", widget: "text"}
+                      - {label: "Prezzo (€)", name: "prezzo", widget: "number", value_type: "int"}
 
   - name: "servizi"
     label: "🌟 Servizi Hotel"
@@ -58,10 +267,11 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Nome Servizio", name: "title", widget: "string", i18n: true}
-      - {label: "Tag/Categoria (es. Benessere, Gourmet)", name: "categoria", widget: "string", i18n: duplicate}
+      # AUTOMAZIONE: Categoria a tendina
+      - {label: "Categoria", name: "categoria", widget: "select", options: ["Il Benessere", "Un Mondo a 5 Stelle", "Viziati un po'", "Attività Esclusive"], default: "Un Mondo a 5 Stelle", i18n: duplicate}
       - {label: "Immagine", name: "image", widget: "image", i18n: duplicate}
       - {label: "Descrizione", name: "body", widget: "markdown", i18n: true}
-      - {label: "Link Pagina Dedicata (Opzionale - es. /ristorante o /spa)", name: "link_esterno", widget: "string", required: false, i18n: duplicate}
+      - {label: "Link Esterno (Opzionale)", name: "link_esterno", widget: "string", required: false, i18n: duplicate}
 
   - name: "spa"
     label: "🧖‍♀️ Trattamenti Spa"
@@ -82,8 +292,9 @@ collections:
     i18n: true
     slug: "{{slug}}"
     fields:
-      - {label: "Nome Ambiente/Ristorante", name: "title", widget: "string", i18n: true}
-      - {label: "Tag/Categoria (es. Gourmet, Buffet)", name: "categoria", widget: "string", i18n: duplicate}
+      - {label: "Nome Ristorante/Ambiente", name: "title", widget: "string", i18n: true}
+      # AUTOMAZIONE: Categoria a tendina
+      - {label: "Categoria", name: "categoria", widget: "select", options: ["Fine Dining", "Lounge Bar", "In-Suite Dining", "Buffet Gourmet"], default: "Fine Dining", i18n: duplicate}
       - {label: "Immagine", name: "image", widget: "image", i18n: duplicate}
       - {label: "Descrizione", name: "body", widget: "markdown", i18n: true}
-      - {label: "Link Pagina Dedicata (Opzionale - es. /menu per il Duca D'Aosta)", name: "link_esterno", widget: "string", required: false, i18n: duplicate}
+      - {label: "Link Esterno (Opzionale)", name: "link_esterno", widget: "string", required: false, i18n: duplicate}

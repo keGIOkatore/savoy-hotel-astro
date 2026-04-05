@@ -1,0 +1,88 @@
+{
+  "hero_image": "https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+  "immagine_servizi": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+  "immagine_spa": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+  "immagine_ristorante": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+
+  "it": {
+    "hero_titolo": "Savoy",
+    "hero_sottotitolo": "Beach Hotel & Thermal Spa",
+
+    "servizi_occhiello": "01. L'Eccellenza",
+    "servizi_titolo": "Servizi <br> su <i>Misura</i>.",
+    "servizi_descrizione": "Un universo di attenzioni disegnate esclusivamente su di te. Dalla spiaggia privata al nostro Concierge digitale, ogni dettaglio è orchestrato per offrirti un soggiorno senza paragoni.",
+    "servizi_bottone": "Scopri le Attenzioni",
+
+    "spa_occhiello": "02. Il Benessere",
+    "spa_titolo": "<i>Acque</i> <br> Curative.",
+    "spa_descrizione": "Un corridoio segreto ti separa dal mondo. In accappatoio, dalla tua suite, raggiungi direttamente e in totale privacy le sorgenti di Bibione Thermae.",
+    "spa_bottone": "Scopri i Trattamenti",
+
+    "ristorante_occhiello": "03. Il Gusto",
+    "ristorante_titolo": "<i>Viaggio</i> <br> Sensoriale.",
+    "ristorante_descrizione": "Dal fine dining del Duca d'Aosta all'intimità del nostro In-Suite Dining. Un mosaico di sapori, atmosfere ed eccellenze pensate per esaudire ogni tuo desiderio.",
+    "ristorante_bottone": "Scopri le Esperienze",
+
+    "attenzioni_occhiello": "Viziati un po'",
+    "attenzioni_titolo": "<i>Attenzioni</i> Esclusive.",
+
+    "box1_titolo": "Spiaggia Privata", "box1_sub": "Settore VIP", "box1_link": "/servizi",
+    "box2_titolo": "Tunnel Termale", "box2_sub": "Accesso Diretto", "box2_link": "/spa",
+    "box3_titolo": "Garage Coperto", "box3_sub": "Colonnine Elettriche", "box3_link": "/servizi",
+    "box4_titolo": "Noleggio Bici", "box4_sub": "Esplora Bibione", "box4_link": "/servizi"
+  },
+  "en": {
+    "hero_titolo": "Savoy",
+    "hero_sottotitolo": "Beach Hotel & Thermal Spa",
+
+    "servizi_occhiello": "01. Excellence",
+    "servizi_titolo": "Tailor-made <br> <i>Services</i>.",
+    "servizi_descrizione": "A universe of attention designed exclusively for you. From the private beach to our digital Concierge, every detail is orchestrated to offer you an unparalleled stay.",
+    "servizi_bottone": "Discover Amenities",
+
+    "spa_occhiello": "02. Wellness",
+    "spa_titolo": "Healing <br> <i>Waters</i>.",
+    "spa_descrizione": "A secret corridor separates you from the world. Wearing just your bathrobe, you can reach the springs of Bibione Thermae directly from your suite in total privacy.",
+    "spa_bottone": "Discover Treatments",
+
+    "ristorante_occhiello": "03. Taste",
+    "ristorante_titolo": "Sensory <br> <i>Journey</i>.",
+    "ristorante_descrizione": "From the fine dining of the Duca d'Aosta to the intimacy of our In-Suite Dining. A mosaic of flavors, atmospheres, and excellences designed to fulfill your every wish.",
+    "ristorante_bottone": "Discover Experiences",
+
+    "attenzioni_occhiello": "Treat yourself",
+    "attenzioni_titolo": "Exclusive <i>Privileges</i>.",
+
+    "box1_titolo": "Private Beach", "box1_sub": "VIP Sector", "box1_link": "/en/servizi",
+    "box2_titolo": "Thermal Tunnel", "box2_sub": "Direct Access", "box2_link": "/en/spa",
+    "box3_titolo": "Covered Garage", "box3_sub": "EV Charging", "box3_link": "/en/servizi",
+    "box4_titolo": "Bike Rental", "box4_sub": "Explore Bibione", "box4_link": "/en/servizi"
+  },
+  "de": {
+    "hero_titolo": "Savoy",
+    "hero_sottotitolo": "Beach Hotel & Thermal Spa",
+
+    "servizi_occhiello": "01. Exzellenz",
+    "servizi_titolo": "Maßgeschneiderte <br> <i>Services</i>.",
+    "servizi_descrizione": "Ein Universum an Aufmerksamkeit, exklusiv für Sie konzipiert. Vom Privatstrand bis zu unserem digitalen Concierge ist jedes Detail so orchestriert, dass es Ihnen einen unvergleichlichen Aufenthalt bietet.",
+    "servizi_bottone": "Annehmlichkeiten entdecken",
+
+    "spa_occhiello": "02. Wellness",
+    "spa_titolo": "Heilende <br> <i>Quellen</i>.",
+    "spa_descrizione": "Ein geheimer Korridor trennt Sie von der Welt. Im Bademantel erreichen Sie von Ihrer Suite aus direkt und in völliger Privatsphäre die Quellen der Bibione Thermae.",
+    "spa_bottone": "Behandlungen entdecken",
+    
+    "ristorante_occhiello": "03. Genuss",
+    "ristorante_titolo": "Sinnliche <br> <i>Reise</i>.",
+    "ristorante_descrizione": "Vom Fine Dining im Duca d'Aosta bis zur Intimität unseres In-Suite Dinings. Ein Mosaik aus Aromen, Atmosphären und Exzellenzen, das jeden Ihrer Wünsche erfüllt.",
+    "ristorante_bottone": "Erlebnisse entdecken",
+
+    "attenzioni_occhiello": "Gönnen Sie sich etwas",
+    "attenzioni_titolo": "Exklusive <i>Annehmlichkeiten</i>.",
+
+    "box1_titolo": "Privatstrand", "box1_sub": "VIP-Bereich", "box1_link": "/de/servizi",
+    "box2_titolo": "Thermentunnel", "box2_sub": "Direkter Zugang", "box2_link": "/de/spa",
+    "box3_titolo": "Tiefgarage", "box3_sub": "E-Ladestationen", "box3_link": "/de/servizi",
+    "box4_titolo": "Fahrradverleih", "box4_sub": "Bibione entdecken", "box4_link": "/de/servizi"
+  }
+}

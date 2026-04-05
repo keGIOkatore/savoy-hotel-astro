@@ -7,6 +7,8 @@ import '../styles/global.css';
 import BottomNav from '../components/BottomNav.astro';
 // @ts-ignore
 import Concierge from '../components/Concierge.astro';
+import contatti from '../data/contatti.json';
+import traduzioni from '../data/traduzioni.json';
 
 interface Props {
     title: string;
@@ -17,21 +19,7 @@ interface Props {
 
 const { title, description, lang, currentPath } = Astro.props;
 const prefix = lang === 'it' ? '' : `/${lang}`;
-
-const t = {
-    it: {
-        servizi: "Servizi", thermae: "Thermae", gusto: "Gusto", installa: "Installa App",
-        footerDesc: "Un'oasi di lusso e benessere.<br>Aperto tutto l'anno a Bibione.", contatti: "Contatti", esplora: "Esplora", rights: "All rights reserved."
-    },
-    en: {
-        servizi: "Services", thermae: "Thermae", gusto: "Dining", installa: "Install App",
-        footerDesc: "An oasis of luxury and wellness.<br>Open all year round in Bibione.", contatti: "Contacts", esplora: "Explore", rights: "All rights reserved."
-    },
-    de: {
-        servizi: "Services", thermae: "Thermae", gusto: "Genuss", installa: "App Installieren",
-        footerDesc: "Eine Oase des Luxus und Wohlbefindens.<br>Ganzjährig geöffnet in Bibione.", contatti: "Kontakte", esplora: "Entdecken", rights: "Alle Rechte vorbehalten."
-    }
-};
+const t = traduzioni;
 ---
 
 <!DOCTYPE html>
@@ -50,6 +38,16 @@ const t = {
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="apple-touch-icon" href="/icona-192x192.png">
     <meta name="theme-color" content="#050505" />
+
+    <style is:global>
+    /* Se c'è il pulsante PWA, spingi giù il contenuto della hero su schermi piccoli */
+    @media (max-width: 768px) {
+        body.has-app-btn .hero-content-box {
+            padding-top: 3rem; /* Crea 48px di spazio extra in alto */
+            transition: padding-top 0.5s ease-in-out;
+        }
+    }
+    </style>
 </head>
 <body class="bg-[#050505] text-[#e0e0e0] antialiased selection:bg-[#d4af37] selection:text-black overflow-x-hidden touch-pan-y select-none" style="-webkit-touch-callout: none;">
 
@@ -75,7 +73,7 @@ const t = {
             </div>
         </div>
 
-        <div class="absolute inset-x-0 top-6 md:top-8 flex justify-center pointer-events-none z-10 w-full">
+        <div id="main-logo-container" class="absolute inset-x-0 top-6 md:top-8 flex justify-center pointer-events-none z-10 w-full transition-transform duration-500 ease-in-out">
             <a href={`${prefix}/`} class="inline-block text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-[0.3em] uppercase drop-shadow-2xl pointer-events-auto text-center" style="font-family: 'Cormorant Garamond', serif;">
                 <span class="text-white font-light">Sav</span><span class="text-[#d4af37] font-semibold italic">oy</span>
             </a>
@@ -112,8 +110,8 @@ const t = {
                 <h4 class="text-[#d4af37] text-[10px] tracking-[0.3em] uppercase mb-6" style="font-family: 'Space Grotesk', sans-serif;">{t[lang].contatti}</h4>
                 <ul class="text-gray-400 text-[11px] tracking-widest font-light space-y-4" style="font-family: 'Space Grotesk', sans-serif;">
                     <li>Corso Europa, 51<br>30028 Bibione (VE) - Italia</li>
-                    <li>T. +39 0431 430144</li>
-                    <li>E. hotel@etgroup.info</li>
+                    <li>Tel. <a href={`tel:+${contatti.whatsapp}`} class="hover:text-white transition-colors">{contatti.telefono_display}</a></li>
+                    <li>E-mail <a href={`mailto:${contatti.email}`} class="hover:text-white transition-colors">{contatti.email}</a></li>
                 </ul>
             </div>
             <div>
@@ -207,7 +205,7 @@ const t = {
 
             document.addEventListener('click', closeAllMenus);
 
-            // 3. MOTORE PWA (Semplificato)
+            // 3. MOTORE PWA (Sincronizzato e Senza Errori)
             const installBtn = document.getElementById('install-app-btn');
             // @ts-ignore
             const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
@@ -217,8 +215,19 @@ const t = {
                 if (installBtn.getAttribute('data-init') === 'true') return;
                 installBtn.setAttribute('data-init', 'true');
 
-                if (isIOS) {
+                const activateAppBanner = () => {
                     installBtn.style.display = 'block';
+                    if (window.innerWidth < 768) {
+                        const logoContainer = document.getElementById('main-logo-container');
+                        if (logoContainer) { // <--- IL CONTROLLO CHE RISOLVE L'ERRORE
+                            logoContainer.style.transform = 'translateY(40px)';
+                        }
+                        document.body.classList.add('has-app-btn');
+                    }
+                };
+
+                if (isIOS) {
+                    activateAppBanner();
                     installBtn.addEventListener('click', () => {
                         alert("Gentile Ospite, per installare l'App su iOS: \n\n1. Tocchi l'icona 'Condividi' nella barra in basso. \n2. Selezioni 'Aggiungi alla schermata Home'.");
                     });
@@ -226,15 +235,22 @@ const t = {
                     window.addEventListener('beforeinstallprompt', (e) => {
                         e.preventDefault();
                         (window as any).deferredPrompt = e;
-                        installBtn.style.display = 'block'; 
+                        activateAppBanner();
                     });
-
+                    
                     installBtn.addEventListener('click', async () => {
                         const promptEvent = (window as any).deferredPrompt;
                         if (promptEvent) {
                             promptEvent.prompt();
                             const { outcome } = await promptEvent.userChoice;
-                            if (outcome === 'accepted') installBtn.style.display = 'none';
+                            if (outcome === 'accepted') {
+                                installBtn.style.display = 'none';
+                                document.body.classList.remove('has-app-btn');
+                                const logoContainer = document.getElementById('main-logo-container');
+                                if (logoContainer) {
+                                    logoContainer.style.transform = 'translateY(0)';
+                                }
+                            }
                             (window as any).deferredPrompt = null;
                         }
                     });
