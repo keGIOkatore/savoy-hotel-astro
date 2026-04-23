@@ -1,5 +1,6 @@
 ---
 // src/components/BottomNav.astro
+import traduzioni from '../data/traduzioni.json';
 const currentPath = Astro.url.pathname;
 
 type Lang = 'it' | 'en' | 'de';
@@ -7,10 +8,11 @@ let lang: Lang = 'it';
 if (currentPath.startsWith('/en')) lang = 'en';
 if (currentPath.startsWith('/de')) lang = 'de';
 
+
 const labels = {
-    it: { home: 'Home', servizi: 'Servizi', spa: 'Thermae', gusto: 'Gusto' },
-    en: { home: 'Home', servizi: 'Services', spa: 'Thermae', gusto: 'Dining' },
-    de: { home: 'Start', servizi: 'Services', spa: 'Thermae', gusto: 'Genuss' }
+    it: { home: traduzioni.it.nav_home, servizi: traduzioni.it.servizi, spa: traduzioni.it.thermae, gusto: traduzioni.it.gusto },
+    en: { home: traduzioni.en.nav_home, servizi: traduzioni.en.servizi, spa: traduzioni.en.thermae, gusto: traduzioni.en.gusto },
+    de: { home: traduzioni.de.nav_home, servizi: traduzioni.de.servizi, spa: traduzioni.de.thermae, gusto: traduzioni.de.gusto }
 };
 
 const prefix = lang === 'it' ? '' : `/${lang}`;

@@ -1,0 +1,86 @@
+{
+  "it": {
+    "servizi": "Servizi",
+    "thermae": "Thermae",
+    "gusto": "Gusto",
+    "installa": "Installa App",
+    "footerDesc": "Un'oasi di lusso e benessere.<br>Aperto tutto l'anno a Bibione.",
+    "contatti": "Contatti",
+    "esplora": "Esplora",
+    "rights": "Tutti i diritti riservati.",
+
+    "nav_home": "Home",
+    
+    "concierge_titolo": "Il tuo Concierge",
+    "concierge_room": "Servizio in Camera",
+    "concierge_room_sub": "Risposta in 2 min",
+    "concierge_rec": "Chiama Reception",
+    "concierge_rec_sub": "Disponibile 24/7",
+
+    "badge_aperto": "Aperto Ora",
+    "badge_chiuso": "Chiuso",
+
+    "alert_ios": "Gentile Ospite, per installare l'App su iOS:\n\n1. Tocchi l'icona 'Condividi' nella barra in basso.\n2. Selezioni 'Aggiungi alla schermata Home'.",
+    
+    "wa_room_service": "Gentile Concierge, desidero ordinare dal Room Service.",
+    "wa_info_servizi": "Gentile Concierge, desidero informazioni su: ",
+    "wa_prenota_spa": "Gentile Concierge, desidero prenotare il trattamento: ",
+    "wa_riserva_risto": "Gentile Concierge, desidero riservare: "
+  },
+  "en": {
+    "servizi": "Services",
+    "thermae": "Thermae",
+    "gusto": "Dining",
+    "installa": "Install App",
+    "footerDesc": "An oasis of luxury and wellness.<br>Open all year round in Bibione.",
+    "contatti": "Contacts",
+    "esplora": "Explore",
+    "rights": "All rights reserved.",
+
+    "nav_home": "Home",
+
+    "concierge_titolo": "Your Concierge",
+    "concierge_room": "Room Service",
+    "concierge_room_sub": "Replies in 2 mins",
+    "concierge_rec": "Call Reception",
+    "concierge_rec_sub": "Available 24/7",
+
+    "badge_aperto": "Open Now",
+    "badge_chiuso": "Closed",
+
+    "alert_ios": "Dear Guest, to install the App on iOS:\n\n1. Tap the 'Share' icon in the bottom bar.\n2. Select 'Add to Home Screen'.",
+
+    "wa_room_service": "Dear Concierge, I would like to order from Room Service.",
+    "wa_info_servizi": "Dear Concierge, I would like information about: ",
+    "wa_prenota_spa": "Dear Concierge, I would like to book the treatment: ",
+    "wa_riserva_risto": "Dear Concierge, I would like to reserve: "
+  },
+  "de": {
+    "servizi": "Services",
+    "thermae": "Thermae",
+    "gusto": "Genuss",
+    "installa": "App Installieren",
+    "footerDesc": "Eine Oase des Luxus und Wohlbefindens.<br>Ganzjährig geöffnet in Bibione.",
+    "contatti": "Kontakte",
+    "esplora": "Entdecken",
+    "rights": "Alle Rechte vorbehalten.",
+
+    "nav_home": "Start",
+
+    "concierge_titolo": "Ihr Concierge",
+    "concierge_room": "Zimmerservice",
+    "concierge_room_sub": "Antwort in 2 Min.",
+    "concierge_rec": "Rezeption Anrufen",
+    "concierge_rec_sub": "24/7 Verfügbar",
+
+    "badge_aperto": "Jetzt Geöffnet",
+    "badge_chiuso": "Geschlossen",
+
+    "alert_ios": "Sehr geehrter Gast, um die App auf iOS zu installieren:\n\n1. Tippen Sie auf das Symbol 'Teilen' in der unteren Leiste.\n2. Wählen Sie 'Zum Home-Bildschirm'.",
+
+    "wa_room_service": "Lieber Concierge, ich möchte gerne beim Zimmerservice bestellen.",
+    "wa_info_servizi": "Lieber Concierge, ich hätte gerne Informationen zu: ",
+    "wa_prenota_spa": "Lieber Concierge, ich möchte folgende Behandlung buchen: ",
+    "wa_riserva_risto": "Lieber Concierge, ich möchte reservieren: "
+  }
+}

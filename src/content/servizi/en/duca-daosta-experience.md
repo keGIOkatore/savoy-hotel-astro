@@ -1,9 +1,9 @@
 ---
-title: Esperienza Duca D'Aosta
+title: Duca D'Aosta Experience
 categoria: Fine Dining
 image: https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80
-link_esterno: "/menu"
+link_esterno: "https://www.ristoranteducadaosta.it/il-menu-e-la-cantina-di-franco/"
 ---
-Oltre la semplice cena, un vero e proprio percorso multisensoriale. 
+Beyond a mere dinner, a true multisensory journey. 
 
-Il ristorante gourmet Duca D'Aosta è l'anima culinaria del Savoy. Una carta dei vini che custodisce etichette rarissime accompagna menu degustazione creati con materie prime d'eccellenza, a chilometro zero e dal mondo. Atmosfera ovattata, servizio in guanti bianchi e una *mise en place* che è essa stessa un'opera d'arte. Un tempio del gusto riservato ai palati più esigenti.
+The Duca D'Aosta gourmet restaurant is the culinary soul of the Savoy. A wine list boasting exceptionally rare labels accompanies tasting menus crafted with the finest local and international ingredients. A hushed atmosphere, white-glove service, and a *mise en place* that is a masterpiece in itself. A temple of taste reserved for the most discerning palates.

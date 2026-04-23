@@ -3,6 +3,7 @@
 
 // @ts-ignore
 import orariRaw from '../data/orari.json';
+import traduzioni from '../data/traduzioni.json';
 const orariData: any = orariRaw;
 
 interface Props {
@@ -18,8 +19,8 @@ const translations = {
   de: { open: 'Jetzt Geöffnet', closed: 'Geschlossen' }
 };
 
-const textOpen = translations[lang].open;
-const textClosed = translations[lang].closed;
+const textOpen = traduzioni[lang].badge_aperto;
+const textClosed = traduzioni[lang].badge_chiuso;
 
 // Peschiamo i testi dal CMS (ora sono comodissime stringhe orarie come "19:30")
 const times = {
