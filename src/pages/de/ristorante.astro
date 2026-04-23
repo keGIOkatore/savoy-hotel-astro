@@ -4,11 +4,10 @@ import orariData from '../../data/orari.json';
 import OrarioBadge from '../../components/OrarioBadge.astro';
 // @ts-ignore
 import BaseLayout from '../../layouts/BaseLayout.astro';
-// @ts-ignore
 import contatti from '../../data/contatti.json';
 
-let ristoranti: any[] = [];
-try { ristoranti = await Astro.glob('../../content/ristorante/de/*.md'); } catch (error) {}
+const files = import.meta.glob('../../content/ristorante/de/*.md', { eager: true });
+const ristoranti = Object.values(files) as any[];
 ---
 
 <BaseLayout title="Die Seelen des Geschmacks" description="Entdecken Sie das Restaurant Duca D'Aosta im Savoy Beach Hotel: eine kulinarische Reise durch authentische Aromen." lang="de" currentPath="/ristorante">

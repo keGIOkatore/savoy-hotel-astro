@@ -1,6 +1,6 @@
 ---
 // src/layouts/BaseLayout.astro
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
 // @ts-ignore
@@ -29,7 +29,7 @@ const t = traduzioni;
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>{title} | SAVOY Beach Hotel</title>
     
-    <ViewTransitions />
+    <ClientRouter />
 
     <meta name="description" content={description} />
     <link rel="alternate" hreflang="it" href={`https://tuosito.com${currentPath}`} />

@@ -4,11 +4,11 @@ import orariData from '../../data/orari.json';
 import OrarioBadge from '../../components/OrarioBadge.astro';
 // @ts-ignore
 import BaseLayout from '../../layouts/BaseLayout.astro';
-// @ts-ignore
 import contatti from '../../data/contatti.json';
 
-let trattamenti: any[] = [];
-try { trattamenti = await Astro.glob('../../content/spa/en/*.md'); } catch (error) {}
+const files = import.meta.glob('../../content/spa/en/*.md', { eager: true });
+const trattamenti = Object.values(files) as any[];
+
 ---
 
 <BaseLayout title="Bibione Thermae" description="Discover the Savoy Beach Hotel spa: an oasis of wellness with exclusive treatments and luxury environments in Bibione." lang="en" currentPath="/spa">

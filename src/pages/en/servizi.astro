@@ -1,13 +1,11 @@
 ---
 // @ts-ignore
 import BaseLayout from '../../layouts/BaseLayout.astro';
-// @ts-ignore
 import contatti from '../../data/contatti.json';
 
-let servizi: any[] = [];
-try {
-    servizi = await Astro.glob('../../content/servizi/en/*.md');
-} catch (error) {}
+const files = import.meta.glob('../../content/servizi/en/*.md', { eager: true });
+const servizi = Object.values(files) as any[];
+
 ---
 
 <BaseLayout title="Experiences and Services" description="Discover the exclusive services of the Savoy Beach Hotel: from the Sky Beach Terrace to the Duca D'Aosta restaurant." lang="en" currentPath="/en/servizi">
