@@ -1,8 +1,8 @@
 ---
 title: Duca D'Aosta Erlebnis
-categoria: Fine Dining
+categoria: Viziati un po'
 image: https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80
-link_esterno: "https://www.ristoranteducadaosta.it/il-menu-e-la-cantina-di-franco/"
+link_esterno: https://www.ristoranteducadaosta.it/il-menu-e-la-cantina-di-franco/
 ---
 Weit mehr als nur ein Abendessen – eine wahrhafte multisensorische Reise.
 
