@@ -4,6 +4,7 @@ import orariData from '../data/orari.json';
 import OrarioBadge from '../components/OrarioBadge.astro';
 // @ts-ignore
 import BaseLayout from '../layouts/BaseLayout.astro';
+import contatti from '../data/contatti.json';
 
 let trattamenti: any[] = [];
 try { trattamenti = await Astro.glob('../content/spa/it/*.md'); } catch (error) {}
@@ -11,7 +12,7 @@ try { trattamenti = await Astro.glob('../content/spa/it/*.md'); } catch (error) 
 
 <BaseLayout title="Bibione Thermae" description="Scopri la spa del Savoy Beach Hotel: un'oasi di benessere con trattamenti esclusivi e ambienti di lusso a Bibione." lang="it" currentPath="/spa">
 
-    <section class="relative h-[60vh] flex flex-col justify-center items-center overflow-hidden text-center px-4 border-b border-white/10">
+    <section class="relative min-h-[100svh] lg:min-h-0 lg:h-[60vh] flex flex-col justify-center items-center overflow-hidden text-center px-4 py-32 border-b border-white/10">
         <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Spa Savoy" class="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none" />
         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#050505]"></div>
         
@@ -24,8 +25,8 @@ try { trattamenti = await Astro.glob('../content/spa/it/*.md'); } catch (error) 
             <div class="mt-4 flex flex-col items-center">
                 <div class="h-px w-16 bg-[#d4af37]/50 mb-4"></div>
                 <span class="text-[#d4af37] text-[10px] tracking-[0.4em] uppercase mb-2" style="font-family: 'Space Grotesk', sans-serif;">Orari di Apertura</span>
-                <p class="text-white text-sm md:text-base tracking-[0.15em] font-light uppercase" style="font-family: 'Space Grotesk', sans-serif;">
-                    {orariData.it.orari_spa}
+                <p class="text-white text-xs md:text-sm lg:text-base tracking-[0.15em] font-light uppercase max-w-[280px] md:max-w-md mx-auto" style="font-family: 'Space Grotesk', sans-serif;">
+                    Tutti i giorni dalle {orariData.spa_ap} alle {orariData.spa_ch}
                 </p>
                 <OrarioBadge type="spa" lang="it" />
                 <div class="h-px w-16 bg-[#d4af37]/50 mt-4"></div>
@@ -39,39 +40,37 @@ try { trattamenti = await Astro.glob('../content/spa/it/*.md'); } catch (error) 
                 I trattamenti saranno disponibili a breve.
             </div>
         ) : (
-            <div class="space-y-40">
+            <div class="space-y-32 md:space-y-40">
                 {trattamenti.map((trattamento, index) => {
                     const Content = trattamento.Content;
                     return (
-                        <div class:list={['group flex flex-col items-center gap-16', index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row']}>
-                            <div class="md:w-3/5 relative overflow-hidden">
+                        <div class:list={['group flex flex-col items-center gap-12 md:gap-16', index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row']}>
+                            <div class="w-full md:w-3/5 relative overflow-hidden">
                                 {trattamento.frontmatter.image && (
-                                    <img loading="lazy" src={trattamento.frontmatter.image} alt={trattamento.frontmatter.title} class="w-full h-[50vh] md:h-[70vh] object-cover opacity-80 group-hover:opacity-100 transition-all duration-[2500ms] ease-out scale-[1.03] group-hover:scale-100 pointer-events-none" />
+                                    <img loading="lazy" src={trattamento.frontmatter.image} alt={trattamento.frontmatter.title} class="w-full h-[45vh] md:h-[60vh] object-cover opacity-80 group-hover:opacity-100 transition-all duration-[2500ms] ease-out scale-[1.03] group-hover:scale-100 pointer-events-none" />
                                 )}
                             </div>
-                            <div class="md:w-2/5 flex flex-col justify-center text-center md:text-left">
+                            <div class="w-full md:w-2/5 flex flex-col justify-center text-left">
                                 <h2 class="text-4xl md:text-5xl text-white font-light mb-4" style="font-family: 'Cormorant Garamond', serif;">
                                     {trattamento.frontmatter.title}
                                 </h2>
                                 <p class="text-[#d4af37] text-[10px] tracking-[0.3em] uppercase mb-8" style="font-family: 'Space Grotesk', sans-serif;">
                                     Durata: {trattamento.frontmatter.durata} minuti
                                 </p>
-                                
-                                <div class="text-gray-400 font-light text-sm leading-relaxed mb-10" style="font-family: 'Space Grotesk', sans-serif;">
+                                <div class="text-gray-400 font-light text-sm leading-relaxed mb-10 prose prose-invert prose-p:m-0" style="font-family: 'Space Grotesk', sans-serif;">
                                     <Content />
                                 </div>
-                                  
-                                <div class="mt-4">
-                                    <a href={`https://wa.me/390431430144?text=Gentile%20Concierge,%20desidero%20prenotare%20il%20trattamento:%20${trattamento.frontmatter.title}`} target="_blank" class="group/btn inline-flex items-center justify-center md:justify-start gap-6 px-8 py-4 border border-white/20 active:border-[#d4af37] md:hover:border-[#d4af37] transition-all duration-300 cursor-pointer">
+                                <div class="mt-2">
+                                    <a href={`https://wa.me/${contatti.whatsapp}?text=Gentile%20Concierge,%20desidero%20prenotare%20il%20trattamento:%20${trattamento.frontmatter.title}`} target="_blank" class="group/btn inline-flex items-center justify-center md:justify-start gap-4 px-6 py-3 border border-white/20 active:border-[#d4af37] md:hover:border-[#d4af37] transition-all duration-300 cursor-pointer w-full md:w-auto">
                                         <span class="text-white/80 group-active/btn:text-[#d4af37] md:group-hover/btn:text-[#d4af37] text-[10px] tracking-[0.3em] uppercase font-bold transition-colors duration-300" style="font-family: 'Space Grotesk', sans-serif;">
-                                            Riserva Esperienza
+                                            Riserva Trattamento
                                         </span>
                                         <svg class="w-4 h-4 text-white/40 group-active/btn:text-[#d4af37] md:group-hover/btn:text-[#d4af37] transform group-active/btn:translate-x-2 md:group-hover/btn:translate-x-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                    );
+                    )
                 })}
             </div>
         )}

@@ -4,6 +4,7 @@ import orariData from '../../data/orari.json';
 import OrarioBadge from '../../components/OrarioBadge.astro';
 // @ts-ignore
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import contatti from '../../data/contatti.json';
 
 let ristoranti: any[] = [];
 try { ristoranti = await Astro.glob('../../content/ristorante/en/*.md'); } catch (error) {}
@@ -11,15 +12,25 @@ try { ristoranti = await Astro.glob('../../content/ristorante/en/*.md'); } catch
 
 <BaseLayout title="The Souls of Taste" description="Discover the Duca D'Aosta restaurant at Savoy Beach Hotel: a culinary journey through authentic flavors and exclusive atmospheres." lang="en" currentPath="/ristorante">
 
-    <section class="relative h-[60vh] flex flex-col justify-center items-center overflow-hidden text-center px-4 border-b border-white/10">
+    <section class="relative min-h-[100svh] lg:min-h-0 lg:h-[60vh] flex flex-col justify-center items-center overflow-hidden text-center px-4 py-32 border-b border-white/10">
         <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="The Taste" class="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none" />
         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#050505]"></div>
         
         <div class="relative z-10 mt-24">
-            <p class="text-[#d4af37] text-xs tracking-[0.3em] uppercase mb-4" style="font-family: 'Space Grotesk', sans-serif;">Restaurants & Bars</p>
-            <h1 class="text-6xl md:text-8xl text-white font-light leading-none mb-6" style="font-family: 'Cormorant Garamond', serif;">
-                <i>The</i> Taste.
+            <p class="text-[#d4af37] text-xs tracking-[0.3em] uppercase mb-4" style="font-family: 'Space Grotesk', sans-serif;">The Culinary Journey</p>
+            <h1 class="text-6xl md:text-8xl text-white font-light leading-none mb-10" style="font-family: 'Cormorant Garamond', serif;">
+                <i>The Souls</i> <br> Of Taste.
             </h1>
+            
+            <div class="mt-4 flex flex-col items-center">
+                <div class="h-px w-16 bg-[#d4af37]/50 mb-4"></div>
+                <span class="text-[#d4af37] text-[10px] tracking-[0.4em] uppercase mb-2" style="font-family: 'Space Grotesk', sans-serif;">Duca D'Aosta</span>
+                <p class="text-white text-xs md:text-sm lg:text-base tracking-[0.15em] font-light uppercase max-w-[280px] md:max-w-md mx-auto" style="font-family: 'Space Grotesk', sans-serif;">
+                    Lunch: {orariData.risto_pranzo_ap} - {orariData.risto_pranzo_ch} | Dinner: {orariData.risto_cena_ap} - {orariData.risto_cena_ch}
+                </p>
+                <OrarioBadge type="ristorante" lang="en" />
+                <div class="h-px w-16 bg-[#d4af37]/50 mt-4"></div>
+            </div>
         </div>
     </section>
 
@@ -29,44 +40,45 @@ try { ristoranti = await Astro.glob('../../content/ristorante/en/*.md'); } catch
                 Preparing our culinary experiences.
             </div>
         ) : (
-            <div class="space-y-40">
+            <div class="space-y-32 md:space-y-40">
                 {ristoranti.map((ristorante, index) => {
                     const Content = ristorante.Content;
                     return (
                         <div class:list={['group flex flex-col items-center gap-12 md:gap-16', index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row']}>
-                            <div class="md:w-3/5 w-full relative group overflow-hidden">
-                                <img loading="lazy" src={ristorante.frontmatter.image} alt={ristorante.frontmatter.title} class="w-full h-[40vh] md:h-[70vh] object-cover opacity-80 group-hover:opacity-100 transition-all duration-[5500ms] ease-out scale-[1.03] group-hover:scale-100 pointer-events-none" />
+                            
+                            <div class="w-full md:w-3/5 relative overflow-hidden">
+                                {ristorante.frontmatter.image && (
+                                    <img loading="lazy" src={ristorante.frontmatter.image} alt={ristorante.frontmatter.title} class="w-full h-[45vh] md:h-[60vh] object-cover opacity-80 group-hover:opacity-100 transition-all duration-[2500ms] ease-out scale-[1.03] group-hover:scale-100 pointer-events-none" />
+                                )}
                             </div>
                             
-                            <div class="md:w-2/5 w-full flex flex-col justify-center">
-                                <h2 class="text-4xl md:text-5xl lg:text-6xl text-white font-light mb-4" style="font-family: 'Cormorant Garamond', serif;">
+                            <div class="w-full md:w-2/5 flex flex-col justify-center text-left">
+                                <h2 class="text-4xl md:text-5xl text-white font-light mb-4" style="font-family: 'Cormorant Garamond', serif;">
                                     {ristorante.frontmatter.title}
                                 </h2>
                                 
-                                <div class="flex items-center gap-4 mb-8">
-                                    <p class="text-[#d4af37] text-[10px] md:text-xs tracking-[0.3em] uppercase font-bold" style="font-family: 'Space Grotesk', sans-serif;">
-                                        {ristorante.frontmatter.categoria}
-                                    </p>
-                                </div>
+                                <p class="text-[#d4af37] text-[10px] tracking-[0.3em] uppercase mb-8" style="font-family: 'Space Grotesk', sans-serif;">
+                                    {ristorante.frontmatter.categoria || 'SAVOY Experience'}
+                                </p>
                                 
-                                <div class="text-gray-400 font-light text-sm md:text-lg lg:text-xl leading-relaxed mb-10 prose prose-invert" style="font-family: 'Space Grotesk', sans-serif;">
+                                <div class="text-gray-400 font-light text-sm leading-relaxed mb-10 prose prose-invert prose-p:m-0" style="font-family: 'Space Grotesk', sans-serif;">
                                     <Content />
                                 </div>
                                 
-                                <div class="mt-4">
+                                <div class="mt-2">
                                     {ristorante.frontmatter.link_esterno ? (
-                                        <a href={`/en${ristorante.frontmatter.link_esterno}`} class="group/btn inline-flex items-center justify-center md:justify-start gap-4 md:gap-6 px-4 py-3 md:px-8 md:py-4 border border-white/20 active:border-[#d4af37] md:hover:border-[#d4af37] transition-all duration-300 w-fit">
-                                            <span class="whitespace-nowrap text-white/80 group-active/btn:text-[#d4af37] md:group-hover/btn:text-[#d4af37] text-[9px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase font-bold transition-colors duration-300" style="font-family: 'Space Grotesk', sans-serif;">
-                                                Discover Menu
+                                        <a href={ristorante.frontmatter.link_esterno} target="_blank" class="group/btn inline-flex items-center justify-center md:justify-start gap-4 px-6 py-3 border border-white/20 active:border-[#d4af37] md:hover:border-[#d4af37] transition-all duration-300 cursor-pointer w-full md:w-auto">
+                                            <span class="text-white/80 group-active/btn:text-[#d4af37] md:group-hover/btn:text-[#d4af37] text-[10px] tracking-[0.3em] uppercase font-bold transition-colors duration-300" style="font-family: 'Space Grotesk', sans-serif;">
+                                                Explore the Menu
                                             </span>
-                                            <svg class="w-4 h-4 md:w-5 md:h-5 text-white/40 group-active/btn:text-[#d4af37] md:group-hover/btn:text-[#d4af37] transform group-active/btn:translate-x-2 md:group-hover/btn:translate-x-2 transition-all duration-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                                            <svg class="w-4 h-4 text-white/40 group-active/btn:text-[#d4af37] md:group-hover/btn:text-[#d4af37] transform group-active/btn:translate-x-2 md:group-hover/btn:translate-x-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                                         </a>
                                     ) : (
-                                        <a href={`https://wa.me/390431430144?text=Dear%20Concierge,%20I%20would%20like%20to%20reserve:%20${ristorante.frontmatter.title}`} target="_blank" class="group/btn inline-flex items-center justify-center md:justify-start gap-4 md:gap-6 px-4 py-3 md:px-8 md:py-4 border border-white/20 active:border-[#d4af37] md:hover:border-[#d4af37] transition-all duration-300 w-fit">
-                                            <span class="whitespace-nowrap text-white/80 group-active/btn:text-[#d4af37] md:group-hover/btn:text-[#d4af37] text-[9px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase font-bold transition-colors duration-300" style="font-family: 'Space Grotesk', sans-serif;">
-                                                Live the Experience
+                                        <a href={`https://wa.me/${contatti.whatsapp}?text=Dear%20Concierge,%20I%20would%20like%20to%20reserve:%20${ristorante.frontmatter.title}`} target="_blank" class="group/btn inline-flex items-center justify-center md:justify-start gap-4 px-6 py-3 border border-white/20 active:border-[#d4af37] md:hover:border-[#d4af37] transition-all duration-300 cursor-pointer w-full md:w-auto">
+                                            <span class="text-white/80 group-active/btn:text-[#d4af37] md:group-hover/btn:text-[#d4af37] text-[10px] tracking-[0.3em] uppercase font-bold transition-colors duration-300" style="font-family: 'Space Grotesk', sans-serif;">
+                                                Book a Table
                                             </span>
-                                            <svg class="w-4 h-4 md:w-5 md:h-5 text-white/40 group-active/btn:text-[#d4af37] md:group-hover/btn:text-[#d4af37] transform group-active/btn:translate-x-2 md:group-hover/btn:translate-x-2 transition-all duration-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                                            <svg class="w-4 h-4 text-white/40 group-active/btn:text-[#d4af37] md:group-hover/btn:text-[#d4af37] transform group-active/btn:translate-x-2 md:group-hover/btn:translate-x-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                                         </a>
                                     )}
                                 </div>
