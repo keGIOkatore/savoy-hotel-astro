@@ -31,14 +31,30 @@ const t = traduzioni;
     
     <ClientRouter />
 
-    <meta name="description" content={description} />
-    <link rel="alternate" hreflang="it" href={`https://tuosito.com${currentPath}`} />
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="manifest" href="/manifest.webmanifest" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/x-icon" href="/logo_prova_savoy_32x32.ico" />
-    <meta name="theme-color" content="#050505" />
+    <ClientRouter />
+
+<meta name="description" content={description} />
+<meta name="robots" content="index, follow" />
+
+<link rel="canonical" href={`https://savoy-hotel-astro.netlify.app${currentPath}`} />
+<link rel="alternate" hreflang="it" href={`https://savoy-hotel-astro.netlify.app${currentPath.replace(/^\/(en|de)/, '') || '/'}`} />
+<link rel="alternate" hreflang="en" href={`https://savoy-hotel-astro.netlify.app/en${currentPath.replace(/^\/(en|de)/, '')}`} />
+<link rel="alternate" hreflang="de" href={`https://savoy-hotel-astro.netlify.app/de${currentPath.replace(/^\/(en|de)/, '')}`} />
+
+<meta property="og:title" content={`${title} | SAVOY Beach Hotel`} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content="https://savoy-hotel-astro.netlify.app/logo_prova_savoy_512x512.png" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={`https://savoy-hotel-astro.netlify.app${currentPath}`} />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="/logo_prova_savoy_32x32.ico" />
+<meta name="theme-color" content="#050505" />
 
     <style is:global>
     /* Se c'è il pulsante PWA, spingi giù il contenuto della hero su schermi piccoli */
@@ -75,13 +91,13 @@ const t = traduzioni;
         </div>
 
         <div id="main-logo-container" class="absolute inset-x-0 top-6 md:top-8 flex justify-center pointer-events-none z-10 w-full transition-transform duration-500 ease-in-out">
-            <a href={`${prefix}/`} class="inline-block text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-[0.3em] uppercase drop-shadow-2xl pointer-events-auto text-center" style="font-family: 'Cormorant Garamond', serif;">
+            <a href={`${prefix}/`} class="inline-block text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-[0.3em] uppercase drop-shadow-2xl pointer-events-auto text-center px-8 py-4" style="font-family: 'Cormorant Garamond', serif;">
                 <span class="text-white font-light">Sav</span><span class="text-[#d4af37] font-semibold italic">oy</span>
             </a>
         </div>
         
         <div class="flex-1 flex justify-end items-center gap-4 md:gap-6 lg:gap-8 z-20">
-            <button id="install-app-btn" style="display: none;" data-alert-ios={t[lang].alert_ios} class="bg-white/10 text-white px-3 py-2 md:px-5 md:py-3 text-[8px] md:text-[10px] tracking-[0.2em] uppercase rounded-full border border-white/20 hover:bg-[#d4af37] hover:text-black transition-all duration-500 cursor-pointer shadow-lg whitespace-nowrap">{t[lang].installa}</button>
+            <button id="install-app-btn" aria-label="Installa l'app" style="display: none;">
             
             <div class="hidden lg:block relative language-selector cursor-pointer">
                 <div class="flex items-center gap-2 text-white font-bold text-xs md:text-sm tracking-[0.2em] uppercase pb-1 border-b border-[#d4af37]" style="font-family: 'Space Grotesk', sans-serif;">
@@ -111,7 +127,7 @@ const t = traduzioni;
                 <h4 class="text-[#d4af37] text-[10px] tracking-[0.3em] uppercase mb-6" style="font-family: 'Space Grotesk', sans-serif;">{t[lang].contatti}</h4>
                 <ul class="text-gray-400 text-[11px] tracking-widest font-light space-y-4" style="font-family: 'Space Grotesk', sans-serif;">
                     <li>Corso Europa, 51<br>30028 Bibione (VE) - Italia</li>
-                    <li>Tel. <a href={`tel:+${contatti.whatsapp}`} class="hover:text-white transition-colors">{contatti.telefono_display}</a></li>
+                    <li>Tel. <a href={`tel:${contatti.telefono_display.replace(/\s/g, '')}`} class="hover:text-white transition-colors">{contatti.telefono_display}</a>
                     <li>E-mail <a href={`mailto:${contatti.email}`} class="hover:text-white transition-colors">{contatti.email}</a></li>
                 </ul>
             </div>
@@ -230,8 +246,21 @@ const t = traduzioni;
                 if (isIOS) {
                     activateAppBanner();
                     installBtn.addEventListener('click', () => {
-                        alert(installBtn.getAttribute('data-alert-ios'));
+                        const modal = document.createElement('div');
+                        modal.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);display:flex;align-items:flex-end;padding:1rem;';
+                        modal.innerHTML = `
+                            <div style="background:#111;border:1px solid rgba(212,175,55,0.3);border-radius:1.5rem;padding:2rem;width:100%;font-family:Space Grotesk,sans-serif;">
+                                <p style="color:#d4af37;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:1rem;">Installa l'App</p>
+                                <p style="color:#fff;font-size:13px;line-height:1.8;margin-bottom:1.5rem;">
+                                    1. Tocca l'icona <strong style="color:#d4af37;">Condividi</strong> nella barra in basso<br>
+                                    2. Seleziona <strong style="color:#d4af37;">Aggiungi alla schermata Home</strong>
+                                </p>
+                                <button onclick="this.closest('div').parentElement.remove()" style="width:100%;padding:0.875rem;background:#d4af37;color:#000;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;border:none;border-radius:0.75rem;cursor:pointer;">Chiudi</button>
+                            </div>`;
+                        document.body.appendChild(modal);
+                        modal.addEventListener('click', (e) => { if(e.target === modal) modal.remove(); });
                     });
+                }
                 } else {
                     window.addEventListener('beforeinstallprompt', (e) => {
                         e.preventDefault();

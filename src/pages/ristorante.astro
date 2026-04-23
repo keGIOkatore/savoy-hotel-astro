@@ -6,8 +6,8 @@ import OrarioBadge from '../components/OrarioBadge.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import contatti from '../data/contatti.json';
 
-let ristoranti: any[] = [];
-try { ristoranti = await Astro.glob('../content/ristorante/it/*.md'); } catch (error) {}
+const files = import.meta.glob('../content/ristorante/it/*.md', { eager: true });
+const ristoranti = Object.values(files) as any[];
 ---
 
 <BaseLayout title="Le Anime del Gusto" description="Scopri il ristorante Duca D'Aosta al Savoy Beach Hotel: un viaggio culinario tra sapori autentici e atmosfere esclusive." lang="it" currentPath="/ristorante">

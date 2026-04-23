@@ -6,8 +6,8 @@ import OrarioBadge from '../components/OrarioBadge.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import contatti from '../data/contatti.json';
 
-let trattamenti: any[] = [];
-try { trattamenti = await Astro.glob('../content/spa/it/*.md'); } catch (error) {}
+const files = import.meta.glob('../content/spa/it/*.md', { eager: true });
+const trattamenti = Object.values(files) as any[];
 ---
 
 <BaseLayout title="Bibione Thermae" description="Scopri la spa del Savoy Beach Hotel: un'oasi di benessere con trattamenti esclusivi e ambienti di lusso a Bibione." lang="it" currentPath="/spa">
