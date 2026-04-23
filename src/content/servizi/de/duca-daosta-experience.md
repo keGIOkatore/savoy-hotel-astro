@@ -1,6 +1,6 @@
 ---
 title: Duca D'Aosta Erlebnis
-categoria: Viziati un po'
+categoria: Un Mondo a 5 Stelle
 image: https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80
 link_esterno: https://www.ristoranteducadaosta.it/il-menu-e-la-cantina-di-franco/
 ---
