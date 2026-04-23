@@ -31,30 +31,28 @@ const t = traduzioni;
     
     <ClientRouter />
 
-    <ClientRouter />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
 
-<meta name="description" content={description} />
-<meta name="robots" content="index, follow" />
+    <link rel="canonical" href={`https://savoy-hotel-astro.netlify.app${currentPath}`} />
+    <link rel="alternate" hreflang="it" href={`https://savoy-hotel-astro.netlify.app${currentPath.replace(/^\/(en|de)/, '') || '/'}`} />
+    <link rel="alternate" hreflang="en" href={`https://savoy-hotel-astro.netlify.app/en${currentPath.replace(/^\/(en|de)/, '')}`} />
+    <link rel="alternate" hreflang="de" href={`https://savoy-hotel-astro.netlify.app/de${currentPath.replace(/^\/(en|de)/, '')}`} />
 
-<link rel="canonical" href={`https://savoy-hotel-astro.netlify.app${currentPath}`} />
-<link rel="alternate" hreflang="it" href={`https://savoy-hotel-astro.netlify.app${currentPath.replace(/^\/(en|de)/, '') || '/'}`} />
-<link rel="alternate" hreflang="en" href={`https://savoy-hotel-astro.netlify.app/en${currentPath.replace(/^\/(en|de)/, '')}`} />
-<link rel="alternate" hreflang="de" href={`https://savoy-hotel-astro.netlify.app/de${currentPath.replace(/^\/(en|de)/, '')}`} />
+    <meta property="og:title" content={`${title} | SAVOY Beach Hotel`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://savoy-hotel-astro.netlify.app/logo_prova_savoy_512x512.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={`https://savoy-hotel-astro.netlify.app${currentPath}`} />
 
-<meta property="og:title" content={`${title} | SAVOY Beach Hotel`} />
-<meta property="og:description" content={description} />
-<meta property="og:image" content="https://savoy-hotel-astro.netlify.app/logo_prova_savoy_512x512.png" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content={`https://savoy-hotel-astro.netlify.app${currentPath}`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
-
-<link rel="manifest" href="/manifest.webmanifest" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="icon" type="image/x-icon" href="/logo_prova_savoy_32x32.ico" />
-<meta name="theme-color" content="#050505" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="/logo_prova_savoy_32x32.ico" />
+    <meta name="theme-color" content="#050505" />
 
     <style is:global>
     /* Se c'è il pulsante PWA, spingi giù il contenuto della hero su schermi piccoli */
@@ -97,7 +95,7 @@ const t = traduzioni;
         </div>
         
         <div class="flex-1 flex justify-end items-center gap-4 md:gap-6 lg:gap-8 z-20">
-            <button id="install-app-btn" aria-label="Installa l'app" style="display: none;">
+            <button id="install-app-btn" aria-label="Installa l'app" style="display: none;" data-alert-ios={t[lang].alert_ios} class="bg-white/10 text-white px-3 py-2 md:px-5 md:py-3 text-[8px] md:text-[10px] tracking-[0.2em] uppercase rounded-full border border-white/20 hover:bg-[#d4af37] hover:text-black transition-all duration-500 cursor-pointer shadow-lg whitespace-nowrap">{t[lang].installa}</button>
             
             <div class="hidden lg:block relative language-selector cursor-pointer">
                 <div class="flex items-center gap-2 text-white font-bold text-xs md:text-sm tracking-[0.2em] uppercase pb-1 border-b border-[#d4af37]" style="font-family: 'Space Grotesk', sans-serif;">
@@ -241,7 +239,7 @@ const t = traduzioni;
                         }
                         document.body.classList.add('has-app-btn');
                     }
-                };
+                }
 
                 if (isIOS) {
                     activateAppBanner();
@@ -259,15 +257,14 @@ const t = traduzioni;
                             </div>`;
                         document.body.appendChild(modal);
                         modal.addEventListener('click', (e) => { if(e.target === modal) modal.remove(); });
-                    });
-                }
+                    });               
                 } else {
                     window.addEventListener('beforeinstallprompt', (e) => {
                         e.preventDefault();
                         (window as any).deferredPrompt = e;
                         activateAppBanner();
                     });
-                    
+
                     installBtn.addEventListener('click', async () => {
                         const promptEvent = (window as any).deferredPrompt;
                         if (promptEvent) {
