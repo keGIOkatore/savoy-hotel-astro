@@ -11,31 +11,8 @@ export default defineConfig({
     AstroPWA({
       registerType: 'autoUpdate',
       injectRegister: 'inline',
-      devOptions: {
-        enabled: true
-      },
-      manifest: {
-        name: 'Savoy Beach Hotel & Thermal Spa',
-        short_name: 'Savoy App',
-        description: 'La tua Guest App esclusiva per il soggiorno a Bibione.',
-        theme_color: '#050505',
-        background_color: '#050505',
-        display: 'standalone',
-        start_url: '/',
-        id: '/',
-        icons: [
-          {
-            src: '/logo_prova_savoy_192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: '/logo_prova_savoy_512x512.png',
-            sizes: '512x512',
-            type: 'image/png'
-          }
-        ]
-      },
+      devOptions: {enabled: true},
+      manifest: false,
       workbox: {
         globPatterns: ['**/*.{html,css,js,svg,png,jpg,jpeg,webp,json}']
       }
