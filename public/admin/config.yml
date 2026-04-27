@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main
 
-logo_url: "https://savoy-hotel-test.netlify.app/logo_prova_savoy_512x512.png"
+logo_url: "https://savoy-hotel-astro.netlify.app/icon-512x512.png"
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
